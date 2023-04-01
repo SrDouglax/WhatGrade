@@ -25,7 +25,7 @@ function App() {
       }
     });
     console.log(data);
-    
+
     return data
   }
 
@@ -106,7 +106,7 @@ function App() {
 
   return (
     <div className="App">
-      
+
       <h1 className='title'>SSA <span>GRADES</span></h1>
       <h2 className='subtitle'>2021 - 2023</h2>
       <p className="name">{userData?.[0]}</p>
@@ -121,7 +121,10 @@ function App() {
       </div>
       <div className="goal">
         <input type="number" className="grade finalgrade" placeholder={'Sua meta'} onChange={handleOnChangeGoal as React.ChangeEventHandler} />
-        <p>Nota Final</p>
+        <div className='inline'>
+          <p>Nota Final</p>
+          <a href='https://processodeingresso.upe.pe.gov.br/arquivos/ssa3/Notas-Classificatorias-SSA3.pdf' target='_blank' >Notas de corte 2022</a>
+        </div>
       </div>
       <p id='by'> Por: Marcos Douglas
         <a href="https://wa.me/5581996405552">
