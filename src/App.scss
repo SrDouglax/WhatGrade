@@ -1,13 +1,36 @@
+@keyframes in {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: in 400ms ease forwards;
+
+  .logo {
+    height: 150px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10%;
+    background-color: #2f2f2f80;
+    box-shadow: 0 0 10px #2f2f2f80;
+    animation: in 800ms ease forwards;
+  }
 
   .title {
-    color: #ff2e23;
+    color: #FF3D00;
     font-size: 3rem;
     font-family: Helvetica, sans-serif;
+    animation: in 700ms ease forwards;
 
     &>span {
       color: #939393;
@@ -19,6 +42,7 @@
     font-size: 2rem;
     font-family: Helvetica, sans-serif;
     margin-bottom: 50px;
+    animation: in 900ms ease forwards;
   }
 
   .name {
@@ -27,13 +51,14 @@
     padding-bottom: 20px;
     font-size: clamp(0.1rem, 4vw, 30px);
     max-width: 1000px;
+    animation: in 1100ms ease forwards;
   }
 
   &>.input {
     box-sizing: border-box;
     width: 90%;
     max-width: 1000px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding: 10px 15px;
     border: none;
     border-radius: 6px;
@@ -42,6 +67,7 @@
     outline: solid 0px #ff2e23;
     color: white;
     margin-bottom: 10px;
+    animation: in 1300ms ease forwards;
 
     &:focus-visible {
       outline: solid 2px #ff2e23;
@@ -54,11 +80,12 @@
     gap: 10px;
     width: 90%;
     max-width: 1000px;
+    animation: in 1400ms ease forwards;
 
     &>.grade {
       box-sizing: border-box;
       width: 100%;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       padding: 10px 15px;
       border: none;
       border-radius: 6px;
@@ -86,11 +113,12 @@
     margin-top: 10px;
     width: 90%;
     max-width: 1000px;
+    animation: in 1500ms ease forwards;
 
     &>.grade {
       box-sizing: border-box;
       width: 100%;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       padding: 10px 15px;
       border: none;
       border-radius: 6px;

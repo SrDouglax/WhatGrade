@@ -98,6 +98,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <h1 className='title'>SSA <span>GRADES</span></h1>
       <h2 className='subtitle'>2021 - 2023</h2>
       <p className="name">{userData?.[0]}</p>
