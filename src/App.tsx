@@ -15,23 +15,31 @@ function App() {
 
   function setFirstGrade(array: string[]) {
     let data: Data = {};
+    const regex = /^(\d+)\s+([\w\s'’]+\b)\s+([\d,]+)/; // Expressão regular para capturar o nome e a nota
     array.forEach((value: string, index) => {
-      const partes = value.split(" ");
-      const name = partes.slice(1, -1).join(" ");
-      const grade = partes[partes.length - 1];
-      data[name] = { grade_1: grade }
-    })
+      const match = value.match(regex);
+      if (match) {
+        const name = match[2];
+        const grade = match[3];
+        data[name] = { grade_1: grade };
+      }
+    });
+    console.log(data);
+    
     return data
   }
 
   function setSecondGrade(array: string[], previusData: any) {
     let data: Data = {};
-    array.forEach((value, index) => {
-      const partes = value.split(" ");
-      const name: string = partes.slice(1, -1).join(" ");
-      const grade: string = partes[partes.length - 1];
-      data[name] = { ...previusData[name], grade_2: grade }
-    })
+    const regex = /^(\d+)\s+([\w\s'’]+\b)\s+([\d,]+)/; // Expressão regular para capturar o nome e a nota
+    array.forEach((value: string, index) => {
+      const match = value.match(regex);
+      if (match) {
+        const name = match[2];
+        const grade = match[3];
+        data[name] = { ...previusData[name], grade_2: grade };
+      }
+    });
     return data
   }
 
@@ -45,7 +53,7 @@ function App() {
       let grd_1 = Number((grade_1 || '').replace(',', '.'))
       let grd_2 = Number((grade_2 || '').replace(',', '.'))
       let grade = calculateGrade(grd_1, grd_2, userData[4])?.toFixed(3) || ''
-      grade = Number(grade) < 0 ? 'Meta baixa' : Number(grade) > 1000 ? 'Meta alta' : grade;
+      grade = Number(grade) < 0 ? '' : Number(grade) > 1000 ? 'Meta alta' : grade;
       if (possibleName[0] !== userData?.[0]) {
         if (inputText.length > 0) {
           setUserData((e: any) => { return [possibleName[0], grd_1, grd_2, grade, e[4]] })
