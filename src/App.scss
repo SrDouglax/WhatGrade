@@ -26,11 +26,13 @@
     font-family: Helvetica, sans-serif;
     padding-bottom: 20px;
     font-size: clamp(0.1rem, 4vw, 30px);
+    max-width: 1000px;
   }
 
   &>.input {
     box-sizing: border-box;
     width: 90%;
+    max-width: 1000px;
     font-size: 2rem;
     padding: 10px 15px;
     border: none;
@@ -43,7 +45,6 @@
 
     &:focus-visible {
       outline: solid 2px #ff2e23;
-
     }
   }
 
@@ -52,6 +53,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     width: 90%;
+    max-width: 1000px;
 
     &>.grade {
       box-sizing: border-box;
@@ -70,7 +72,6 @@
       }
     }
 
-
     &>p {
       color: #414141;
       font-family: Helvetica, sans-serif;
@@ -84,6 +85,7 @@
     gap: 10px;
     margin-top: 10px;
     width: 90%;
+    max-width: 1000px;
 
     &>.grade {
       box-sizing: border-box;
@@ -101,7 +103,6 @@
         outline: solid 2px #ff2e23;
       }
     }
-
 
     &>p {
       color: #414141;
@@ -121,7 +122,6 @@
     display: flex;
     align-items: center;
     cursor: default;
-
     & img {
       height: 20px;
       cursor: pointer;
