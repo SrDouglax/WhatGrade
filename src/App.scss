@@ -49,13 +49,9 @@
 
   .grades {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     width: 90%;
-
-    *:nth-child(4) {
-      background-color: #2b2b2b !important;
-    }
 
     &>.grade {
       box-sizing: border-box;
@@ -69,12 +65,43 @@
       outline: solid 0px #ff2e23;
       color: white;
 
+      &:focus-visible {
+        outline: solid 2px #ff2e23;
+      }
+    }
+
+
+    &>p {
+      color: #414141;
+      font-family: Helvetica, sans-serif;
+      padding-left: 5px;
+    }
+  }
+
+  .goal {
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    margin-top: 10px;
+    width: 90%;
+
+    &>.grade {
+      box-sizing: border-box;
+      width: 100%;
+      font-size: 1.4rem;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      transition: ease 100ms;
+      background-color: #323232;
+      outline: solid 0px #ff2e23;
+      color: white;
 
       &:focus-visible {
         outline: solid 2px #ff2e23;
-
       }
     }
+
 
     &>p {
       color: #414141;
@@ -94,7 +121,7 @@
     display: flex;
     align-items: center;
     cursor: default;
-    
+
     & img {
       height: 20px;
       cursor: pointer;

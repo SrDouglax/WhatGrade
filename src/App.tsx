@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.scss'
+import { useDebounce } from './hooks/useDebounce'
 
 import whatsapp from '/images/whatsapp.png'
 
 type Data = {
   [key: string]: { grade_1?: string, grade_2?: string }
 }
+
 
 
 function App() {
@@ -35,6 +37,27 @@ function App() {
     return data
   }
 
+  const handleInputChange = useDebounce((e: any) => {
+    loadCode().then((data: Data) => {
+      let possibleName = Object.keys(data).sort().filter(chave => (chave.indexOf(inputText.toUpperCase()) === 0 ? chave.includes(inputText.toUpperCase()) : false));
+      if (possibleName.length < 1) {
+        return
+      }
+      let { grade_1, grade_2 } = data[possibleName[0]]
+      let grd_1 = Number((grade_1 || '').replace(',', '.'))
+      let grd_2 = Number((grade_2 || '').replace(',', '.'))
+      let grade = calculateGrade(grd_1, grd_2, userData[4])?.toFixed(3) || ''
+      grade = Number(grade) < 0 ? 'Meta baixa' : Number(grade) > 1000 ? 'Meta alta' : grade;
+      if (possibleName[0] !== userData?.[0]) {
+        if (inputText.length > 0) {
+          setUserData((e: any) => { return [possibleName[0], grd_1, grd_2, grade, e[4]] })
+        } else {
+          setUserData(e => ['', '', '', '', e[4]])
+        }
+      }
+    })
+  }, 500)
+
   async function loadCode() {
     let lines_ssa1: string[] = [];
     let lines_ssa2: string[] = [];
@@ -59,25 +82,21 @@ function App() {
   }
 
   useEffect(() => {
-    if (inputText.length === 0) {
-      return
-    }
-    loadCode().then((data: Data) => {
-      let possibleName = Object.keys(data).sort().filter(chave => (chave.indexOf(inputText.toUpperCase()) === 0 ? chave.includes(inputText.toUpperCase()) : false));
-      if (possibleName.length < 1) {
-        return
-      }
-      let { grade_1, grade_2 } = data[possibleName[0]]
-      let grd_1 = Number((grade_1 || '').replace(',', '.'))
-      let grd_2 = Number((grade_2 || '').replace(',', '.'))
-      let grade = calculateGrade(grd_1, grd_2, userData[4])?.toFixed(3) || ''
-      grade = Number(grade) < 0 ? 'Meta baixa' : Number(grade) > 100 ? 'Meta alta' : grade;
-      if (possibleName[0] !== userData?.[0]) {
-        setUserData((e: any) => { console.log(e); return [possibleName[0], grd_1, grd_2, grade, e[4]] })
-      }
-    })
+    handleInputChange()
   }, [inputText])
-  console.log('rendered');
+
+  const handleOnChangeGoal = useDebounce((e: any) => {
+    setUserData((oldUser: any) => {
+      const grade = Number((calculateGrade(oldUser[1], oldUser[2], Number(e.target.value)) || -1).toFixed(3))
+      if (inputText.length === 0) return oldUser
+      const updatedUser = [...oldUser]; // cria uma cópia do array do estado atual
+
+      updatedUser[3] = grade < 0 ? 'Meta baixa' : grade > 1000 ? 'Meta alta' : grade; // atualiza o terceiro item do array com o novo valor
+      updatedUser[4] = Number(e.target.value)
+
+      return updatedUser; // retorna o array atualizado para ser definido como o novo estado
+    })
+  }, 500)
 
   return (
     <div className="App">
@@ -89,22 +108,12 @@ function App() {
         <input type="text" disabled className="grade grade1" value={userData?.[1]} placeholder={'SSA1'} />
         <input type="text" disabled className="grade grade2" value={userData?.[2]} placeholder={'SSA2'} />
         <input type="text" disabled className="grade grade3" id='grade3' value={userData?.[3]} placeholder={'SSA3'} />
-        <input type="number" className="grade finalgrade" placeholder={'Sua meta'} onChange={(e) => {
-          setUserData((oldUser: any) => {
-            const grade = Number((calculateGrade(oldUser[1], oldUser[2], Number(e.target.value)) || -1).toFixed(3))
-            if (inputText.length === 0) return oldUser
-            const updatedUser = [...oldUser]; // cria uma cópia do array do estado atual
-
-            updatedUser[3] = grade < 0 ? 'Meta baixa' : grade > 100 ? 'Meta alta' : grade; // atualiza o terceiro item do array com o novo valor
-            updatedUser[4] = Number(e.target.value)
-
-            return updatedUser; // retorna o array atualizado para ser definido como o novo estado
-
-          })
-        }} />
         <p>Nota SSA1</p>
         <p>Nota SSA2</p>
         <p>Nota SSA3</p>
+      </div>
+      <div className="goal">
+        <input type="number" className="grade finalgrade" placeholder={'Sua meta'} onChange={handleOnChangeGoal as React.ChangeEventHandler} />
         <p>Nota Final</p>
       </div>
       <p id='by'> Por: Marcos Douglas
