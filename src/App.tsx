@@ -8,11 +8,9 @@ type Data = {
   [key: string]: { grade_1?: string, grade_2?: string }
 }
 
-
-
 function App() {
 
-  const [userData, setUserData] = useState<any>({})
+  const [userData, setUserData] = useState<any>(['', '', '', '', ''])
   const [inputText, setInputText] = useState('')
 
   function setFirstGrade(array: string[]) {
@@ -52,7 +50,7 @@ function App() {
         if (inputText.length > 0) {
           setUserData((e: any) => { return [possibleName[0], grd_1, grd_2, grade, e[4]] })
         } else {
-          setUserData(e => ['', '', '', '', e[4]])
+          setUserData((e: any) => ['', '', '', '', e[4]])
         }
       }
     })
