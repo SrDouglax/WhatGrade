@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
-import './App.scss'
-import { useDebounce } from './hooks/useDebounce'
+import { useEffect, useState } from 'react'
+import './lastYear.scss'
+import { useDebounce } from '../../../../hooks/useDebounce'
 
 import whatsapp from '/images/whatsapp.png'
 
@@ -8,7 +8,7 @@ type Data = {
   [key: string]: { grade_1?: string, grade_2?: string }
 }
 
-function App() {
+export default function LastYear({ period }:{period: string}) {
 
   const [userData, setUserData] = useState<any>(['', '', '', '', ''])
   const [inputText, setInputText] = useState('')
@@ -16,7 +16,7 @@ function App() {
   function setFirstGrade(array: string[]) {
     let data: Data = {};
     const regex = /^(\d+)\s+([\w\s'’]+\b)\s+([\d,]+)/; // Expressão regular para capturar o nome e a nota
-    array.forEach((value: string, index) => {
+    array.forEach((value: string) => {
       const match = value.match(regex);
       if (match) {
         const name = match[2];
@@ -32,7 +32,7 @@ function App() {
   function setSecondGrade(array: string[], previusData: any) {
     let data: Data = {};
     const regex = /^(\d+)\s+([\w\s'’]+\b)\s+([\d,]+)/; // Expressão regular para capturar o nome e a nota
-    array.forEach((value: string, index) => {
+    array.forEach((value: string) => {
       const match = value.match(regex);
       if (match) {
         const name = match[2];
@@ -105,10 +105,9 @@ function App() {
   }, 500)
 
   return (
-    <div className="App">
-
-      <h1 className='title'>SSA <span>GRADES</span></h1>
-      <h2 className='subtitle'>2021 - 2023</h2>
+    <>
+      <h1 className='title'>SSA <span> GRADES</span></h1>
+      <h2 className='subtitle'>20{period?.split('-')[0]} - 20{period?.split('-')[1]}</h2>
       <p className="name">{userData?.[0]}</p>
       <input type="text" className='input' placeholder='Digite seu nome' onChange={(e) => { setInputText(e.target.value) }} />
       <div className="grades">
@@ -126,13 +125,6 @@ function App() {
           <a href='https://processodeingresso.upe.pe.gov.br/arquivos/ssa3/Notas-Classificatorias-SSA3.pdf' target='_blank' >Notas de corte 2022</a>
         </div>
       </div>
-      <p id='by'> Por: Marcos Douglas
-        <a href="https://wa.me/5581996405552">
-          <img src={whatsapp} />
-        </a>
-      </p>
-    </div>
+    </>
   )
 }
-
-export default App

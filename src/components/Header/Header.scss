@@ -1,0 +1,44 @@
+.Header {
+  width: 100%;
+  height: 60px;
+  background-color: rgb(26, 26, 26);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+
+  &>.BackLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    &>.Icon {
+      font-size: 2.5rem;
+      color: rgb(162, 162, 162);
+    }
+
+    &>.Text {
+      font-size: 1.6rem;
+      color: rgb(162, 162, 162);
+    }
+  }
+
+  .Title {
+    color: #FF3D00;
+    font-size: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: Helvetica, sans-serif;
+
+    &>span {
+      margin-left: 10px;
+      color: #939393;
+    }
+  }
+}
