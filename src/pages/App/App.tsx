@@ -30,16 +30,19 @@ export default function App() {
     <div className="App">
       <Header hasLink={true} backLink='/' />
       <div className='Content'>
-        {lastYear ?
-          <LastYear period={(period as any).split('-')} /> :
-          <OldYears period={(period as any).split('-')} />
-        }
+          {lastYear ?
+            <LastYear period={(period as any).split('-')} /> :
+            <OldYears period={(period as any).split('-')} />
+          }
       </div>
-      <p id='by'> Por: Marcos Douglas
+      <p id='by'> By: Douglas
         <a href="https://wa.me/5581996405552">
           <img src={whatsapp} />
         </a>
       </p>
+      <div className='BottomDegrade'>
+
+      </div>
     </div>
   )
 }

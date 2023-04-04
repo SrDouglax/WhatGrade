@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import './lastYear.scss'
 import { useDebounce } from '../../../../hooks/useDebounce'
 
-import whatsapp from '/images/whatsapp.png'
+import PossibleCourses from '../../../../components/PossibleCouses/PossibleCourses'
 
 type Data = {
   [key: string]: { grade_1?: string, grade_2?: string }
@@ -10,6 +9,7 @@ type Data = {
 
 export default function LastYear({ period }:{period: Array<string>}) {
 
+  // Nome possivel, nota 1, nota 2, nota 3, meta
   const [userData, setUserData] = useState<any>(['', '', '', '', ''])
   const [inputText, setInputText] = useState('')
 
@@ -56,7 +56,7 @@ export default function LastYear({ period }:{period: Array<string>}) {
       grade = Number(grade) < 0 ? '' : Number(grade) > 1000 ? 'Meta alta' : grade;
       if (possibleName[0] !== userData?.[0]) {
         if (inputText.length > 0) {
-          setUserData((e: any) => { return [possibleName[0], grd_1, grd_2, grade, e[4]] })
+          setUserData((e: any) => [possibleName[0], grd_1, grd_2, grade, e[4]])
         } else {
           setUserData((e: any) => ['', '', '', '', e[4]])
         }
@@ -69,10 +69,10 @@ export default function LastYear({ period }:{period: Array<string>}) {
     let lines_ssa2: string[] = [];
     let data_ssa = {};
 
-    await fetch(`./data/${period[0]}-${period[1]}/ssa1.txt`)
+    await fetch(`./data/years/${period[0]}-${period[1]}/ssa1.txt`)
       .then(response => response.text())
       .then(minhaString => lines_ssa1 = minhaString.split("\n").map((data) => data.replace('\r', '')));
-    await fetch(`./data/${period[0]}-${period[1]}/ssa2.txt`)
+    await fetch(`./data/years/${period[0]}-${period[1]}/ssa2.txt`)
       .then(response => response.text())
       .then(minhaString => lines_ssa2 = minhaString.split("\n").map((data) => data.replace('\r', '')));
 
@@ -125,6 +125,7 @@ export default function LastYear({ period }:{period: Array<string>}) {
           <a href='https://processodeingresso.upe.pe.gov.br/arquivos/ssa3/Notas-Classificatorias-SSA3.pdf' target='_blank' >Notas de corte 2022</a>
         </div>
       </div>
+      <PossibleCourses goal={userData[4]} />
     </>
   )
 }
