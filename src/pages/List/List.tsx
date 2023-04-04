@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 
 export const allPeriods = [
   { period: '21-23', desc: 'Notas SSA1, SSA2 e necessária no SSA3', lastYear: true },
-  { period: '20-22', desc: 'Notas SSA1, SSA2, SSA3 e cursos disponíveis' },
-  { period: '19-21', desc: 'Notas SSA1, SSA2, SSA3 e cursos disponíveis' },
+  { period: '20-22', desc: 'Descubra se você passaria em algum curso.' },
+  { period: '19-21', desc: 'Descubra se você passaria em algum curso' },
 ]
 
 export default function List() {

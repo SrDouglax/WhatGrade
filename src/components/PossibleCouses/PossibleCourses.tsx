@@ -9,8 +9,6 @@ export default function PossibleCourses({ goal }: { goal: number }) {
 
   const [cotism, setCotism] = useState(true)
 
-
-
   return (
     <>
       <div className="inline cotism">
