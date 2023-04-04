@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react'
-import './lastYear.scss'
+import './oldYear.scss'
 import { useDebounce } from '../../../../hooks/useDebounce'
-
-import whatsapp from '/images/whatsapp.png'
 
 type Data = {
   [key: string]: { grade_1?: string, grade_2?: string }
 }
 
-export default function LastYear({ period }:{period: Array<string>}) {
+export default function oldYear({ period }:{period: string}) {
 
   const [userData, setUserData] = useState<any>(['', '', '', '', ''])
   const [inputText, setInputText] = useState('')

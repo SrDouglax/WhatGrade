@@ -17,7 +17,7 @@ export default function List() {
   return (
     <div className="App">
       <Header hasLink={false} />
-      <div className="Content">
+      <div className="ContentList">
         {periods.map((period, index) => {
           return (
             <Link to={period.period} key={index} className='Period' style={{ animation: `in ${1000 + index * 100}ms ease forwards`}}>
