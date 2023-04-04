@@ -10,11 +10,12 @@
     width: 50%;
     line-height: 20px;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 10px 0px;
     border-radius: 6px;
     background-color: #232323;
     text-align: center;
     color: white;
+    font-size: clamp(2pt, 3.4vw, 11pt);
   }
 }
 
