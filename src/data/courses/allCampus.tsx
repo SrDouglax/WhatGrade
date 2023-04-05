@@ -482,7 +482,7 @@ export const allCampus: Array<Campus> = [
         ]
     },
     {
-        campus: 'MATANORTE',
+        campus: 'MATA NORTE',
         courses: [
             {
                 name: 'CIÊNCIAS BIOLÓGICAS (noturno)',
