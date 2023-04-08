@@ -22,22 +22,23 @@ export default function oldYear({ period }:{period: string}) {
         data[name] = { grade_1: grade };
       }
     });
-    console.log(data);
 
     return data
   }
 
   function setSecondGrade(array: string[], previusData: any) {
-    let data: Data = {};
+    let data: Data = previusData;
     const regex = /^(\d+)\s+([\w\s'’]+\b)\s+([\d,]+)/; // Expressão regular para capturar o nome e a nota
     array.forEach((value: string) => {
+      //console.log(value)
       const match = value.match(regex);
       if (match) {
         const name = match[2];
         const grade = match[3];
-        data[name] = { ...previusData[name], grade_2: grade };
+        data[name] = { grade_1: previusData[name]?.grade_1, grade_2: grade };
       }
     });
+    console.log(data);
     return data
   }
 

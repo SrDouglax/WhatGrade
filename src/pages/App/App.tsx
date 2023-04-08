@@ -30,10 +30,7 @@ export default function App() {
     <div className="App">
       <Header hasLink={true} backLink='/' />
       <div className='Content'>
-          {lastYear ?
-            <LastYear period={(period as any).split('-')} /> :
-            <OldYears period={(period as any).split('-')} />
-          }
+        <LastYear period={period as string} /> :
       </div>
       <p id='by'> By: Douglas
         <a href="https://wa.me/5581996405552">

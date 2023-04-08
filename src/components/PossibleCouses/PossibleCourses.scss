@@ -47,6 +47,11 @@
         & > * {
           margin-top: 2px;
           color: #7d7d7d;
+          & > span {
+            margin-left: 10px;
+            color: #5a5a5a;
+            font-size: 0.9rem;
+          }
         }
       }
     }

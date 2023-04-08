@@ -25,16 +25,20 @@ export default function PossibleCourses({ goal }: { goal: number }) {
       </div>
       <div className="PossibleCourses">
         {/* Interação dos campus */}
-        {allCampus.map(campus => {
+        {allCampus.map((campus, index) => {
           return (
-            <div className='campus' >
+            <div className='campus' key={index} >
               <h2 className='name' >{campus.campus}</h2>
               {/* Interação dos cursos de cada campus */}
-              {campus.courses.map(course => {
+              {campus.courses.map((course, index) => {
                 return (
-                  <div className='course inline'>
+                  <div className='course inline' key={index}>
                     <MdOutlineVerified className='icon' style={{ color: goal >= (cotism ? course.grades.quotaholder.lowest : course.grades.broadCompetition.lowest) ? 'rgb(17, 255, 96)' : 'rgb(68, 68, 68)' }} />
-                    <div className='name' >{course.name} <div> {(cotism ? course.grades.quotaholder.lowest : course.grades.broadCompetition.lowest)} à {(cotism ? course.grades.quotaholder.highest : course.grades.broadCompetition.highest)}</div></div>
+                    <div className='name' >{course.name}
+                      <div> {(cotism ? course.grades.quotaholder.lowest : course.grades.broadCompetition.lowest)} à {(cotism ? course.grades.quotaholder.highest : course.grades.broadCompetition.highest)}
+                        <span>{course.formation}</span>
+                      </div>
+                    </div>
 
                   </div>
                 )

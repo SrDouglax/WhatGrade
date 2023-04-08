@@ -3,11 +3,15 @@ import { useDebounce } from '../../../../hooks/useDebounce'
 
 import PossibleCourses from '../../../../components/PossibleCouses/PossibleCourses'
 
+import { students as students23 } from '../../../../data/years/21-23'
+import { students as students22 } from '../../../../data/years/20-22'
+import { students as students21 } from '../../../../data/years/19-21'
+
 type Data = {
   [key: string]: { grade_1?: string, grade_2?: string }
 }
 
-export default function LastYear({ period }:{period: Array<string>}) {
+export default function LastYear({ period }: { period: string }) {
 
   // Nome possivel, nota 1, nota 2, nota 3, meta
   const [userData, setUserData] = useState<any>(['', '', '', '', ''])
@@ -39,7 +43,7 @@ export default function LastYear({ period }:{period: Array<string>}) {
       if (match) {
         const name = match[2];
         const grade = match[3];
-        data[name] = { grade_1: previusData[name]?.grade_1 ,grade_2: grade };
+        data[name] = { grade_1: previusData[name]?.grade_1, grade_2: grade };
       }
     });
     console.log(data);
@@ -72,17 +76,30 @@ export default function LastYear({ period }:{period: Array<string>}) {
     let lines_ssa2: string[] = [];
     let data_ssa = {};
 
-    await fetch(`./data/years/${period[0]}-${period[1]}/ssa1.txt`)
-      .then(response => response.text())
-      .then(minhaString => lines_ssa1 = minhaString.split("\n").map((data) => data.replace('\r', '')));
-    await fetch(`./data/years/${period[0]}-${period[1]}/ssa2.txt`)
-      .then(response => response.text())
-      .then(minhaString => lines_ssa2 = minhaString.split("\n").map((data) => data.replace('\r', '')));
+    // await fetch(`./data/years/${period[0]}-${period[1]}/ssa1.txt`)
+    //   .then(response => response.text())
+    //   .then(minhaString => lines_ssa1 = minhaString.split("\n").map((data) => data.replace('\r', '')));
+    // await fetch(`./data/years/${period[0]}-${period[1]}/ssa2.txt`)
+    //   .then(response => response.text())
+    //   .then(minhaString => lines_ssa2 = minhaString.split("\n").map((data) => data.replace('\r', '')));
 
-    console.log('loading...')
+    // console.log('loading...')
 
-    data_ssa = setFirstGrade(lines_ssa1)
-    data_ssa = setSecondGrade(lines_ssa2, data_ssa)
+    switch (period) {
+      case '21-23':
+        data_ssa = students23
+        break;
+        case '20-22':
+        data_ssa = students22
+        
+        break;
+        case '19-21':
+        data_ssa = students21
+
+        break;
+      default:
+        break;
+    }
     return data_ssa
   }
 
@@ -110,7 +127,7 @@ export default function LastYear({ period }:{period: Array<string>}) {
   return (
     <>
       <h1 className='title'>SSA <span> GRADES</span></h1>
-      <h2 className='subtitle'>20{period[0]} - 20{period[1]}</h2>
+      <h2 className='subtitle'>20{period.split('-')[0]} - 20{period.split('-')[1]}</h2>
       <p className="name">{userData?.[0]}</p>
       <input type="text" className='input' placeholder='Digite seu nome' onChange={(e) => { setInputText(e.target.value) }} />
       <div className="grades">
