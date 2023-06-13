@@ -10,6 +10,19 @@
   }
 }
 
+@keyframes shines {
+  0% {
+    outline: solid 2px #FF3D00;
+    filter: blur(10px);
+  }
+  50% {
+    filter: blur(0px);
+  }
+  100% {
+    outline: solid 2px #fbff0e00;
+  }
+}
+
 .App {
   display: flex;
   align-items: center;
@@ -58,6 +71,7 @@
   animation: in 400ms ease forwards;
   height: 100%;
   overflow: auto;
+  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     width: 7px;
@@ -150,6 +164,9 @@
       font-family: Helvetica, sans-serif;
       padding-left: 5px;
     }
+
+    &>#grade3 {
+    }
   }
 
   .goal {
@@ -157,7 +174,7 @@
     grid-template-rows: 1fr;
     gap: 10px;
     margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     max-width: 900px;
     width: 100%;
     animation: in 1500ms ease forwards;

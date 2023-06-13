@@ -3,12 +3,20 @@ import './PossibleCourses.scss'
 
 import { allCampus } from '../../data/courses/allCampus';
 
-import { MdOutlineVerified } from "react-icons/md";
+import { MdOutlineVerified, MdGpsFixed } from "react-icons/md";
 
-export default function PossibleCourses({ goal }: { goal: number }) {
+export default function PossibleCourses({ goal, setGoal }: { goal: number, setGoal: Function }) {
 
   const [cotism, setCotism] = useState(true)
 
+  function handleSetGoal(course: any): number {
+    const value = cotism
+      ? course.grades.quotaholder.lowest
+      : course.grades.broadCompetition.lowest;
+    (document.querySelector('.Content') as HTMLDivElement).scrollTop = 80;
+    (document.querySelector('.finalgrade') as HTMLInputElement).value = value
+    return value
+  }
   return (
     <>
       <div className="inline cotism">
@@ -39,6 +47,9 @@ export default function PossibleCourses({ goal }: { goal: number }) {
                         <span>{course.formation}</span>
                       </div>
                     </div>
+                    <MdGpsFixed className='setGoal'onClick={() => { setGoal(
+                      handleSetGoal(course)
+                    , true);}} />
 
                   </div>
                 )

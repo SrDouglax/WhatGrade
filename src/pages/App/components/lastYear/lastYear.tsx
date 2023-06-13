@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDebounce } from '../../../../hooks/useDebounce'
 
 import PossibleCourses from '../../../../components/PossibleCouses/PossibleCourses'
+import { MdGpsFixed } from "react-icons/md";
 
 import { students as students23 } from '../../../../data/years/21-23'
 import { students as students22 } from '../../../../data/years/20-22'
@@ -46,7 +47,6 @@ export default function LastYear({ period }: { period: string }) {
         data[name] = { grade_1: previusData[name]?.grade_1, grade_2: grade };
       }
     });
-    console.log(data);
     return data
   }
 
@@ -111,17 +111,32 @@ export default function LastYear({ period }: { period: string }) {
     handleInputChange()
   }, [inputText])
 
-  const handleOnChangeGoal = useDebounce((e: any) => {
+  const handleOnChangeGoal = useDebounce((e: any, isNumber?: boolean) => {
+
+    let goal = isNumber ? e : Number(e.target.value)
+    console.log(goal);
+
+    (document.getElementById("grade3") as HTMLDivElement).setAttribute('style', "")
+    setTimeout(() => {
+      (document.getElementById("grade3") as HTMLDivElement).setAttribute(
+        "style",
+        "animation: shines 500ms ease forwards;"
+      );
+    }, 1)
+    
     setUserData((oldUser: any) => {
-      const grade = Number((calculateGrade(oldUser[1], oldUser[2], Number(e.target.value)) || -1).toFixed(3))
-      if (inputText.length === 0) return oldUser
+      const grade = Number(
+        (calculateGrade(oldUser[1], oldUser[2], goal) || -1).toFixed(3)
+      );
+      if (inputText.length === 0) return oldUser;
       const updatedUser = [...oldUser]; // cria uma cópia do array do estado atual
 
-      updatedUser[3] = grade < 0 ? 'Meta baixa' : grade > 1000 ? 'Meta alta' : grade; // atualiza o terceiro item do array com o novo valor
-      updatedUser[4] = Number(e.target.value)
+      updatedUser[3] =
+        grade < 0 ? "Meta baixa" : grade > 1000 ? "Meta alta" : grade; // atualiza o terceiro item do array com o novo valor
+      updatedUser[4] = goal;
 
       return updatedUser; // retorna o array atualizado para ser definido como o novo estado
-    })
+    });
   }, 500)
 
   return (
@@ -145,7 +160,8 @@ export default function LastYear({ period }: { period: string }) {
           <a href='https://processodeingresso.upe.pe.gov.br/arquivos/ssa3/Notas-Classificatorias-SSA3.pdf' target='_blank' >Notas de corte 2022</a>
         </div>
       </div>
-      <PossibleCourses goal={userData[4]} />
+      <p className='setGoalHint'>Clique em <span><MdGpsFixed/></span> para definir como meta!</p>
+      <PossibleCourses goal={userData[4]} setGoal={handleOnChangeGoal}/>
     </>
   )
 }

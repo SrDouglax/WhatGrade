@@ -1,11 +1,27 @@
+.setGoalHint {
+  animation: in 1600ms ease forwards;
+  color: #7d7d7d;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  &>*{
+    margin: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+  }
+  
+}
+
 .cotism {
   gap: 10px;
   width: 100%;
   margin-bottom: 10px;
   max-width: 900px;
   animation: in 1600ms ease forwards;
-  
-  &>* {
+
+  & > * {
     transition: 300ms ease;
     width: 50%;
     line-height: 20px;
@@ -24,13 +40,13 @@
   border-radius: 6px;
   width: 100%;
   max-width: 900px;
-  padding: 0px 24px 22px;
+  padding: 0px 14px 22px 24px;
   box-sizing: border-box;
   animation: in 1700ms ease forwards;
 
-  &>.campus {
+  & > .campus {
     padding-top: 10px;
-    &>.name {
+    & > .name {
       color: white;
       padding: 6px 0px;
     }
@@ -44,6 +60,8 @@
         transition: 300ms ease;
       }
       .name {
+        width: 100%;
+        box-sizing: border-box;
         & > * {
           margin-top: 2px;
           color: #7d7d7d;
@@ -54,7 +72,11 @@
           }
         }
       }
+      .setGoal {
+        background-color: #1a1a1a;
+        border-radius: 6px;
+        padding: 5px;
+      }
     }
   }
-
 }
