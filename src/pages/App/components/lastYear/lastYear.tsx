@@ -156,7 +156,7 @@ export default function LastYear({ period }: { period: string }) {
         SSA <span> GRADES</span>
       </h1>
       <h2 className="subtitle">
-        20{period.split("-")[0]} - 20{period.split("-")[1]}
+        {`20${period.split("-")[0]} - 20${period.split("-")[1]}`}
       </h2>
       <p className="name">{userData?.[0]}</p>
       <input
