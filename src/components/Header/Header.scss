@@ -31,10 +31,8 @@
 
   & > .helpLink {
     position: relative;
+    display: flex;
     z-index: 1;
-    &:visited {
-      color: none;
-    }
     & > .help {
       color: rgb(162, 162, 162);
       font-size: 1.4rem;
