@@ -1,22 +1,21 @@
-import { useEffect, useState } from 'react'
-import { useDebounce } from '../../../../hooks/useDebounce'
+import { useEffect, useState } from "react";
+import { useDebounce } from "../../../../hooks/useDebounce";
 
-import PossibleCourses from '../../../../components/PossibleCouses/PossibleCourses'
+import PossibleCourses from "../../../../components/PossibleCouses/PossibleCourses";
 import { MdGpsFixed } from "react-icons/md";
 
-import { students as students23 } from '../../../../data/years/21-23'
-import { students as students22 } from '../../../../data/years/20-22'
-import { students as students21 } from '../../../../data/years/19-21'
+import { students as students23 } from "../../../../data/years/21-23";
+import { students as students22 } from "../../../../data/years/20-22";
+import { students as students21 } from "../../../../data/years/19-21";
 
 type Data = {
-  [key: string]: { grade_1?: string, grade_2?: string }
-}
+  [key: string]: { grade_1?: string; grade_2?: string };
+};
 
 export default function LastYear({ period }: { period: string }) {
-
   // Nome possivel, nota 1, nota 2, nota 3, meta
-  const [userData, setUserData] = useState<any>(['', '', '', '', ''])
-  const [inputText, setInputText] = useState('')
+  const [userData, setUserData] = useState<any>(["", "", "", "", ""]);
+  const [inputText, setInputText] = useState("");
 
   function setFirstGrade(array: string[]) {
     let data: Data = {};
@@ -32,7 +31,7 @@ export default function LastYear({ period }: { period: string }) {
     });
     console.log(data);
 
-    return data
+    return data;
   }
 
   function setSecondGrade(array: string[], previusData: any) {
@@ -47,29 +46,35 @@ export default function LastYear({ period }: { period: string }) {
         data[name] = { grade_1: previusData[name]?.grade_1, grade_2: grade };
       }
     });
-    return data
+    return data;
   }
 
   const handleInputChange = useDebounce((e: any) => {
     loadCode().then((data: Data) => {
-      let possibleName = Object.keys(data).sort().filter(chave => (chave.indexOf(inputText.toUpperCase()) === 0 ? chave.includes(inputText.toUpperCase()) : false));
+      let possibleName = Object.keys(data)
+        .sort()
+        .filter((chave) =>
+          chave.indexOf(inputText.toUpperCase()) === 0
+            ? chave.includes(inputText.toUpperCase())
+            : false
+        );
       if (possibleName.length < 1) {
-        return
+        return;
       }
-      let { grade_1, grade_2 } = data[possibleName[0]]
-      let grd_1 = Number((grade_1 || '').replace(',', '.'))
-      let grd_2 = Number((grade_2 || '').replace(',', '.'))
-      let grade = calculateGrade(grd_1, grd_2, userData[4])?.toFixed(3) || ''
-      grade = Number(grade) < 0 ? '' : Number(grade) > 1000 ? 'Meta alta' : grade;
+      let { grade_1, grade_2 } = data[possibleName[0]];
+      let grd_1 = Number((grade_1 || "").replace(",", "."));
+      let grd_2 = Number((grade_2 || "").replace(",", "."));
+      let grade = calculateGrade(grd_1, grd_2, userData[4])?.toFixed(3) || "";
+      grade = Number(grade) < 0 ? "" : Number(grade) > 1000 ? "> 1000" : grade;
       if (possibleName[0] !== userData?.[0]) {
         if (inputText.length > 0) {
-          setUserData((e: any) => [possibleName[0], grd_1, grd_2, grade, e[4]])
+          setUserData((e: any) => [possibleName[0], grd_1, grd_2, grade, e[4]]);
         } else {
-          setUserData((e: any) => ['', '', '', '', e[4]])
+          setUserData((e: any) => ["", "", "", "", e[4]]);
         }
       }
-    })
-  }, 500)
+    });
+  }, 500);
 
   async function loadCode() {
     let lines_ssa1: string[] = [];
@@ -86,44 +91,51 @@ export default function LastYear({ period }: { period: string }) {
     // console.log('loading...')
 
     switch (period) {
-      case '21-23':
-        data_ssa = students23
+      case "21-23":
+        data_ssa = students23;
         break;
-        case '20-22':
-        data_ssa = students22
-        
+      case "20-22":
+        data_ssa = students22;
+
         break;
-        case '19-21':
-        data_ssa = students21
+      case "19-21":
+        data_ssa = students21;
 
         break;
       default:
         break;
     }
-    return data_ssa
+    return data_ssa;
   }
 
-  function calculateGrade(grade1: number, grade2: number, expectedGrade: number) {
-    return expectedGrade !== 0 ? -((grade1 * 3 + grade2 * 3 - expectedGrade * 10) / 4) : undefined
+  function calculateGrade(
+    grade1: number,
+    grade2: number,
+    expectedGrade: number
+  ) {
+    return expectedGrade !== 0
+      ? -((grade1 * 3 + grade2 * 3 - expectedGrade * 10) / 4)
+      : undefined;
   }
 
   useEffect(() => {
-    handleInputChange()
-  }, [inputText])
+    handleInputChange();
+  }, [inputText]);
 
   const handleOnChangeGoal = useDebounce((e: any, isNumber?: boolean) => {
+    let goal = isNumber ? e : Number(e.target.value);
 
-    let goal = isNumber ? e : Number(e.target.value)
-    console.log(goal);
-
-    (document.getElementById("grade3") as HTMLDivElement).setAttribute('style', "")
+    (document.getElementById("grade3") as HTMLDivElement).setAttribute(
+      "style",
+      ""
+    );
     setTimeout(() => {
       (document.getElementById("grade3") as HTMLDivElement).setAttribute(
         "style",
         "animation: shines 500ms ease forwards;"
       );
-    }, 1)
-    
+    }, 1);
+
     setUserData((oldUser: any) => {
       const grade = Number(
         (calculateGrade(oldUser[1], oldUser[2], goal) || -1).toFixed(3)
@@ -131,37 +143,83 @@ export default function LastYear({ period }: { period: string }) {
       if (inputText.length === 0) return oldUser;
       const updatedUser = [...oldUser]; // cria uma cópia do array do estado atual
 
-      updatedUser[3] =
-        grade < 0 ? "Meta baixa" : grade > 1000 ? "Meta alta" : grade; // atualiza o terceiro item do array com o novo valor
+      updatedUser[3] = grade < 0 ? "< 0" : grade > 1000 ? "> 1000" : grade; // atualiza o terceiro item do array com o novo valor
       updatedUser[4] = goal;
 
       return updatedUser; // retorna o array atualizado para ser definido como o novo estado
     });
-  }, 500)
+  }, 500);
 
   return (
     <>
-      <h1 className='title'>SSA <span> GRADES</span></h1>
-      <h2 className='subtitle'>20{period.split('-')[0]} - 20{period.split('-')[1]}</h2>
+      <h1 className="title">
+        SSA <span> GRADES</span>
+      </h1>
+      <h2 className="subtitle">
+        20{period.split("-")[0]} - 20{period.split("-")[1]}
+      </h2>
       <p className="name">{userData?.[0]}</p>
-      <input type="text" className='input' placeholder='Digite seu nome' onChange={(e) => { setInputText(e.target.value) }} />
+      <input
+        type="text"
+        className="input"
+        placeholder="Digite seu nome"
+        onChange={(e) => {
+          setInputText(e.target.value);
+        }}
+      />
       <div className="grades">
-        <input type="text" disabled className="grade grade1" value={userData?.[1]} placeholder={'SSA1'} />
-        <input type="text" disabled className="grade grade2" value={userData?.[2]} placeholder={'SSA2'} />
-        <input type="text" disabled className="grade grade3" id='grade3' value={userData?.[3]} placeholder={'SSA3'} />
+        <p
+          className={
+            "grade grade1 " + (userData?.[1] === "" ? "placeholder" : "")
+          }
+        >
+          {userData?.[1].toString().replace(".", ",") || "SSA1"}
+        </p>
+        <p
+          className={
+            "grade grade2 " + (userData?.[2] === "" ? "placeholder" : "")
+          }
+        >
+          {userData?.[2].toString().replace(".", ",") || "SSA2"}
+        </p>
+        <p
+          className={
+            "grade grade3 " + (userData?.[3] === "" ? "placeholder" : "")
+          }
+          id="grade3"
+        >
+          {userData?.[3].toString().replace(".", ",") || "SSA3"}
+        </p>
+
         <p>Nota SSA1</p>
         <p>Nota SSA2</p>
         <p>Nota SSA3</p>
       </div>
       <div className="goal">
-        <input type="number" className="grade finalgrade" placeholder={'Sua meta'} onChange={handleOnChangeGoal as React.ChangeEventHandler} />
-        <div className='inline'>
+        <input
+          type="number"
+          className="grade finalgrade"
+          placeholder={"Sua meta"}
+          onChange={handleOnChangeGoal as React.ChangeEventHandler}
+        />
+        <div className="inline">
           <p>Nota Final</p>
-          <a href='https://processodeingresso.upe.pe.gov.br/arquivos/ssa3/Notas-Classificatorias-SSA3.pdf' target='_blank' >Notas de corte 2022</a>
+          <a
+            href="https://processodeingresso.upe.pe.gov.br/arquivos/ssa3/Notas-Classificatorias-SSA3.pdf"
+            target="_blank"
+          >
+            Notas de corte 2022
+          </a>
         </div>
       </div>
-      <p className='setGoalHint'>Clique em <span><MdGpsFixed/></span> para definir como meta!</p>
-      <PossibleCourses goal={userData[4]} setGoal={handleOnChangeGoal}/>
+      <p className="setGoalHint">
+        Clique em{" "}
+        <span>
+          <MdGpsFixed />
+        </span>{" "}
+        para definir como meta!
+      </p>
+      <PossibleCourses goal={userData[4]} setGoal={handleOnChangeGoal} />
     </>
-  )
+  );
 }

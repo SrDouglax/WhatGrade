@@ -1,20 +1,36 @@
-import { useEffect, useState } from 'react'
-import './Header.scss'
+import { useEffect, useState } from "react";
+import "./Header.scss";
 
-import { MdNavigateBefore } from "react-icons/md";
+import { MdHelpOutline, MdNavigateBefore } from "react-icons/md";
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-export default function Header({ hasLink, backLink }: { hasLink: boolean, backLink?: string }) {
+interface props {
+  hasLink: boolean;
+  backLink?: string;
+  showHelp?: boolean;
+}
+
+export default function Header({ hasLink, backLink, showHelp }: props) {
   return (
     <div className="Header">
-      {hasLink ?
-        <Link className='BackLink' to={backLink as any}>
-          <MdNavigateBefore className='Icon' />
-          <p className='Text'>voltar</p>
-        </Link> :
-        <h1 className='Title'>What <span>Grade</span></h1>
-      }
+      {hasLink ? (
+        <>
+          <Link className="BackLink" to={backLink as any}>
+            <MdNavigateBefore className="Icon" />
+            <p className="Text">voltar</p>
+          </Link>
+        </>
+      ) : (
+        <h1 className="Title">
+          What <span>Grade</span>
+        </h1>
+      )}
+      {showHelp?
+      <a href="/help" className="helpLink">
+        <MdHelpOutline className="help" />
+      </a>
+      : <></>}
     </div>
-  )
+  );
 }

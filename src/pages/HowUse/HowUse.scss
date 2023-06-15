@@ -1,0 +1,79 @@
+.HowUse {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  & > .scroll {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    height: 100%;
+    &::-webkit-scrollbar {
+      width: 7px;
+      background-color: #202020;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #2d2d2d;
+      border-radius: 5px;
+    }
+  }
+}
+.howUseContent {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  height: max-content;
+  max-width: 600px;
+  gap: 10px;
+  padding-bottom: 20px;
+
+  color: rgb(162, 162, 162);
+  & > .title {
+    color: rgb(192, 192, 192);
+    font-size: 1.5rem;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  & > .step {
+    color: rgb(180, 180, 180);
+    width: 100%;
+    font-size: 1.3rem;
+    margin-top: 14px;
+    width: 100%;
+  }
+  & > .stepText {
+    width: 100%;
+  }
+
+  & img {
+    border-bottom: 2px white solid;
+    border-radius: 10px;
+    margin: 14px 0;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0px 0px 10px #ffffff11;
+  }
+
+  & > a {
+    &:visited {
+      text-decoration: none;
+      color: none;
+    }
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    max-width: 500px;
+    width: 100%;
+    background-color: #ff3d00;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+}

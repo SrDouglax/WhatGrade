@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header hasLink={true} backLink='/' />
+      <Header hasLink={true} backLink='/' showHelp={true} />
       <div className='Content'>
         <LastYear period={period as string} /> :
       </div>

@@ -153,6 +153,14 @@
       background-color: #202020;
       outline: solid 0px #ff2e23;
       color: white;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      &.placeholder {
+        color: #707070;
+        user-select: none;
+
+      }
 
       &:focus-visible {
         outline: solid 2px #ff2e23;
@@ -163,9 +171,6 @@
       color: #414141;
       font-family: Helvetica, sans-serif;
       padding-left: 5px;
-    }
-
-    &>#grade3 {
     }
   }
 
@@ -190,7 +195,6 @@
       background-color: #323232;
       outline: solid 0px #ff2e23;
       color: white;
-
       &:focus-visible {
         outline: solid 2px #ff2e23;
       }
