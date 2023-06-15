@@ -1,4 +1,4 @@
-export const students = {
+export default {
     "ABDA SARAH ODON DE SANTANA SILVA": {
         "grade_1": "34,451",
         "grade_2": "31,117"

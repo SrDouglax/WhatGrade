@@ -189,11 +189,8 @@ export default function oldYear({ period }: { period: string }) {
         />
         <div className="inline">
           <p>Nota Final</p>
-          <a
-            href="https://processodeingresso.upe.pe.gov.br/arquivos/ssa3/Notas-Classificatorias-SSA3.pdf"
-            target="_blank"
-          >
-            Notas de corte 2022
+          <a href="https://processodeingresso.upe.pe.gov.br/" target="_blank">
+            Site Oficial
           </a>
         </div>
       </div>

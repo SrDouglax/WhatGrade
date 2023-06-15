@@ -1,4 +1,4 @@
-export const students = {
+export default {
     "ABDENIGO RODRIGUES DE OLIVEIRA NETO": {
         "grade_1": "33,339"
     },

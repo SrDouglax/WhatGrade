@@ -1,4 +1,4 @@
-export const students = {
+export default {
     "ABDIAS HILARIO DE ARAUJO SANTOS": {
         "grade_1": "37,783"
     },

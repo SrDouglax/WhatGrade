@@ -4,9 +4,9 @@ import { useDebounce } from "../../../../hooks/useDebounce";
 import PossibleCourses from "../../../../components/PossibleCouses/PossibleCourses";
 import { MdGpsFixed } from "react-icons/md";
 
-import { students as students23 } from "../../../../data/years/21-23";
-import { students as students22 } from "../../../../data/years/20-22";
-import { students as students21 } from "../../../../data/years/19-21";
+import students23 from "../../../../data/years/21-23";
+import students22 from "../../../../data/years/20-22";
+import students21 from "../../../../data/years/19-21";
 
 type Data = {
   [key: string]: { grade_1?: string; grade_2?: string };
@@ -204,11 +204,8 @@ export default function LastYear({ period }: { period: string }) {
         />
         <div className="inline">
           <p>Nota Final</p>
-          <a
-            href="https://processodeingresso.upe.pe.gov.br/arquivos/ssa3/Notas-Classificatorias-SSA3.pdf"
-            target="_blank"
-          >
-            Notas de corte 2022
+          <a href="https://processodeingresso.upe.pe.gov.br/" target="_blank">
+            Site Oficial
           </a>
         </div>
       </div>

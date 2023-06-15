@@ -29,8 +29,8 @@ export default function HowUse() {
           <img src={img01} alt="campo de texto" />
           <h2 className="step">2. Insira uma meta</h2>
           <p className="stepText">
-            Clique no campo com 'Sua meta' e depois escreva a nota que deseja
-            alcançar, na seção abaixo desse campo é possível ver a nota dos
+            Clique no campo com com 'Sua meta' e depois escreva a nota que deseja
+            alcançar. Na seção abaixo desse campo é possível ver a nota dos
             cursos de quem passou no ano anterior.
           </p>
           <img src={img02} alt="campo de texto" />
