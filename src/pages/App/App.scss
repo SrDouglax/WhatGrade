@@ -50,6 +50,7 @@
     }
 
     & img {
+      width: max-content;
       height: 20px;
       cursor: pointer;
       filter: brightness(0) invert(1);

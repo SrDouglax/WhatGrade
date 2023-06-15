@@ -8,7 +8,7 @@ import Header from '../../components/Header/Header'
 import LastYear from './components/lastYear/lastYear'
 import OldYears from './components/oldYear/oldYear'
 
-import whatsapp from '/images/whatsapp.png'
+import whatsapp from '/images/whatsapp.webp'
 
 export default function App() {
 
@@ -34,7 +34,7 @@ export default function App() {
       </div>
       <p id='by'> By: Douglas
         <a href="https://wa.me/5581996405552">
-          <img src={whatsapp} />
+          <img src={whatsapp} alt='whatsapp' />
         </a>
       </p>
       <div className='BottomDegrade'>
