@@ -85,7 +85,7 @@
           cursor: pointer;
         }
         &:hover > .popup {
-          height: 54px;
+          height: 56px;
           & > .section:nth-child(1) {
             top: 0;
           }
@@ -100,6 +100,7 @@
           opacity: 0.95;
           position: absolute;
           display: flex;
+          justify-content: center;
           flex-direction: row;
           background-color: #1a1a1a;
           z-index: 1;
@@ -124,7 +125,7 @@
             top: 120%;
           }
           & > .section {
-            width: 33.33%;
+            width: 30%;
             display: flex;
             position: relative;
             flex-direction: column;
@@ -132,7 +133,7 @@
             justify-content: center;
             gap: 3px;
             & > .count1 {
-              background-color: rgb(213, 49, 49);
+              background-color: #E02A43;
               border-radius: 6px;
               padding: 4px;
               width: 27px;
@@ -141,7 +142,7 @@
               text-align: center;
             }
             & > .count2 {
-              background-color: rgb(63, 172, 209);
+              background-color: #E0D934;
               color: #1a1a1a;
               border-radius: 6px;
               padding: 4px;
@@ -151,11 +152,11 @@
             }
             & > .count3 {
               color: #1a1a1a;
-              background-color: rgb(66, 213, 83);
+              background-color: #19A1E0;
               border-radius: 6px;
               padding: 4px;
               width: 27px;
-              font-weight: 700;
+             font-weight: 700;
               text-align: center;
             }
             & > .name {
