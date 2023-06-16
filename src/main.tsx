@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./pages/About/About";
+import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
 
 const App = lazy(() => import("./pages/App/App"));
 const List = lazy(() => import("./pages/List/List"));
@@ -53,5 +54,8 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <>
   <RouterProvider router={router} />
+  <GetCampusFromText/>
+  </>
 );

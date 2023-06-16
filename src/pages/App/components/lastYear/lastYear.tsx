@@ -125,16 +125,19 @@ export default function LastYear({ period }: { period: string }) {
   const handleOnChangeGoal = useDebounce((e: any, isNumber?: boolean) => {
     let goal = isNumber ? e : Number(e.target.value);
 
-    (document.getElementById("grade3") as HTMLDivElement).setAttribute(
-      "style",
-      ""
-    );
-    setTimeout(() => {
+
+    if (inputText) {
       (document.getElementById("grade3") as HTMLDivElement).setAttribute(
         "style",
-        "animation: shines 500ms ease forwards;"
+        ""
       );
-    }, 1);
+      setTimeout(() => {
+        (document.getElementById("grade3") as HTMLDivElement).setAttribute(
+          "style",
+          "animation: shines 500ms ease forwards;"
+        );
+      }, 1);
+    }
 
     setUserData((oldUser: any) => {
       const grade = Number(
@@ -204,8 +207,8 @@ export default function LastYear({ period }: { period: string }) {
         />
         <div className="inline">
           <p>Nota Final</p>
-          <a href="https://processodeingresso.upe.pe.gov.br/" target="_blank">
-            Site Oficial
+          <a href="/pdfs/Listao_SSA3_2023.pdf" target="_blank">
+            Dados (SSA 2023)
           </a>
         </div>
       </div>

@@ -3,7 +3,11 @@ import "./PossibleCourses.scss";
 
 import { allCampus } from "../../data/courses/allCampus";
 
-import { MdOutlineVerified, MdGpsFixed } from "react-icons/md";
+import {
+  MdOutlineVerified,
+  MdGpsFixed,
+  MdOutlineAssignmentInd,
+} from "react-icons/md";
 
 export default function PossibleCourses({
   goal,
@@ -14,7 +18,7 @@ export default function PossibleCourses({
 }) {
   const [cotism, setCotism] = useState(true);
 
-  function handleSetGoal(course: any): number {
+  function handleSetGoal(course: any): number | undefined {
     const value = cotism
       ? course.grades.quotaholder.lowest
       : course.grades.broadCompetition.lowest;
@@ -75,7 +79,7 @@ export default function PossibleCourses({
                         )
                           .toString()
                           .replace(".", ",")}
-                        {' a '}
+                        {" a "}
                         {(cotism
                           ? course.grades.quotaholder.highest
                           : course.grades.broadCompetition.highest
@@ -83,6 +87,27 @@ export default function PossibleCourses({
                           .toString()
                           .replace(".", ",")}
                         <span>{course.formation}</span>
+                      </div>
+                    </div>
+                    <div className="vacancies">
+                      <MdOutlineAssignmentInd
+                        onClick={() => {
+                          setGoal(handleSetGoal(course), true);
+                        }}
+                      />
+                      <div className="popup">
+                        <div className="section broad">
+                          <p className="count1">{course.vacancies.no}</p>
+                          <p className="name">Ampla</p>
+                        </div>
+                        <div className="section a1">
+                          <p className="count2">{course.vacancies.a1}</p>
+                          <p className="name">A1</p>
+                        </div>
+                        <div className="section a2">
+                          <p className="count3">{course.vacancies.a2}</p>
+                          <p className="name">A2</p>
+                        </div>
                       </div>
                     </div>
                     <MdGpsFixed

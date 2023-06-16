@@ -189,8 +189,8 @@ export default function oldYear({ period }: { period: string }) {
         />
         <div className="inline">
           <p>Nota Final</p>
-          <a href="https://processodeingresso.upe.pe.gov.br/" target="_blank">
-            Site Oficial
+          <a href="/pdfs/Listao_SSA3_2023.pdf" target="_blank">
+            Dados (SSA 2023)
           </a>
         </div>
       </div>
