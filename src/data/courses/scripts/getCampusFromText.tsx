@@ -140,17 +140,7 @@ const GetCampusFromText = (props: Props) => {
             }
           }
         }
-
-        if (index == lines.length - 1) {
-          console.log(i, index + 1);
-        }
       });
-
-      // allCampusDevType[campus][course][type] = {};
-
-      if (i == pages.length - 1) {
-        console.log(allCampusDevType, course, type);
-      }
     });
 
     return allCampusDevType;

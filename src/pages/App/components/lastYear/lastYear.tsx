@@ -29,7 +29,6 @@ export default function LastYear({ period }: { period: string }) {
         data[name] = { grade_1: grade };
       }
     });
-    console.log(data);
 
     return data;
   }

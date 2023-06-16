@@ -39,7 +39,6 @@ export default function oldYear({ period }: { period: string }) {
         data[name] = { grade_1: previusData[name]?.grade_1, grade_2: grade };
       }
     });
-    console.log(data);
     return data;
   }
 
@@ -95,8 +94,6 @@ export default function oldYear({ period }: { period: string }) {
             .map((data) => data.replace("\r", "")))
       );
 
-    console.log("loading...");
-
     data_ssa = setFirstGrade(lines_ssa1);
     data_ssa = setSecondGrade(lines_ssa2, data_ssa);
     return data_ssa;
@@ -118,7 +115,6 @@ export default function oldYear({ period }: { period: string }) {
 
   const handleOnChangeGoal = useDebounce((e: any, isNumber?: boolean) => {
     let goal = isNumber ? e : Number(e.target.value);
-    console.log(goal);
 
     (document.getElementById("grade3") as HTMLDivElement).setAttribute(
       "style",
