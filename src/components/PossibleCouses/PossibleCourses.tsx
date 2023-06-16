@@ -19,12 +19,14 @@ export default function PossibleCourses({
   const [cotism, setCotism] = useState(true);
 
   function handleSetGoal(course: any): number | undefined {
-    const value = cotism
-      ? course.grades.quotaholder.lowest
-      : course.grades.broadCompetition.lowest;
-    (document.querySelector(".Content") as HTMLDivElement).scrollTop = 80;
-    (document.querySelector(".finalgrade") as HTMLInputElement).value = value;
-    return value;
+    if ((document.querySelector(".input") as HTMLInputElement).value !== "") {
+      const value = cotism
+        ? course.grades.quotaholder.lowest
+        : course.grades.broadCompetition.lowest;
+      (document.querySelector(".Content") as HTMLDivElement).scrollTop = 80;
+      (document.querySelector(".finalgrade") as HTMLInputElement).value = value;
+      return value;
+    }
   }
   return (
     <>
@@ -90,11 +92,7 @@ export default function PossibleCourses({
                       </div>
                     </div>
                     <div className="vacancies">
-                      <MdOutlineAssignmentInd
-                        onClick={() => {
-                          setGoal(handleSetGoal(course), true);
-                        }}
-                      />
+                      <MdOutlineAssignmentInd />
                       <div className="popup">
                         <div className="section broad">
                           <p className="count1">{course.vacancies.no}</p>

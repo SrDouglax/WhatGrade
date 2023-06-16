@@ -42,7 +42,7 @@
   padding: 0px 14px 22px 24px;
   box-sizing: border-box;
   animation: in 1700ms ease forwards;
-
+  
   & > .campus {
     padding-top: 10px;
     & > .name {
@@ -77,6 +77,8 @@
           border-radius: 6px;
           padding: 2px;
           box-sizing: border-box;
+          width: 25px;
+          height: 25px;
           font-size: 1.8rem;
           margin-right: 10px;
           color: #7d7d7d;
@@ -149,10 +151,13 @@
       }
       .setGoal {
         background-color: #1a1a1a;
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+        flex-shrink: 0;
         border-radius: 6px;
         box-sizing: border-box;
         font-size: 1.8rem;
-        padding: 5px;
         cursor: pointer;
       }
     }
