@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react";
+import { memo, useState } from "react";
 import "./PossibleCourses.scss";
 
 import { allCampus } from "../../data/courses/allCampus";
 
-import {
-  MdOutlineVerified,
-  MdGpsFixed,
-  MdOutlineAssignmentInd,
-} from "react-icons/md";
+import { MdOutlineVerified, MdGpsFixed, MdOutlineAssignmentInd } from "react-icons/md";
 
-export default function PossibleCourses({
-  goal,
-  setGoal,
-}: {
-  goal: number;
-  setGoal: Function;
-}) {
+function PossibleCourses({ goal, setGoal }: { goal: number; setGoal: Function }) {
   const [cotism, setCotism] = useState(true);
 
   function handleSetGoal(course: any): number | undefined {
@@ -28,6 +18,7 @@ export default function PossibleCourses({
       return value;
     }
   }
+
   return (
     <>
       <div className="inline cotism">
@@ -124,3 +115,5 @@ export default function PossibleCourses({
     </>
   );
 }
+
+export default memo(PossibleCourses);
