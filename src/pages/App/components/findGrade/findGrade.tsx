@@ -19,37 +19,6 @@ export default function findGrade({ period }: { period: string }) {
   const [userData, setUserData] = useState<any>(["", "", "", "", ""]);
   const inputText = useRef<string>("");
 
-  function setFirstGrade(array: string[]) {
-    let data: Data = {};
-    const regex = /^(\d+)\s+([\w\s'’]+\b)\s+([\d,]+)/; // Expressão regular para capturar o nome e a nota
-    array.forEach((value: string) => {
-      //console.log(value)
-      const match = value.match(regex);
-      if (match) {
-        const name = match[2];
-        const grade = match[3];
-        data[name] = { grade_1: grade };
-      }
-    });
-
-    return data;
-  }
-
-  function setSecondGrade(array: string[], previusData: any) {
-    let data: Data = previusData;
-    const regex = /^(\d+)\s+([\w\s'’]+\b)\s+([\d,]+)/; // Expressão regular para capturar o nome e a nota
-    array.forEach((value: string) => {
-      //console.log(value)
-      const match = value.match(regex);
-      if (match) {
-        const name = match[2];
-        const grade = match[3];
-        data[name] = { grade_1: previusData[name]?.grade_1, grade_2: grade };
-      }
-    });
-    return data;
-  }
-
   const handleInputChange = useDebounce((e: any) => {
     loadCode().then((data: Data) => {
       let possibleName = Object.keys(data)
@@ -79,17 +48,6 @@ export default function findGrade({ period }: { period: string }) {
 
   async function loadCode() {
     let data_ssa = {};
-    // let lines_ssa1: string[] = [];
-    // let lines_ssa2: string[] = [];
-
-    // await fetch(`./data/years/${period[0]}-${period[1]}/ssa1.txt`)
-    //   .then(response => response.text())
-    //   .then(minhaString => lines_ssa1 = minhaString.split("\n").map((data) => data.replace('\r', '')));
-    // await fetch(`./data/years/${period[0]}-${period[1]}/ssa2.txt`)
-    //   .then(response => response.text())
-    //   .then(minhaString => lines_ssa2 = minhaString.split("\n").map((data) => data.replace('\r', '')));
-
-    // console.log('loading...')
 
     switch (period) {
       case "21-23":
