@@ -1,14 +1,10 @@
-import { lazy, useCallback, useRef, useState } from "react";
+import { lazy, useCallback, useEffect, useRef, useState } from "react";
 import { useDebounce } from "../../../../hooks/useDebounce";
 
 const PossibleCourses = lazy(
   () => import("../../../../components/PossibleCouses/PossibleCourses")
 );
 import { MdGpsFixed } from "react-icons/md";
-
-import students23 from "../../../../data/years/21-23";
-import students22 from "../../../../data/years/20-22";
-import students21 from "../../../../data/years/19-21";
 
 type Data = {
   [key: string]: { grade_1?: string; grade_2?: string };
@@ -17,52 +13,53 @@ type Data = {
 export default function findGrade({ period }: { period: string }) {
   // Nome possivel, nota 1, nota 2, nota 3, meta
   const [userData, setUserData] = useState<any>(["", "", "", "", ""]);
+  const data = useRef<Data>({});
   const inputText = useRef<string>("");
 
-  const handleInputChange = useDebounce((e: any) => {
-    loadCode().then((data: Data) => {
-      let possibleName = Object.keys(data)
-        .sort()
-        .filter((chave) =>
-          chave.indexOf(inputText.current.toUpperCase()) === 0
-            ? chave.includes(inputText.current.toUpperCase())
-            : false
-        );
-      if (possibleName.length < 1) {
-        return;
-      }
-      let { grade_1, grade_2 } = data[possibleName[0]];
-      let grd_1 = Number((grade_1 || "").replace(",", "."));
-      let grd_2 = Number((grade_2 || "").replace(",", "."));
-      let grade = calculateGrade(grd_1, grd_2, userData[4])?.toFixed(3) || "";
-      grade = Number(grade) < 0 ? "" : Number(grade) > 1000 ? "> 1000" : grade;
-      if (possibleName[0] !== userData?.[0]) {
-        if (inputText.current.length > 0) {
-          setUserData((e: any) => [possibleName[0], grd_1, grd_2, grade, e[4]]);
-        } else if (userData[0] !== "") {
-          setUserData((e: any) => ["", "", "", "", e[4]]);
-        }
-      }
+  useEffect(() => {
+    loadCode().then((d) => {
+      console.log(d);
+
+      data.current = d as Data;
     });
+  }, []);
+
+  const handleInputChange = useDebounce((e: any) => {
+    let possibleName = Object.keys(data.current)
+      .sort()
+      .filter((chave) =>
+        chave.indexOf(inputText.current.toUpperCase()) === 0
+          ? chave.includes(inputText.current.toUpperCase())
+          : false
+      );
+    if (possibleName.length < 1) {
+      return;
+    }
+    let { grade_1, grade_2 } = data.current[possibleName[0]];
+    let grd_1 = Number((grade_1 || "").replace(",", "."));
+    let grd_2 = Number((grade_2 || "").replace(",", "."));
+    let grade = calculateGrade(grd_1, grd_2, userData[4])?.toFixed(3) || "";
+    grade = Number(grade) < 0 ? "" : Number(grade) > 1000 ? "> 1000" : grade;
+    if (possibleName[0] !== userData?.[0]) {
+      if (inputText.current.length > 0) {
+        setUserData((e: any) => [possibleName[0], grd_1, grd_2, grade, e[4]]);
+      } else if (userData[0] !== "") {
+        setUserData((e: any) => ["", "", "", "", e[4]]);
+      }
+    }
   }, 500);
 
   async function loadCode() {
-    let data_ssa = {};
-
-    switch (period) {
-      case "21-23":
-        data_ssa = students23;
-        break;
-      case "20-22":
-        data_ssa = students22;
-        break;
-      case "19-21":
-        data_ssa = students21;
-        break;
-      default:
-        break;
+    let studentsData: Data = {};
+    if (period === "21-23") {
+      studentsData = (await import("../../../../data/years/21-23")) as Data;
+    } else if (period === "20-22") {
+      studentsData = (await import("../../../../data/years/20-22")) as Data;
+    } else if (period === "19-21") {
+      studentsData = (await import("../../../../data/years/19-21")) as Data;
     }
-    return data_ssa;
+
+    return studentsData.default;
   }
 
   function calculateGrade(grade1: number, grade2: number, expectedGrade: number) {
