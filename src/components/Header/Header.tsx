@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./Header.scss";
 
 import { MdHelpOutline, MdNavigateBefore } from "react-icons/md";
