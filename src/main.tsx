@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./pages/About/About";
-import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
+// import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
 
 const App = lazy(() => import("./pages/App/App"));
 const List = lazy(() => import("./pages/List/List"));
