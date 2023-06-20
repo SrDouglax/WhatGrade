@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDebounce } from "../../../../hooks/useDebounce";
 
 import PossibleCourses from "../../../../components/PossibleCouses/PossibleCourses";
@@ -15,7 +15,7 @@ type Data = {
 export default function LastYear({ period }: { period: string }) {
   // Nome possivel, nota 1, nota 2, nota 3, meta
   const [userData, setUserData] = useState<any>(["", "", "", "", ""]);
-  const [inputText, setInputText] = useState("");
+  const inputText = useRef<string>("");
 
   function setFirstGrade(array: string[]) {
     let data: Data = {};
@@ -53,8 +53,8 @@ export default function LastYear({ period }: { period: string }) {
       let possibleName = Object.keys(data)
         .sort()
         .filter((chave) =>
-          chave.indexOf(inputText.toUpperCase()) === 0
-            ? chave.includes(inputText.toUpperCase())
+          chave.indexOf(inputText.current.toUpperCase()) === 0
+            ? chave.includes(inputText.current.toUpperCase())
             : false
         );
       if (possibleName.length < 1) {
@@ -66,9 +66,9 @@ export default function LastYear({ period }: { period: string }) {
       let grade = calculateGrade(grd_1, grd_2, userData[4])?.toFixed(3) || "";
       grade = Number(grade) < 0 ? "" : Number(grade) > 1000 ? "> 1000" : grade;
       if (possibleName[0] !== userData?.[0]) {
-        if (inputText.length > 0) {
+        if (inputText.current.length > 0) {
           setUserData((e: any) => [possibleName[0], grd_1, grd_2, grade, e[4]]);
-        } else {
+        } else if (userData[0] !== "") {
           setUserData((e: any) => ["", "", "", "", e[4]]);
         }
       }
@@ -76,9 +76,9 @@ export default function LastYear({ period }: { period: string }) {
   }, 500);
 
   async function loadCode() {
-    let lines_ssa1: string[] = [];
-    let lines_ssa2: string[] = [];
     let data_ssa = {};
+    // let lines_ssa1: string[] = [];
+    // let lines_ssa2: string[] = [];
 
     // await fetch(`./data/years/${period[0]}-${period[1]}/ssa1.txt`)
     //   .then(response => response.text())
@@ -95,11 +95,9 @@ export default function LastYear({ period }: { period: string }) {
         break;
       case "20-22":
         data_ssa = students22;
-
         break;
       case "19-21":
         data_ssa = students21;
-
         break;
       default:
         break;
@@ -107,29 +105,17 @@ export default function LastYear({ period }: { period: string }) {
     return data_ssa;
   }
 
-  function calculateGrade(
-    grade1: number,
-    grade2: number,
-    expectedGrade: number
-  ) {
+  function calculateGrade(grade1: number, grade2: number, expectedGrade: number) {
     return expectedGrade !== 0
       ? -((grade1 * 3 + grade2 * 3 - expectedGrade * 10) / 4)
       : undefined;
   }
 
-  useEffect(() => {
-    handleInputChange();
-  }, [inputText]);
-
-  const handleOnChangeGoal = useDebounce((e: any, isNumber?: boolean) => {
+  const handleOnChangeGoal = useCallback(useDebounce((e: any, isNumber?: boolean) => {
     let goal = isNumber ? e : Number(e.target.value);
 
-
-    if (inputText) {
-      (document.getElementById("grade3") as HTMLDivElement).setAttribute(
-        "style",
-        ""
-      );
+    if (inputText.current) {
+      (document.getElementById("grade3") as HTMLDivElement).setAttribute("style", "");
       setTimeout(() => {
         (document.getElementById("grade3") as HTMLDivElement).setAttribute(
           "style",
@@ -142,7 +128,7 @@ export default function LastYear({ period }: { period: string }) {
       const grade = Number(
         (calculateGrade(oldUser[1], oldUser[2], goal) || -1).toFixed(3)
       );
-      if (inputText.length === 0) return oldUser;
+      if (inputText.current.length === 0) return oldUser;
       const updatedUser = [...oldUser]; // cria uma cópia do array do estado atual
 
       updatedUser[3] = grade < 0 ? "< 0" : grade > 1000 ? "> 1000" : grade; // atualiza o terceiro item do array com o novo valor
@@ -150,7 +136,7 @@ export default function LastYear({ period }: { period: string }) {
 
       return updatedUser; // retorna o array atualizado para ser definido como o novo estado
     });
-  }, 500);
+  }, 500), []);
 
   return (
     <>
@@ -166,28 +152,19 @@ export default function LastYear({ period }: { period: string }) {
         className="input"
         placeholder="Digite seu nome"
         onChange={(e) => {
-          setInputText(e.target.value);
+          inputText.current = e.target.value;
+          handleInputChange();
         }}
       />
       <div className="grades">
-        <p
-          className={
-            "grade grade1 " + (userData?.[1] === "" ? "placeholder" : "")
-          }
-        >
+        <p className={"grade grade1 " + (userData?.[1] === "" ? "placeholder" : "")}>
           {userData?.[1].toString().replace(".", ",") || "SSA1"}
         </p>
-        <p
-          className={
-            "grade grade2 " + (userData?.[2] === "" ? "placeholder" : "")
-          }
-        >
+        <p className={"grade grade2 " + (userData?.[2] === "" ? "placeholder" : "")}>
           {userData?.[2].toString().replace(".", ",") || "SSA2"}
         </p>
         <p
-          className={
-            "grade grade3 " + (userData?.[3] === "" ? "placeholder" : "")
-          }
+          className={"grade grade3 " + (userData?.[3] === "" ? "placeholder" : "")}
           id="grade3"
         >
           {userData?.[3].toString().replace(".", ",") || "SSA3"}
