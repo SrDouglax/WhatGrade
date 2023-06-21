@@ -65,11 +65,13 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    width: 100%;
     font-size: 2rem;
     font-family: Helvetica, sans-serif;
     color: #ff3d00;
-    transform: translateX(-10px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    text-decoration: none;
 
     &>span {
       color: #939393;
