@@ -21,9 +21,9 @@ export default function Header({ hasLink, backLink, showHelp }: props) {
           </Link>
         </>
       ) : (
-        <h1 className="Title">
+        <a href="/" className="Title">
           What <span>Grade</span>
-        </h1>
+        </a>
       )}
       <div className="bubble">
 
