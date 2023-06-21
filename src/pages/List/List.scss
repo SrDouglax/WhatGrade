@@ -50,7 +50,7 @@
         background-color: white;
         top: 10px;
         position: absolute;
-        animation: shine 6s linear infinite;
+        animation: shine 7s cubic-bezier(0.3, 0.7, 0.6, 1) infinite;
         opacity: 100%;
       }
       border-left: 5px solid rgb(255, 38, 23);
