@@ -25,9 +25,12 @@ export default function Header({ hasLink, backLink, showHelp }: props) {
           What <span>Grade</span>
         </h1>
       )}
+      <div className="bubble">
+
+      </div>
       {showHelp ? (
         <a href="/help" className="helpLink">
-          <p>Sobre</p>
+          <p>Ajuda</p>
           <MdHelpOutline className="help" />
         </a>
       ) : (
