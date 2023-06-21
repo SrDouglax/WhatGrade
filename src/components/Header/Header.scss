@@ -1,69 +1,78 @@
 .Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  padding: 0 10px;
+  background-color: rgb(26, 26, 26);
+
+  &>.BackLink {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 2;
-    box-sizing: border-box;
-    width: 100%;
-    height: 50px;
-    padding: 0 10px;
-    background-color: rgb(26, 26, 26);
-  & > .BackLink {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      text-decoration: none;
-    & > .Icon {
-        font-size: 2.3rem;
-        color: rgb(162, 162, 162);
+    cursor: pointer;
+    text-decoration: none;
+
+    &>.Icon {
+      font-size: 2.3rem;
+      color: rgb(162, 162, 162);
     }
 
-    & > .Text {
-        font-size: 1.4rem;
-        font-weight: 600;
-        color: rgb(162, 162, 162);
+    &>.Text {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: rgb(162, 162, 162);
     }
   }
 
-  & > .helpLink {
+  &>.bubble {
+    width: 100%;
+  }
+
+  &>.helpLink {
+    display: flex;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+
+    &>p {
       display: flex;
-      position: relative;
-      z-index: 1;
-      text-decoration: none;
-    & > p {
-        display: flex;
-        align-items: center;
-        margin-right: 6px;
-        font-weight: 600;
-        line-height: 1;
-        color: #939393;
+      align-items: center;
+      margin-right: 6px;
+      font-weight: 600;
+      line-height: 1;
+      color: #939393;
+
       &:visited {
-          color: #939393;
+        color: #939393;
       }
     }
 
-    & > .help {
-        flex-shrink: 0;
-        cursor: pointer;
-        font-size: 1.4rem;
-        color: rgb(162, 162, 162);
+    &>.help {
+      flex-shrink: 0;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: rgb(162, 162, 162);
     }
   }
 
   .Title {
-      display: flex;
-      justify-content: center;
-      transform: translateX(0.7rem);
-      width: 100%;
-      margin-left: 20px;
-      font-size: 2rem;
-      font-family: Helvetica, sans-serif;
-      color: #ff3d00;
-    & > span {
-        color: #939393;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    font-size: 2rem;
+    font-family: Helvetica, sans-serif;
+    color: #ff3d00;
+    transform: translateX(-10px);
+
+    &>span {
+      color: #939393;
     }
   }
 }
