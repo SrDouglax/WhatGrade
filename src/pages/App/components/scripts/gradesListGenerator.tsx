@@ -175,32 +175,32 @@ export default function findGrade({ period }: { period: string }) {
           {userData?.[3].toString().replace(".", ",") || "SSA3"}
         </p>
 
-        <p>Nota SSA1</p>
-        <p>Nota SSA2</p>
-        <p>Nota SSA3</p>
-      </div>
-      <div className="goal">
-        <input
-          type="number"
-          className="grade finalgrade"
-          placeholder={"Sua meta"}
-          onChange={handleOnChangeGoal as React.ChangeEventHandler}
-        />
-        <div className="inline">
-          <p>Nota Final</p>
-          <a href="/pdfs/Listao_SSA3_2023.pdf" target="_blank">
-            Dados (SSA 2023)
-          </a>
-        </div>
-      </div>
-      <p className="setGoalHint">
-        Clique em{" "}
-        <span>
-          <MdGpsFixed />
-        </span>{" "}
-        para definir como meta!
-      </p>
-      <PossibleCourses goal={userData[4]} setGoal={handleOnChangeGoal} />
-    </>
-  );
-}
+//         <p>Nota SSA1</p>
+//         <p>Nota SSA2</p>
+//         <p>Nota SSA3</p>
+//       </div>
+//       <div className="goal">
+//         <input
+//           type="number"
+//           className="grade finalgrade"
+//           placeholder={"Sua meta"}
+//           onChange={handleOnChangeGoal as React.ChangeEventHandler}
+//         />
+//         <div className="inline">
+//           <p>Nota Final</p>
+//           <a href="/pdfs/Listao_SSA3_2023.pdf" target="_blank">
+//             Dados (SSA 2023)
+//           </a>
+//         </div>
+//       </div>
+//       <p className="setGoalHint">
+//         Clique em{" "}
+//         <span>
+//           <MdGpsFixed />
+//         </span>{" "}
+//         para definir como meta!
+//       </p>
+//       <PossibleCourses goal={userData[4]} setGoal={handleOnChangeGoal} />
+//     </>
+//   );
+// }
