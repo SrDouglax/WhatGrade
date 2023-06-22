@@ -1,0 +1,29 @@
+.goToSurvey {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #292929;
+    width: max-content;
+    max-width: 450px;
+    padding: 5px 50px;
+    border-radius: 6px;
+    color: #a0a0a0;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 2px solid #3f3f3f;
+    outline: rgb(41, 41, 41) 3px solid;
+    text-decoration: none;
+    cursor: pointer;
+    &::after {
+        content: '';
+        position: absolute;
+        top: calc(50% - 5px);
+        left: 22px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: #a0a0a0;
+
+    }
+}

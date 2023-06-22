@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/:period",
+    path: "/p/:period",
     element: (
       <Suspense fallback={<></>}>
         <App></App>

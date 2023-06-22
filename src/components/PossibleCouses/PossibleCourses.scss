@@ -17,7 +17,7 @@
   gap: 10px;
   width: 100%;
   margin-bottom: 10px;
-  max-width: 900px;
+  max-width: 700px;
   animation: in 1600ms ease forwards;
 
   & > * {
@@ -38,7 +38,7 @@
   background-color: #232323;
   border-radius: 6px;
   width: 100%;
-  max-width: 900px;
+  max-width: 700px;
   padding: 0px 14px 22px 24px;
   box-sizing: border-box;
   animation: in 1700ms ease forwards;
@@ -73,6 +73,7 @@
       }
       .vacancies {
         position: relative;
+        height: min-content;
         & > svg {
           border-radius: 6px;
           padding: 2px;
@@ -104,8 +105,8 @@
           flex-direction: row;
           background-color: #1a1a1a;
           z-index: 1;
-          bottom: 115%;
-          right: 10px;
+          bottom: 8px;
+          right: 110%;
           border-radius: 7px;
           width: 150px;
           height: 0px;

@@ -3,6 +3,7 @@ import './List.scss'
 import Header from '../../components/Header/Header'
 
 import { Link } from 'react-router-dom'
+import GoToSurvey from '../../components/GoToSurvey/GoToSurvey'
 
 export const allPeriods = [
   { period: '21-23', desc: 'Notas SSA1, SSA2 e necessária no SSA3', lastYear: true },
@@ -21,7 +22,7 @@ export default function List() {
         {periods.map((period, index) => {
           return (
             <Link
-              to={period.period}
+              to={`/p/${period.period}`}
               key={index}
               className="Period"
               style={{ animation: `in ${1000 + index * 100}ms ease forwards` }}
@@ -35,6 +36,7 @@ export default function List() {
           );
         })}
       </div>
+      <GoToSurvey/>
     </div>
   );
 }
