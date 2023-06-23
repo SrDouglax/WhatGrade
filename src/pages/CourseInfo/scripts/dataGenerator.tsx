@@ -1,3 +1,4 @@
+import y2019 from "./2019";
 import y2020 from "./2020";
 import y2021 from "./2021";
 import y2022 from "./2022";
@@ -21,6 +22,7 @@ const GenData = () => {
     ["2021", y2022],
     ["2020", y2021],
     ["2019", y2020],
+    ["2018", y2019],
   ];
 
   const data: Data = {};
