@@ -149,6 +149,11 @@ const extraData: extraDataType = {
     description:
       "Estudar e projetar sistemas e dispositivos elétricos e eletrônicos, aplicando princípios da engenharia elétrica e eletrônica.",
   },
+  "Engenharia de Software": {
+    img: "",
+    description:
+      "Projetar, desenvolver e implementar software eficiente e confiável, aplicando princípios de engenharia, metodologias ágeis e boas práticas de programação.",
+  },
   "Engenharia Elétrica Eletrotécnica": {
     img: "",
     description:
@@ -213,13 +218,13 @@ export default function CourseInfo() {
         <div className="nameAndPicture">
           <p className="campus">({campus?.replaceAll("-", " ")})</p>
           <p className="desc">
-            {extraData[course?.replaceAll("-", " ") as string].description}
+            {extraData[course?.replaceAll("-", " ") as string]?.description}
           </p>
           <h1 className="courseName">{course?.replaceAll("-", " ")}</h1>
           <div className="fade"></div>
           <img
             src={
-              extraData[course?.replaceAll("-", " ") as string].img ||
+              extraData[course?.replaceAll("-", " ") as string]?.img ||
               "https://png.pngtree.com/background/20210712/original/pngtree-gradient-gray-background-with-modern-firm-shape-picture-image_1183862.jpg"
             }
             alt="course image"
