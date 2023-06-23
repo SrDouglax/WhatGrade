@@ -4,7 +4,6 @@ import { useDebounce } from "../../../../hooks/useDebounce";
 const PossibleCourses = lazy(
   () => import("../../../../components/PossibleCouses/PossibleCourses")
 );
-import { MdGpsFixed } from "react-icons/md";
 
 type Data = {
   [key: string]: { grade_1?: string; grade_2?: string };
@@ -146,10 +145,8 @@ export default function findGrade({ period }: { period: string }) {
           </a>
         </div>
       </div>
-      <p className="setGoalHint">
-        Clique no nome do curso para definir como meta!
-      </p>
-      <PossibleCourses goal={userData[4]} setGoal={handleOnChangeGoal} period={period}/>
+      <p className="setGoalHint">Clique no nome do curso para definir como meta!</p>
+      <PossibleCourses goal={userData[4]} setGoal={handleOnChangeGoal} period={period} />
     </>
   );
 }

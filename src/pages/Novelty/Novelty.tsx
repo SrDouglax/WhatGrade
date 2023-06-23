@@ -8,7 +8,8 @@ export default function Novelty() {
   function sendSuggestion() {
     if (
       sendingState == "default" &&
-      (document.querySelector(".suggestion") as HTMLTextAreaElement).value.length > 1) {
+      (document.querySelector(".suggestion") as HTMLTextAreaElement).value.length > 1
+    ) {
       setSendingState("sending");
       const sender = (document.querySelector(".name") as HTMLInputElement).value;
       const suggestion = (document.querySelector(".suggestion") as HTMLTextAreaElement)

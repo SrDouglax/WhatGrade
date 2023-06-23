@@ -3,14 +3,17 @@ import "./PossibleCourses.scss";
 
 import { allCampus } from "../../data/courses/allCampus";
 
-import {
-  MdOutlineVerified,
-  MdGpsFixed,
-  MdOutlineAssignmentInd,
-  MdKeyboardArrowRight,
-} from "react-icons/md";
+import { MdOutlineVerified, MdKeyboardArrowRight } from "react-icons/md";
 
-function PossibleCourses({ goal, setGoal, period }: { goal: number; setGoal: Function, period: string }) {
+function PossibleCourses({
+  goal,
+  setGoal,
+  period,
+}: {
+  goal: number;
+  setGoal: Function;
+  period: string;
+}) {
   const [cotism, setCotism] = useState(true);
 
   function handleSetGoal(course: any): number | undefined {

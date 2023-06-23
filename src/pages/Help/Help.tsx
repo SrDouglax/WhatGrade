@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
 import "./Help.scss";
 import Header from "../../components/Header/Header";
 
 import { MdOutlineInfo, MdMouse } from "react-icons/md";
-
-import { Link } from "react-router-dom";
 
 export default function Help() {
   return (
