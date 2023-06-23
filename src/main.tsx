@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
+// import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
 // import GenData from "./pages/CourseInfo/scripts/dataGenerator";
 
 const App = lazy(() => import("./pages/App/App"));
