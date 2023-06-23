@@ -42,7 +42,7 @@
         z-index: 2;
         padding: 2px 10px;
         color: #dadada;
-        bottom: 20%;
+        bottom: 18%;
         text-align: center;
         font-size: clamp(1.1rem, 4.5vw, 2rem);
         max-width: 700px;
@@ -61,7 +61,8 @@
         color: #a5a5a5;
         z-index: 2;
         position: relative;
-        max-width: 80%;
+        font-size: clamp(0.9rem, 3vw, 1.05rem);
+        max-width: 85%;
         bottom: 15%;
         text-align: center;
       }
