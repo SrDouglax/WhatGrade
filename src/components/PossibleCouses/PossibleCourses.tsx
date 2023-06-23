@@ -3,9 +3,14 @@ import "./PossibleCourses.scss";
 
 import { allCampus } from "../../data/courses/allCampus";
 
-import { MdOutlineVerified, MdGpsFixed, MdOutlineAssignmentInd } from "react-icons/md";
+import {
+  MdOutlineVerified,
+  MdGpsFixed,
+  MdOutlineAssignmentInd,
+  MdKeyboardArrowRight,
+} from "react-icons/md";
 
-function PossibleCourses({ goal, setGoal }: { goal: number; setGoal: Function }) {
+function PossibleCourses({ goal, setGoal, period }: { goal: number; setGoal: Function, period: string }) {
   const [cotism, setCotism] = useState(true);
 
   function handleSetGoal(course: any): number | undefined {
@@ -63,7 +68,12 @@ function PossibleCourses({ goal, setGoal }: { goal: number; setGoal: Function })
                             : "rgb(68, 68, 68)",
                       }}
                     />
-                    <div className="name">
+                    <div
+                      className="name"
+                      onClick={() => {
+                        setGoal(handleSetGoal(course), true);
+                      }}
+                    >
                       {course.name}
                       <div>
                         {(cotism
@@ -82,29 +92,16 @@ function PossibleCourses({ goal, setGoal }: { goal: number; setGoal: Function })
                         <span>{course.formation}</span>
                       </div>
                     </div>
-                    <div className="vacancies">
-                      <MdOutlineAssignmentInd />
-                      <div className="popup">
-                        <div className="section broad">
-                          <p className="count1">{course.vacancies.no}</p>
-                          <p className="name">Ampla</p>
-                        </div>
-                        <div className="section a1">
-                          <p className="count2">{course.vacancies.a1}</p>
-                          <p className="name">A1</p>
-                        </div>
-                        <div className="section a2">
-                          <p className="count3">{course.vacancies.a2}</p>
-                          <p className="name">A2</p>
-                        </div>
-                      </div>
+                    <div className="openCourse">
+                      <a
+                        href={`/p/${period ?? "21-23"}/${campus.campus.replaceAll(
+                          " ",
+                          "-"
+                        )}/${course.name.replaceAll(" ", "-")}`}
+                      >
+                        <MdKeyboardArrowRight />
+                      </a>
                     </div>
-                    <MdGpsFixed
-                      className="setGoal"
-                      onClick={() => {
-                        setGoal(handleSetGoal(course), true);
-                      }}
-                    />
                   </div>
                 );
               })}

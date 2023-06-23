@@ -18,8 +18,6 @@ export default function findGrade({ period }: { period: string }) {
 
   useEffect(() => {
     loadCode().then((d) => {
-      console.log(d);
-
       data.current = d as Data;
     });
   }, []);
@@ -149,13 +147,9 @@ export default function findGrade({ period }: { period: string }) {
         </div>
       </div>
       <p className="setGoalHint">
-        Clique em{" "}
-        <span>
-          <MdGpsFixed />
-        </span>{" "}
-        para definir como meta!
+        Clique no nome do curso para definir como meta!
       </p>
-      <PossibleCourses goal={userData[4]} setGoal={handleOnChangeGoal} />
+      <PossibleCourses goal={userData[4]} setGoal={handleOnChangeGoal} period={period}/>
     </>
   );
 }

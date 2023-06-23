@@ -4,19 +4,21 @@ import { useState } from "react";
 import { firestore } from "../../services/firebase";
 
 export default function Novelty() {
-  const [sendingState, setSenddingState] = useState("default");
+  const [sendingState, setSendingState] = useState("default");
   function sendSuggestion() {
-    if (sendingState == "default") {
-      setSenddingState("sending");
+    if (
+      sendingState == "default" &&
+      (document.querySelector(".suggestion") as HTMLTextAreaElement).value.length > 1) {
+      setSendingState("sending");
       const sender = (document.querySelector(".name") as HTMLInputElement).value;
       const suggestion = (document.querySelector(".suggestion") as HTMLTextAreaElement)
         .value;
       const date = new Date();
       firestore.addSuggestion({ sender, suggestion, date }).finally(() => {
-        setSenddingState("sent");
+        setSendingState("sent");
       });
     } else if (sendingState == "sent") {
-      setSenddingState("default");
+      setSendingState("default");
     }
   }
   return (
