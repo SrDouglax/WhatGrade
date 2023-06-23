@@ -54,26 +54,72 @@
       padding: 6px 12px;
     }
 
-    .course {
-      color: rgb(191, 191, 191);
-      padding: 10px 10px;
+    &>.course {
+      color: #bfbfbf;
+      padding: 9px 10px;
+      transition: 200ms ease;
+      border-radius: 7px;
 
       &:hover {
-        background-color: #1a1a1a;
-        border-radius: 5px;
+        background-color: #1a1a1a !important;
+        &.new {
+          border-bottom: 2px solid #2b2b2b !important;
+        }
       }
 
-      .icon {
-        color: rgb(68, 68, 68);
+      &>.icon {
+        color: #444444;
         margin-right: 6px;
         flex-shrink: 0;
         transition: 300ms ease;
       }
 
-      .name {
+      &>.newIcon {
+        background-color: #11ff60;
+        color: #232323;
+        font-size: 0.7rem;
+        height: min-content;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px 0 -10px;
+        padding: 0.2rem 0.4rem;
+        border-radius: 20px;
+        cursor: default;
+      }
+
+      &>.removed {
+        display: flex;
+        align-items: center;
+
+        &>.removedIcon {
+          background-color: #ff1111;
+          color: #232323;
+          font-size: 0.7rem;
+          height: min-content;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 5px 0 -10px;
+          padding: 0.2rem 0.4rem;
+          border-radius: 20px;
+          cursor: default;
+        }
+      }
+
+      &>.name {
         width: 100%;
         box-sizing: border-box;
         cursor: pointer;
+
+        &.new {
+          color: #ebebeb;
+          // width: unset;
+          margin-right: 1.5rem;
+          margin-left: 22px;
+        }
 
         &>* {
           margin-top: 2px;
@@ -87,13 +133,13 @@
         }
       }
 
-      .openCourse {
+      &>.openCourse {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        
+
         &>a {
           display: flex;
           align-items: center;
@@ -109,7 +155,7 @@
             color: #7d7d7d;
             cursor: pointer;
             transition: ease 200ms;
-  
+
             &:hover {
               background-color: #5a5a5a;
               color: #1a1a1a;
@@ -118,7 +164,7 @@
         }
       }
 
-      .setGoal {
+      &>.setGoal {
         background-color: #1a1a1a;
         width: 25px;
         height: 25px;
