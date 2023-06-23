@@ -1,18 +1,19 @@
 type Grades = {
-    broadCompetition: {
-        highest: number;
-        lowest: number;
-    };
-    quotaholder: {
-        highest: number;
-        lowest: number;
-    };
+  broadCompetition: {
+    highest: number;
+    lowest: number;
+  };
+  quotaholder: {
+    highest: number;
+    lowest: number;
+  };
 };
 
-type Course = {
+export type Course = {
   name: string;
   formation: string;
   grades: Grades;
+  type?: "new" | "removed";
   vacancies: {
     no: number;
     a1: number;
@@ -20,9 +21,9 @@ type Course = {
   };
 };
 
-type Campus = {
-    campus: string;
-    courses: Course[];
+export type Campus = {
+  campus: string;
+  courses: Course[];
 };
 
 export const allCampus: Array<Campus> = [
@@ -72,6 +73,26 @@ export const allCampus: Array<Campus> = [
   {
     campus: "Benfica",
     courses: [
+      {
+        name: "Engenharia Mecânica",
+        formation: "",
+        type: "new",
+        grades: {
+          broadCompetition: {
+            highest: 0,
+            lowest: 0,
+          },
+          quotaholder: {
+            highest: 0,
+            lowest: 0,
+          },
+        },
+        vacancies: {
+          no: 0,
+          a1: 0,
+          a2: 0,
+        },
+      },
       {
         name: "Administração",
         formation: "Bacharelado",
@@ -506,6 +527,46 @@ export const allCampus: Array<Campus> = [
     campus: "Mata Norte",
     courses: [
       {
+        name: "Ciência da Computação",
+        formation: "",
+        type: "new",
+        grades: {
+          broadCompetition: {
+            highest: 0,
+            lowest: 0,
+          },
+          quotaholder: {
+            highest: 0,
+            lowest: 0,
+          },
+        },
+        vacancies: {
+          no: 0,
+          a1: 0,
+          a2: 0,
+        },
+      },
+      {
+        name: "Tecnologia em Logística",
+        formation: "",
+        type: "new",
+        grades: {
+          broadCompetition: {
+            highest: 0,
+            lowest: 0,
+          },
+          quotaholder: {
+            highest: 0,
+            lowest: 0,
+          },
+        },
+        vacancies: {
+          no: 0,
+          a1: 0,
+          a2: 0,
+        },
+      },
+      {
         name: "Ciências Biológicas",
         formation: "Licenciatura",
         grades: {
@@ -527,6 +588,7 @@ export const allCampus: Array<Campus> = [
       {
         name: "Computação",
         formation: "Licenciatura",
+        type: "removed",
         grades: {
           broadCompetition: {
             highest: 54.1,
@@ -565,6 +627,7 @@ export const allCampus: Array<Campus> = [
       {
         name: "Gestão em Logística",
         formation: "Tecnólogo",
+        type: "removed",
         grades: {
           broadCompetition: {
             highest: 48.9,
