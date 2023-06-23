@@ -185,21 +185,26 @@ export default function CourseInfo() {
   const { period, campus, course } = useParams();
   console.log(period, campus, course);
 
-  const cuts = [
-    ["", "Ampla", "Cotista"],
-    ...(
+  const cutsExtra = (
       (chartsData as any)[(campus as string)?.replaceAll("-", " ")][
         (course as string)?.replaceAll("-", " ") as string
       ].cutGrades as Array<string>
-    ).reverse(),
+    ).reverse()
+  const cuts = [
+    ["", "Ampla", "Cotista"],
+    ...cutsExtra,
+    ["Breve...",cutsExtra[cutsExtra.length - 1][1], cutsExtra[cutsExtra.length - 1][2]],
   ];
+
+  const vacanciesExtra = (
+    (chartsData as any)[(campus as string)?.replaceAll("-", " ")][
+      (course as string)?.replaceAll("-", " ") as string
+    ].vacancies as Array<string>
+  ).reverse();
   const vacancies = [
     ["", "Ampla", "A1", "A2"],
-    ...(
-      (chartsData as any)[(campus as string)?.replaceAll("-", " ")][
-        (course as string)?.replaceAll("-", " ") as string
-      ].vacancies as Array<string>
-    ).reverse(),
+    ...vacanciesExtra,
+    ["Breve...", vacanciesExtra[vacanciesExtra.length - 1][1], vacanciesExtra[vacanciesExtra.length - 1][2],vacanciesExtra[vacanciesExtra.length - 1][3]],
   ];
 
   const cutOptions = {
