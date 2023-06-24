@@ -13,13 +13,23 @@ const About = lazy(() => import("./pages/About/About"));
 const Novelty = lazy(() => import("./pages/Novelty/Novelty"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 const CourseInfo = lazy(() => import("./pages/CourseInfo/CourseInfo"));
+const Welcome = lazy(() => import("./pages/Welcome/Welcome"));
+const Home = lazy(() => import("./pages/Home/Home"));
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <Suspense fallback={<></>}>
-        <List></List>
+        <Welcome></Welcome>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/home",
+    element: (
+      <Suspense fallback={<></>}>
+        <Home/>
       </Suspense>
     ),
   },

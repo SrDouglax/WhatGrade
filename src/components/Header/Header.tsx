@@ -4,6 +4,8 @@ import { MdHelpOutline, MdNavigateBefore } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 
+import IconWithName from "../../assets/components/header/IconWithName.png";
+
 interface props {
   hasLink: boolean;
   backLink?: string;
@@ -22,20 +24,22 @@ export default function Header({ hasLink, backLink, showHelp }: props) {
         </>
       ) : (
         <a href="/" className="Title">
-          What <span>Grade</span>
+          <img src={IconWithName} alt="bookshelf icon" />
         </a>
       )}
-      <div className="bubble">
-
+      <div className="openDrawer">
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
       </div>
-      {showHelp ? (
-        <a href="/help" className="helpLink">
-          <p>Ajuda</p>
-          <MdHelpOutline className="help" />
-        </a>
-      ) : (
-        <></>
-      )}
+      <div className="drawer">
+        <div className="header">
+          <div className="closeDrawer">
+            <div className="line"></div>
+            <div className="line"></div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
