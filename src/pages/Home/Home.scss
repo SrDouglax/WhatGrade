@@ -17,14 +17,16 @@
   justify-content: center;
 
   &>.scroll {
+    width: 100%;
     height: 100%;
     overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     &>.carousel {
+      flex-shrink: 0;
+
       @media screen and (min-width: 768px) {
         max-width: 500px !important;
         margin: 2rem 0 1rem 0;
@@ -88,34 +90,37 @@
         }
 
         &>.items {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
           box-sizing: border-box;
+          margin-top: 0.3rem;
           width: 100%;
-          gap: 10px;
+          gap: 0.5rem;
 
           &>* {
-            width: 25%;
-            height: 80px;
+            width: 100%;
+            height: 40px;
             display: flex;
-            flex-direction: column;
+            gap: 1rem;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
             border-radius: 10px;
             padding: 0.3rem 0.1rem;
             color: white;
-            cursor: pointer;
-            
+            overflow: hidden;
             text-decoration: none;
+            cursor: pointer;
+
             &>.text {
               font-family: 'Bebas Neue',
-              Verdana,
-              sans-serif;
-              font-size: clamp(0.6rem, 3vw, 1rem);
+                Verdana,
+                sans-serif;
+              font-size: clamp(1rem, 3vw, 1.35rem);
             }
 
             &>svg {
-              font-size: 2rem;
-              margin-bottom: 0.5rem;
+              font-size: 1.8rem;
             }
           }
 
@@ -124,7 +129,7 @@
           }
 
           &>.universities {
-            background-color: #FFC225;
+            background-color: #d7a015;
           }
 
           &>.forums {
