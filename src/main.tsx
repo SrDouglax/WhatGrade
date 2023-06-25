@@ -7,7 +7,6 @@ import Calculators from "./pages/Calculators/Calculators";
 // import GenData from "./pages/CourseInfo/scripts/dataGenerator";
 
 const CalcSSA = lazy(() => import("./pages/CalcSSA/CalcSSA"));
-const List = lazy(() => import("./pages/List/List"));
 const Help = lazy(() => import("./pages/Help/Help"));
 const HowUse = lazy(() => import("./pages/HowUse/HowUse"));
 const About = lazy(() => import("./pages/About/About"));
@@ -51,7 +50,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "p/:period/:campus/:course",
+    path: "c/ssa/:campus/:course",
     element: (
       <Suspense fallback={<></>}>
         <CourseInfo />

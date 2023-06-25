@@ -5,7 +5,7 @@ import { MdWarningAmber } from "react-icons/md";
 import "./CalcSSA.scss";
 
 const Header = lazy(() => import("../../components/Header/Header"));
-const FindGrade = lazy(() => import("./findGrade/findGrade"));
+const FindGrade = lazy(() => import("./components/findGrade/findGrade"));
 
 import { allPeriods } from "../List/List";
 import whatsapp from "/images/whatsapp.webp";

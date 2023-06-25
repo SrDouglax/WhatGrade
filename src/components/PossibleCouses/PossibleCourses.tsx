@@ -69,7 +69,7 @@ function PossibleCourses({
         </div>
         <div className="openCourse">
           <a
-            href={`/p/${period ?? "21-23"}/${campus.campus.replaceAll(
+            href={`/c/ssa/${campus.campus.replaceAll(
               " ",
               "-"
             )}/${course.name.replaceAll(" ", "-")}`}
@@ -124,7 +124,7 @@ function PossibleCourses({
         </div>
         <div className="openCourse">
           <a
-            href={`/p/${period ?? "21-23"}/${campus.campus.replaceAll(
+            href={`/c/ssa/${campus.campus.replaceAll(
               " ",
               "-"
             )}/${course.name.replaceAll(" ", "-")}`}

@@ -30,7 +30,7 @@ const extraData: extraDataType = {
       "Cuidar da saúde bucal dos pacientes, realizando diagnósticos, tratamentos e procedimentos odontológicos.",
   },
   Direito: {
-    img: "https://faro.edu.br/wp-content/uploads/2018/03/171187-tarefa-para-1902-ate-18h-post-3000-tudo-que-voce-precisa-saber-sobre-as-x-melhores-areas-do-direito.jpg",
+    img: "https://blog.ebradi.com.br/wp-content/uploads/2022/12/post_thumbnail-6f393280636b8be3ba6dd6969630982b-510x392.jpeg",
     description:
       "Compreender e aplicar as leis em diferentes contextos sociais e profissionais.",
   },
@@ -182,8 +182,8 @@ const extraData: extraDataType = {
 };
 
 export default function CourseInfo() {
-  const { period, campus, course } = useParams();
-  console.log(period, campus, course);
+  const period = '21-23'
+  const { campus, course } = useParams();
 
   const cutsExtra = (
       (chartsData as any)[(campus as string)?.replaceAll("-", " ")][
