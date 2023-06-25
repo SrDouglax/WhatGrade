@@ -6,7 +6,7 @@ export default function Politics() {
     <div className="Novelty">
       <Header hasLink={true} backLink="/" showHelp={true} />
       <div className="content">
-        <h1>Póliticas de Privacidade</h1>
+        <h1>Políticas de Privacidade</h1>
         <p>
           A sua privacidade é extremamente importante para nós. Na Bookshelf, estamos
           comprometidos em respeitar e proteger a sua privacidade em relação a qualquer
