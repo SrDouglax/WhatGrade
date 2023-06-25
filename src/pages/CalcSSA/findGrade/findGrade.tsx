@@ -1,8 +1,8 @@
 import { lazy, useCallback, useEffect, useRef, useState } from "react";
-import { useDebounce } from "../../../../hooks/useDebounce";
+import { useDebounce } from "../../../hooks/useDebounce";
 
 const PossibleCourses = lazy(
-  () => import("../../../../components/PossibleCouses/PossibleCourses")
+  () => import("../../../components/PossibleCouses/PossibleCourses")
 );
 
 type Data = {
@@ -49,11 +49,11 @@ export default function findGrade({ period }: { period: string }) {
   async function loadCode() {
     let studentsData: Data = {};
     if (period === "21-23") {
-      studentsData = (await import("../../../../data/years/21-23")) as Data;
+      studentsData = (await import("../../../data/years/21-23")) as Data;
     } else if (period === "20-22") {
-      studentsData = (await import("../../../../data/years/20-22")) as Data;
+      studentsData = (await import("../../../data/years/20-22")) as Data;
     } else if (period === "19-21") {
-      studentsData = (await import("../../../../data/years/19-21")) as Data;
+      studentsData = (await import("../../../data/years/19-21")) as Data;
     }
 
     return studentsData.default;

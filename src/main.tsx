@@ -2,10 +2,11 @@ import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Calculators from "./pages/Calculators/Calculators";
 // import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
 // import GenData from "./pages/CourseInfo/scripts/dataGenerator";
 
-const App = lazy(() => import("./pages/App/App"));
+const CalcSSA = lazy(() => import("./pages/CalcSSA/CalcSSA"));
 const List = lazy(() => import("./pages/List/List"));
 const Help = lazy(() => import("./pages/Help/Help"));
 const HowUse = lazy(() => import("./pages/HowUse/HowUse"));
@@ -29,15 +30,23 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <Suspense fallback={<></>}>
-        <Home/>
+        <Home />
       </Suspense>
     ),
   },
   {
-    path: "/p/:period",
+    path: "/calculadoras",
     element: (
       <Suspense fallback={<></>}>
-        <App></App>
+        <Calculators />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/c/ssa",
+    element: (
+      <Suspense fallback={<></>}>
+        <CalcSSA></CalcSSA>
       </Suspense>
     ),
   },

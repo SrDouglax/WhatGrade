@@ -2,16 +2,16 @@ import { lazy } from "react";
 import { useParams } from "react-router-dom";
 import { MdWarningAmber } from "react-icons/md";
 
-import "./App.scss";
+import "./CalcSSA.scss";
 
 const Header = lazy(() => import("../../components/Header/Header"));
-const FindGrade = lazy(() => import("./components/findGrade/findGrade"));
+const FindGrade = lazy(() => import("./findGrade/findGrade"));
 
 import { allPeriods } from "../List/List";
 import whatsapp from "/images/whatsapp.webp";
 
 export default function App() {
-  const { period } = useParams();
+  const period = '21-23';
 
   const invalidPeriod = allPeriods.every((pd) => pd.period !== period);
   if (invalidPeriod) {

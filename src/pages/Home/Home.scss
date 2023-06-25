@@ -1,4 +1,14 @@
-.Novelty {
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../../fonts/BebasNeue.ttf");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../fonts/Roboto-Regular.ttf");
+}
+
+.Home {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -6,120 +16,126 @@
   align-items: center;
   justify-content: center;
 
-  &>.content {
+  &>.scroll {
+    height: 100%;
+    overflow: auto;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 550px;
-    height: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    padding: 20px 18px 18px 18px;
+    align-items: center;
+    justify-content: center;
 
-    &>.survey {
-      height: 100%;
+    &>.carousel {
+      @media screen and (min-width: 768px) {
+        max-width: 500px !important;
+        margin: 2rem 0 1rem 0;
+
+        &>.degrade {
+          background: transparent !important;
+        }
+      }
+
+    }
+
+    & .carousel {
+      box-shadow: 0px 5px 10px 0px #0004;
+      transition: ease 200ms;
+      max-width: 100%;
+
+      @media screen and (min-width: 768px) {
+        border-radius: 10px;
+      }
+
+      & .dot {
+        margin: 0 0.2rem;
+      }
+    }
+
+    &>.content {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      overflow: hidden;
+      width: 100%;
+      max-width: 550px;
+      height: 100%;
       box-sizing: border-box;
+      padding: 1.5rem;
 
-      &>.title {
-        color: white;
-      }
-
-      & .low {
-        opacity: 0.5;
-      }
-      &>.name {
-        background-color: #212121;
-        box-sizing: border-box;
-        padding: 10px;
-        font-size: 1.2rem;
-        border-radius: 6px;
-        outline: none;
-        border: none;
-        color: white;
-
-      }
-
-      &>.suggestion {
-        height: 100%;
-        width: 100%;
-        resize: vertical;
-        background-color: #212121;
-        box-sizing: border-box;
-        padding: 10px;
-        font-size: 1.2rem;
-        border-radius: 6px;
-        outline: none;
-        border: none;
-        color: white;
-
-        &::-webkit-scrollbar {
-          width: 7px;
-          background-color: #202020;
+      &>.about {
+        &>.title {
+          color: #FEFEFE;
+          font-size: 2.1rem;
+          letter-spacing: 0.2rem;
+          font-family: 'Bebas Neue';
         }
 
-        &::-webkit-scrollbar-thumb {
-          background-color: #2d2d2d;
-          border-radius: 5px;
+        &>.content {
+          color: #a1a1a1;
+          font-size: 1.3rem;
+          font-family: 'Roboto';
         }
       }
-    }
 
-    &>.buttons {
-      padding-top: 18px;
-
-      &>.send {
-        height: 24px;
-        padding: 10px 20px;
-        background-color: #FF3D00;
-        border-radius: 6px;
+      &>.featured {
+        margin-top: 2rem;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: ease 200ms;
-        cursor: pointer;
-        font-weight: 700;
-        
-        &.sending {
-          opacity: 0.5;
-          background-color: #212121;
-          cursor: default;
+        flex-direction: column;
+        box-sizing: border-box;
+
+        &>.title {
+          color: #FEFEFE;
+          font-size: 2.1rem;
+          letter-spacing: 0.2rem;
+          font-family: 'Bebas Neue', Verdana, sans-serif;
         }
-        &.sent {
-          font-weight: 500;
-          background-color: #b9b9b9;
-          &>.text{
-            color: black;
+
+        &>.items {
+          display: flex;
+          box-sizing: border-box;
+          width: 100%;
+          gap: 10px;
+
+          &>* {
+            box-sizing: border-box;
+            width: 25%;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            
+            text-decoration: none;
+            &>.text {
+              font-family: 'Bebas Neue',
+              Verdana,
+              sans-serif;
+              font-size: clamp(0.6rem, 3vw, 1rem);
+            }
+
+            &>svg {
+              font-size: 2rem;
+              margin-bottom: 0.5rem;
+            }
+          }
+
+          &>.calculators {
+            background-color: #4865FF;
+          }
+
+          &>.universities {
+            background-color: #FFC225;
+          }
+
+          &>.forums {
+            background-color: #5B0CBF;
+          }
+
+          &>.calendars {
+            background-color: #FF1F1F;
           }
         }
-
-        &>.loading {
-          border-radius: 50%;
-          height: 18px;
-          margin-right: 10px;
-          aspect-ratio: 1;
-          animation: spin 1s infinite linear;
-          border-bottom: 2px solid white;
-          border-left: 2px solid white;
-        }
-
-        &>.text {
-          color: white;
-        }
       }
     }
-  }
-}
-
-@keyframes spin {
-  0% {
-    rotate: 0;
-  }
-
-  100% {
-    rotate: 360deg;
   }
 }
