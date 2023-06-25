@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Calculators from "./pages/Calculators/Calculators";
+import Politics from "./pages/Politics/Politics";
 // import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
 // import GenData from "./pages/CourseInfo/scripts/dataGenerator";
 
@@ -58,10 +59,18 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/help",
+    path: "/ajuda",
     element: (
       <Suspense fallback={<></>}>
         <Help></Help>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/politicas",
+    element: (
+      <Suspense fallback={<></>}>
+        <Politics></Politics>
       </Suspense>
     ),
   },
@@ -82,7 +91,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/novelty",
+    path: "/feedback",
     element: (
       <Suspense fallback={<></>}>
         <Novelty />

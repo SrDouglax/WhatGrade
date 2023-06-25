@@ -18,8 +18,8 @@ const calculators: calculatorType[] = [
   {
     name: "ENEM",
     description:
-      "Calcule sua pontuação estimada com base nos seus acertos e nos pesos divulgados do ano passado.",
-    link: "/c/enem",
+      "Calcule sua pontuação com base nos seus acertos e nos pesos divulgados do ano passado.",
+    link: "",
   },
 ];
 
@@ -38,7 +38,7 @@ export default function Calculators() {
         <div className="items">
           {calculators.map((calculator) => {
             return (
-              <a className="calculator" href={calculator.link}>
+              <a className={`calculator ${calculator.name}`} href={calculator.link}>
                 <div className="content">
                   <h2 className="name">{calculator.name}</h2>
                   <p className="description">{calculator.description}</p>
