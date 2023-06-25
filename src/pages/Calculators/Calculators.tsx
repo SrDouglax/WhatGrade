@@ -15,6 +15,12 @@ const calculators: calculatorType[] = [
       "Calcule quanto você precisa tirar no SSA3 e veja os cursos disponíveis em 2023. - UPE",
     link: "/c/ssa",
   },
+  {
+    name: "ENEM",
+    description:
+      "Calcule sua pontuação estimada com base nos seus acertos e nos pesos divulgados do ano passado.",
+    link: "/c/enem",
+  },
 ];
 
 export default function Calculators() {
