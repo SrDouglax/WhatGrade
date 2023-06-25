@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./Home.scss";
 import Header from "../../components/Header/Header";
 import { Carousel } from "react-responsive-carousel";
@@ -6,11 +7,20 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import i01 from "../../assets/home/carousel/Carousel01.png";
 import { MdCalculate, MdChat, MdOutlineCalendarMonth, MdSchool } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { firebaseAuth } from "../../services/firebase";
 
 export default function Home() {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-
+  useEffect(() => {
+    firebaseAuth.getUser().then((user) => {
+      if (!user) {
+        navigate("/");
+      }
+      console.log(user);
+      
+    });
+  }, []);
   const carouselImages = [
     <img src={i01} alt="imagem do carrossel" />,
     <img src={i01} alt="imagem do carrossel" />,
@@ -37,7 +47,7 @@ export default function Home() {
           <div className="featured">
             <h2 className="title">Em destaque</h2>
             <div className="items">
-              <a href="/calculadoras" className="calculators" >
+              <a href="/calculadoras" className="calculators">
                 <MdCalculate />
                 <p className="text">Calculadoras</p>
               </a>

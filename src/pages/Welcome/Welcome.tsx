@@ -5,10 +5,19 @@ import facebook from "../.././assets/welcome/facebook.png";
 import anonymous from "../.././assets/welcome/anonymous.png";
 import { firebaseAuth } from "../../services/firebase";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Welcome() {
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    firebaseAuth.getUser().then((user) => {
+      if (user) {
+        navigate("/home")
+      }
+    })
+  }, [])
   
   function handleGoogleLogin() {
     firebaseAuth
@@ -66,7 +75,7 @@ export default function Welcome() {
             <img src={google} alt="" className="icon" />
             <p className="option">Entrar com Google</p>
           </div>
-          <div className="facebook">
+          <div className="facebook" style={{opacity: "0.2"}}>
             <img src={facebook} alt="" className="icon" />
             <p className="option">Entrar com Facebook</p>
           </div>

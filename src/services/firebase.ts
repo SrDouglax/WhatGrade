@@ -1,4 +1,13 @@
-import { getAuth, signInWithPopup, signInAnonymously, GoogleAuthProvider, UserCredential, FacebookAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  signInAnonymously,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  UserCredential,
+  FacebookAuthProvider,
+  User,
+} from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
@@ -71,6 +80,25 @@ export const firebaseAuth = {
           console.error("Erro ao autenticar anonimamente:", error);
           reject(error);
         });
+    });
+  },
+  getUser: (): Promise<User | null> => {
+    return new Promise((resolve, reject) => {
+      onAuthStateChanged(
+        auth,
+        (user) => {
+          if (user) {
+            // Usuário está logado
+            resolve(user);
+          } else {
+            // Usuário não está logado
+            resolve(null);
+          }
+        },
+        (error) => {
+          reject(error);
+        }
+      );
     });
   },
 };

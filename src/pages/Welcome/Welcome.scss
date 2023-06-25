@@ -136,7 +136,7 @@
           height: 1.5rem;
         }
 
-        &:hover {
+        &:hover.google,&:hover.anonymous {
           width: 19rem;
         }
       }
@@ -145,10 +145,11 @@
         background-color: white;
         color: #0000008A;
       }
-
+      
       &>.facebook {
         background-color: #1876F2;
         color: white;
+        cursor: default;
       }
 
       &>.anonymous {
