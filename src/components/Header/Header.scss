@@ -163,6 +163,14 @@
           }
         }
 
+        &>.home {
+          &>.dotColor {
+            background-color: #ff6625;
+          }
+
+          color: white;
+        }
+
         &>.calc {
           &>.dotColor {
             background-color: #1d3cfd;
@@ -181,7 +189,6 @@
         }
 
         &>.chats {
-          opacity: 0.5;
           &>.dotColor {
             background-color: #5218af;
           }

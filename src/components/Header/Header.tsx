@@ -34,12 +34,11 @@ export default function Header({ hasLink }: props) {
   const [user, setUser] = useState<GlobalUser | undefined>();
 
   useEffect(() => {
-    firebaseAuth.getUser().then(({user}) => {
+    firebaseAuth.getUser().then(({ user }) => {
       return setUser(user);
-    })
-  }, [])
+    });
+  }, []);
   // console.log(user);
-  
 
   const navigate = useNavigate();
   return (
@@ -93,25 +92,29 @@ export default function Header({ hasLink }: props) {
         </div>
         <div className="content">
           <div className="pages">
+            <a href="/home" className="home">
+              <div className="dotColor"></div>
+              <p className="name">Início</p>
+            </a>
             <a href="/calculadoras" className="calc">
               <div className="dotColor"></div>
               <p className="name">Calculadoras</p>
-            </a>
-            <a href="" className="uni">
-              <div className="dotColor"></div>
-              <p className="name">Universidades</p>
             </a>
             <a href="" className="chats">
               <div className="dotColor"></div>
               <p className="name">Bate-Papos</p>
             </a>
-            <a href="" className="cale">
-              <div className="dotColor"></div>
-              <p className="name">Calendário</p>
-            </a>
             <a href="/feedback" className="feed">
               <div className="dotColor"></div>
               <p className="name">Feedback</p>
+            </a>
+            <a href="" className="uni">
+              <div className="dotColor"></div>
+              <p className="name">Universidades</p>
+            </a>
+            <a href="" className="cale">
+              <div className="dotColor"></div>
+              <p className="name">Calendário</p>
             </a>
           </div>
         </div>
