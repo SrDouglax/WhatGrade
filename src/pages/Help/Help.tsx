@@ -1,8 +1,6 @@
-import './Help.scss';
-
-import { MdConstruction } from 'react-icons/md';
-
 import Header from '../../components/Header/Header';
+import { MdConstruction } from 'react-icons/md';
+import './Help.scss';
 
 export default function Help() {
   return (

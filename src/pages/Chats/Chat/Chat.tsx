@@ -1,18 +1,14 @@
-import './Chat.scss';
-
 // <<---- Importações ---->> \\
-import { useNavigate, useParams } from 'react-router-dom';
-
-import Header from '../../../components/Header/Header';
-import App from './app/App';
+import Header from "../../../components/Header/Header";
+import App from "./app/App";
+import "./Chat.scss";
 
 export default function Chat() {
-  
   return (
-    <div className="Chats">
+    <div className="Chat">
       <Header hasLink={true} backLink="/" showHelp={true} />
       <div className="content">
-        <App/>
+        <App />
       </div>
     </div>
   );

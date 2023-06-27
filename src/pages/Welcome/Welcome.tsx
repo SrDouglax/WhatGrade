@@ -13,7 +13,7 @@ export default function Welcome() {
 
   useEffect(() => {
     firebaseAuth.getUser().then((user) => {
-      if (user) {
+      if (user.hasUser) {
         navigate("/home")
       }
     })

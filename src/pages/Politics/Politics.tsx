@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 
 export default function Politics() {
   return (
-    <div className="Chats">
+    <div className="Politics">
       <Header hasLink={true} backLink="/" showHelp={true} />
       <div className="content">
         <h1>Políticas de Privacidade</h1>

@@ -1,0 +1,43 @@
+.Toast {
+    outline: rgb(41, 41, 41) 3px solid;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    z-index: 10;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 450px;
+    padding: 5px 50px;
+    background-color: #292929;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    color: #292929;
+    animation: show 2s ease forwards;
+    &>svg {
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+@keyframes show {
+    0% {
+        top: 0;
+        transform: translateX(-50%) translateY(-150%);
+    }
+    20% {
+        top: 1.5rem;
+        transform: translateX(-50%) translateY(0%);
+    }
+    80% {
+        top: 1.5rem;
+        transform: translateX(-50%) translateY(0%);
+    }
+    100% {
+        top: 0;
+        transform: translateX(-50%) translateY(-150%);
+    }
+}

@@ -6,6 +6,7 @@ import AllMessages from "./AllMessages/AllMessages";
 import { firestore } from "../../../../../../services/firebase";
 import { Timestamp } from "firebase/firestore";
 import { GlobalUser } from "../../../../../../services/firebase-interfaces";
+import { MdSend } from "react-icons/md";
 
 interface CompProps {
   allMessages: any;
@@ -66,6 +67,7 @@ export default ({
       });
       (document.getElementById("inputTextToSend") as HTMLInputElement).value = "";
     }
+    input.current?.focus()
   }
 
   return (
@@ -102,7 +104,7 @@ export default ({
             handleNewMessage();
           }}
         >
-          <span className="material-symbols-sharp">send</span>
+          <MdSend/>
         </div>
       </div>
     </div>

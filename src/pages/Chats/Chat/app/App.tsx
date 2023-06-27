@@ -6,6 +6,7 @@ import { firebaseAuth, firestore } from "../../../../services/firebase";
 import ChatContent from "./components/ChatContent/ChatContent.jsx";
 import { QueryDocumentSnapshot } from "firebase/firestore";
 import { GlobalUser, UserMessageObject } from "../../../../services/firebase-interfaces";
+import { chats } from "../../Chats";
 
 export default () => {
   const [user, setUser] = useState<GlobalUser>();
@@ -18,8 +19,18 @@ export default () => {
   const { channelID } = useParams();
   const navigate = useNavigate();
 
-  const allowedIDs = ["CncDCmptac", "CmprtlhmntDMtrs"];
-
+  const allowedIDs = [
+    "CncDCmptc",
+    "CmprtlhmntDMtrl",
+    "Chtdvdsdsscs",
+    "RdcLtrtr",
+    "Extstcnlg",
+    "HstrGrl",
+    "LngsEstrngrs",
+    "Ggrf",
+    "Blg",
+    "Flsf",
+  ];
   if (!allowedIDs.includes(channelID || "")) {
     navigate("/chats");
   }
@@ -51,17 +62,20 @@ export default () => {
   }, [allMessages]);
 
   return (
-    <div className="app-window">
-      <div className="col2">
-        <ChatContent
-          user={user as GlobalUser}
-          channelID={channelID || ""}
-          allMessages={allMessages}
-          setAllMessages={setAllMessages}
-          lastVisible={lastVisible}
-          setLastVisible={setLastVisible}
-        />
-      </div>
-    </div>
+    <>
+      <h1 className="chatName">{`${
+        chats.find((e) => {
+          return e.link.slice(6) === channelID;
+        })?.name
+      }`}</h1>
+      <ChatContent
+        user={user as GlobalUser}
+        channelID={channelID || ""}
+        allMessages={allMessages}
+        setAllMessages={setAllMessages}
+        lastVisible={lastVisible}
+        setLastVisible={setLastVisible}
+      />
+    </>
   );
 };

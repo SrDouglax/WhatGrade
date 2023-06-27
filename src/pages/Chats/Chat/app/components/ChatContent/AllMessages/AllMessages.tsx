@@ -1,12 +1,27 @@
-import './component.scss';
+import "./component.scss";
 
 // <<---- Importações ---->> \\
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-import Message from './Message/Message';
+import Message from "./Message/Message";
+import Toast from "../../../../../../../components/Toast/Toast";
+import { MdCopyAll } from "react-icons/md";
 
 export default ({ messages, user, deleteMessage, loadMoreMessages }: any) => {
+  const [toast, setToast] = useState({
+    show: false,
+    text: "",
+    icon: <></>,
+    color: "#fff",
+  });
   const bodyRef = useRef<HTMLElement>();
+
+  const showToast = (text: any, icon: any, color: any) => {
+    setToast({ show: true, text: text, icon: icon, color: color });
+    setTimeout(() => {
+      setToast({ show: false, text: text, icon: icon, color: color });
+    }, 2100);
+  };
 
   const handleScroll = (e: any) => {
     if (e.target.scrollTop <= 0) {
@@ -47,20 +62,26 @@ export default ({ messages, user, deleteMessage, loadMoreMessages }: any) => {
     <div className="boxAllMessages" ref={bodyRef as any} onScroll={handleScroll}>
       <div>
         <div className="allMessages">
-          {messages?.map((item: { sender: any; type: string }, key: any) => {
+          {messages?.map((item: { sender: any; type: string, id: string }, key: any) => {
             if (item.sender != undefined || item.type === "style") {
               return (
                 <Message
-                  key={key}
+                  key={key + item.id}
                   message={item}
                   user={user}
                   deleteMessage={deleteMessage}
+                  showToast={showToast}
                 />
               );
             }
           })}
         </div>
       </div>
+      {toast.show ? (
+        <Toast text={toast.text} icon={toast.icon} color={toast.color} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

@@ -287,37 +287,10 @@ export const firestore = {
   },
 
   deleteMessage: (channelID: string, messageID: string) => {
+    console.log(channelID, messageID);
+    
     const dbMessages = collection(fdb, "channels", `/${channelID}/messages`);
     deleteDoc(doc(dbMessages, messageID));
-  },
-
-  createChannel: async (
-    communityID: string,
-    channelName: string,
-    channelDescription: string
-  ) => {
-    const channelsCollection = collection(fdb, `communities/${communityID}/channels`);
-    let document: DocumentReference | null = null;
-
-    await getDocs(channelsCollection).then(async (querySnapshot) => {
-      const size = querySnapshot.size;
-      await addDoc(channelsCollection, {
-        name: channelName,
-        description: channelDescription,
-        index: size + 1,
-      }).then((e) => {
-        document = e;
-      });
-    });
-
-    if (document) {
-      return document;
-    }
-  },
-
-  deleteChannel: async (communityID: string, channelID: string) => {
-    const dbMessages = collection(fdb, "communities", `/${communityID}/channels`);
-    return await deleteDoc(doc(dbMessages, channelID));
   },
 
   setPermission: (channelID: string, userPermission: UserPermissionObject) => {

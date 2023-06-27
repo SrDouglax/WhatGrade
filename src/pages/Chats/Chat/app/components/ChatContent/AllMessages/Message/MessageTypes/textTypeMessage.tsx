@@ -1,45 +1,40 @@
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import moment from "moment";
-import "moment/locale/pt-br";
+import "moment/dist/locale/pt-br";
 import "./textTypeMessage.scss";
 import { FaCopy, FaReply, FaTrashAlt } from "react-icons/fa";
+import Linkify from "linkify-react";
+import { MdCopyAll } from "react-icons/md";
 
-export default ({ message, user, openProfile, deleteMessage }: any) => {
-  // console.log(user);
-  
+moment.locale("pt-br");
+
+export default ({ message, user, openProfile, deleteMessage, showToast }: any) => {
   const [showContext, setShowContext] = useState(false);
   const [contextPos, setContextPos] = useState([0, 0]);
 
-  // |> Definir linguagem da data de envio da mensagem.
-  moment.locale("pt-br");
-
-  // |> Referência ao objeto da mensagem.
   const boxRef = useRef<HTMLElement>();
   const contextRef = useRef<HTMLElement>();
 
-  // |> Cópia do conteúdo de uma mensagem.
   const copyMessage = (t: string) => {
-    navigator.clipboard.writeText(t);
+    navigator.clipboard.writeText(t).then(() => {
+      showToast("Texto copiado!", <MdCopyAll />, "#60ff50");
+    });
   };
 
-  // ◈ Opções do menu.
+  // ◈ Opçõkes do menu.
   const options = [
-    {
-      class: "reply",
-      text: "Responder",
-      icon: () => {
-        return <FaReply />;
-      },
-      action: () => {},
-    },
+    // {
+    //   class: "reply",
+    //   text: "Responder",
+    //   icon: () => {
+    //     return <FaReply />;
+    //   },
+    // },
     {
       class: "copy",
       text: "Copiar mensagem",
       icon: () => {
         return <FaCopy />;
-      },
-      action: () => {
-        copyMessage((boxRef.current?.children[1].children[1] as HTMLElement).innerText);
       },
     },
     {
@@ -48,45 +43,61 @@ export default ({ message, user, openProfile, deleteMessage }: any) => {
       icon: () => {
         return <FaTrashAlt />;
       },
-      action: () => {},
     },
   ];
 
-  // |> Deleta uma mensagem.
   const delMsg = () => {
     const msgbox = boxRef.current;
     const senderId = message.sender?.id;
-    
+
     const readerId = user?.uid;
     // console.log(user);
     console.log(readerId, senderId, msgbox);
 
     if (readerId === senderId) {
       deleteMessage(msgbox?.id);
+      showToast("Mensagem deletada!", <MdCopyAll />, "#ff3250");
     }
   };
 
-  const hasParentWithClassRemove = (element: any) => {
+  const hasParentWithClass = (element: any, className: string) => {
     let currentNode = element.parentNode;
 
     while (currentNode && currentNode !== document) {
-      if (currentNode.classList && currentNode.classList.contains("delete")) {
+      if (currentNode.classList && currentNode.classList.contains(className)) {
         return true;
       }
+      currentNode = currentNode.parentNode;
+    }
 
+    return false;
+  };
+  const hasParentWithId = (element: any) => {
+    let currentNode = element.parentNode;
+
+    while (currentNode && currentNode !== document) {
+      if (currentNode.id == message.id.toString()) {
+        return true;
+      }
       currentNode = currentNode.parentNode;
     }
 
     return false;
   };
   const handleClick = (e: MouseEvent) => {
-    // console.log(
-    //   (e.target as HTMLElement).classList,(e.target as HTMLElement).classList.contains('delete'), 
-    //   hasParentWithClassRemove(e.target as HTMLElement)
-    // );
-    
-    if ((e.target as HTMLElement).classList.contains('delete') || hasParentWithClassRemove(e.target as HTMLElement)) {
-      // delMsg();
+    // If click on button and is the message with the correct id
+    const checkElement = (className: string) => {
+      return (
+        ((e.target as HTMLElement).classList.contains(className) ||
+          hasParentWithClass(e.target as HTMLElement, className)) &&
+        hasParentWithId(e.target as HTMLElement)
+      );
+    };
+
+    if (checkElement("delete")) {
+      delMsg();
+    } else if (checkElement("copy")) {
+      copyMessage(message.text);
       setShowContext(false);
     } else {
       setShowContext(false);
@@ -102,15 +113,16 @@ export default ({ message, user, openProfile, deleteMessage }: any) => {
   }, []);
 
   const handleMessageContextMenu = (e: MouseEvent) => {
-    setShowContext(true);
     e.preventDefault();
-
-    const x =
-      e.clientX > (boxRef.current?.clientWidth || 0) - e.clientX
-        ? e.clientX - (contextRef.current?.clientWidth || 0)
-        : e.clientX;
-    const y = e.clientY;
-    setContextPos([x, y]);
+    setShowContext(true);
+    setTimeout(() => {
+      const x =
+        e.clientX > (boxRef.current?.clientWidth || 0) - e.clientX
+          ? e.clientX - (contextRef.current?.clientWidth || 0)
+          : e.clientX;
+      const y = e.clientY;
+      setContextPos([x, y]);
+    }, 0);
   };
 
   return (
@@ -149,17 +161,18 @@ export default ({ message, user, openProfile, deleteMessage }: any) => {
             </p>
           </span>
           <div className={`text`}>
-            <p>{message.text}</p>
+            <Linkify>{message.text}</Linkify>
           </div>
         </div>
         <div
+          ref={contextRef as any}
           className="messageContextMenu"
           style={{
             display: showContext ? "" : "none",
             left: `${contextPos[0]}px`,
+            // right: contextPos[0] < 0 ? `${-contextPos[0]}px` : "",
             top: `${contextPos[1]}px`,
           }}
-          ref={contextRef as any}
         >
           <ul>
             {options.map((option) => (

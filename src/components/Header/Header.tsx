@@ -29,7 +29,7 @@ function runAnimation(element: HTMLElement, name: string, duration: number) {
   }, 1);
 }
 
-export default function Header({ hasLink, backLink, showHelp }: props) {
+export default function Header({ hasLink }: props) {
   const [drawerClosed, setDrawerClosed] = useState(true);
   const [user, setUser] = useState<GlobalUser | undefined>();
 
@@ -38,6 +38,8 @@ export default function Header({ hasLink, backLink, showHelp }: props) {
       return setUser(user);
     })
   }, [])
+  // console.log(user);
+  
 
   const navigate = useNavigate();
   return (

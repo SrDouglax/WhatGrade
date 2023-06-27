@@ -1,4 +1,4 @@
-.Chats {
+.Chat {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,12 +10,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.3rem;
     overflow-y: auto;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
     color: white;
-
+    &>.chatName {
+      font-size: 1.5rem;
+      padding: 1rem 2rem 0rem;
+      background-color: #1E1E1E;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
   }
 }

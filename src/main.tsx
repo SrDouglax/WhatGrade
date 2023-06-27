@@ -1,8 +1,8 @@
-import './index.scss';
+import "./index.scss";
 
-import { lazy, Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { lazy, Suspense } from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
 // import GenData from "./pages/CourseInfo/scripts/dataGenerator";
@@ -20,6 +20,7 @@ const Chats = lazy(() => import("./pages/Chats/Chats"));
 const Chat = lazy(() => import("./pages/Chats/Chat/Chat"));
 const Calculators = lazy(() => import("./pages/Calculators/Calculators"));
 const Politics = lazy(() => import("./pages/Politics/Politics"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage/ErrorPage"));
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         <Welcome></Welcome>
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   {
     path: "/home",
@@ -37,6 +39,7 @@ const router = createBrowserRouter([
         <Home />
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   {
     path: "/calculadoras",
@@ -45,6 +48,7 @@ const router = createBrowserRouter([
         <Calculators />
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   {
     path: "/c/ssa",
@@ -53,6 +57,7 @@ const router = createBrowserRouter([
         <CalcSSA></CalcSSA>
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   {
     path: "/chats",
@@ -61,6 +66,7 @@ const router = createBrowserRouter([
         <Chats />
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   {
     path: "/chat/:channelID",
@@ -69,6 +75,7 @@ const router = createBrowserRouter([
         <Chat />
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   {
     path: "c/ssa/:campus/:course",
@@ -77,6 +84,7 @@ const router = createBrowserRouter([
         <CourseInfo />
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   {
     path: "/ajuda",
@@ -85,6 +93,7 @@ const router = createBrowserRouter([
         <Help></Help>
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   {
     path: "/politicas",
@@ -93,6 +102,7 @@ const router = createBrowserRouter([
         <Politics></Politics>
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   // {
   //   path: "/about",
@@ -105,7 +115,7 @@ const router = createBrowserRouter([
   // {
   //   path: "/como-usar",
   //   element: (
-  //     <Suspense fallback={<></>}>
+    //     <Suspense fallback={<></>}>
   //       <HowUse></HowUse>
   //     </Suspense>
   //   ),
@@ -117,6 +127,7 @@ const router = createBrowserRouter([
         <Novelty />
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
   {
     path: "*",
@@ -125,6 +136,7 @@ const router = createBrowserRouter([
         <NotFound />
       </Suspense>
     ),
+    errorElement: <ErrorPage/>
   },
 ]);
 

@@ -50,23 +50,6 @@
     color: #ffffffB0;
 }
 
-.bottomOptions-sendImage {
-    height: 30px;
-    margin-left: 15px;
-    margin-right: 8px;
-    cursor: pointer;
-}
-
-.bottomOptions-sendImage span {
-    font-variation-settings:
-        'FILL' 1,
-        'wght' 700,
-        'GRAD' 200,
-        'opsz' 48;
-    color: #ffffffB0;
-    font-size: 28px;
-}
-
 .bottomOptions-send {
     height: 30px;
     margin-left: 15px;
@@ -74,12 +57,7 @@
     cursor: pointer;
 }
 
-.bottomOptions-send span {
-    font-variation-settings:
-        'FILL' 1,
-        'wght' 700,
-        'GRAD' 200,
-        'opsz' 48;
+.bottomOptions-send svg {
     color: #ffffffB0;
     font-size: 28px;
 }
