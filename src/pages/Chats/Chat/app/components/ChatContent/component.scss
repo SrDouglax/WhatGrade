@@ -19,16 +19,20 @@
     overflow: hidden;
     width: 100%;
     max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 36px;
     border-radius: 18px;
     margin: 12px 0px 12px 20px;
     background-color: #ffffff18;
 }
 
-.bottomOptions-text input {
+.bottomOptions-text textarea {
+    resize: none;
     color: white;
     width: calc(100% - 30px);
-    height: 100%;
+    height: 65%;
     border: none;
     outline: none;
     background-color: transparent;

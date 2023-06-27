@@ -85,10 +85,9 @@ export default ({
 
       <div className="bottomOptions">
         <div className="bottomOptions-text">
-          <input
+          <textarea
             ref={input as any}
             id="inputTextToSend"
-            type="text"
             autoComplete="off"
             placeholder="Digite alguma coisa"
             onKeyDown={(e) => {
