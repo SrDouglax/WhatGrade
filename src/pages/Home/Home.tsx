@@ -69,7 +69,7 @@ export default function Home() {
                 <MdSchool />
                 <p className="text">Universidades</p>
               </a>
-              <a className="forums">
+              <a href="/chats" className="forums">
                 <MdChat />
                 <p className="text">Bate-Papos</p>
               </a>

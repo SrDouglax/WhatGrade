@@ -1,7 +1,8 @@
-import "./Help.scss";
-import Header from "../../components/Header/Header";
+import './Help.scss';
 
-import { MdOutlineInfo, MdMouse } from "react-icons/md";
+import { MdConstruction } from 'react-icons/md';
+
+import Header from '../../components/Header/Header';
 
 export default function Help() {
   return (
@@ -10,13 +11,9 @@ export default function Help() {
       <div className="helpContent">
         <h1 className="title">Páginas de ajuda</h1>
         <div className="pages">
-          <a href="/about" className="page about">
-            <MdOutlineInfo />
-            <p>Sobre o site</p>
-          </a>
-          <a href="/como-usar" className="page howUse">
-            <MdMouse />
-            <p>Como usar</p>
+          <a className="page about">
+            <MdConstruction />
+            <p>Em contrução...</p>
           </a>
         </div>
       </div>

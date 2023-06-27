@@ -10,7 +10,7 @@ const FindGrade = lazy(() => import("./components/findGrade/findGrade"));
 import { allPeriods } from "../List/List";
 import whatsapp from "/images/whatsapp.webp";
 
-export default function App() {
+export default function CalcSSA() {
   const period = '21-23';
 
   const invalidPeriod = allPeriods.every((pd) => pd.period !== period);

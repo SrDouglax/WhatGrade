@@ -17,6 +17,7 @@ import i02 from "../../assets/components/header/ButtonIcon02.png";
 import i03 from "../../assets/components/header/ButtonIcon03.png";
 import { User } from "firebase/auth";
 import { firebaseAuth } from "../../services/firebase";
+import { GlobalUser } from "../../services/firebase-interfaces";
 
 function runAnimation(element: HTMLElement, name: string, duration: number) {
   element.style.animation = ``;
@@ -30,13 +31,11 @@ function runAnimation(element: HTMLElement, name: string, duration: number) {
 
 export default function Header({ hasLink, backLink, showHelp }: props) {
   const [drawerClosed, setDrawerClosed] = useState(true);
-  const [user, setUser] = useState<User | null>();
+  const [user, setUser] = useState<GlobalUser | undefined>();
 
   useEffect(() => {
-    firebaseAuth.getUser().then((user) => {
-      console.log(user);
+    firebaseAuth.getUser().then(({user}) => {
       return setUser(user);
-      
     })
   }, [])
 
@@ -108,7 +107,7 @@ export default function Header({ hasLink, backLink, showHelp }: props) {
               <div className="dotColor"></div>
               <p className="name">Calendário</p>
             </a>
-            <a href="/novelty" className="feed">
+            <a href="/feedback" className="feed">
               <div className="dotColor"></div>
               <p className="name">Feedback</p>
             </a>

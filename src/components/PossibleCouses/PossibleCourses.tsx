@@ -137,7 +137,7 @@ function PossibleCourses({
   }
   function newCourseComp(campus: Campus, course: Course, index: number) {
     return (
-      <div className="course inline new" key={index} style={{borderBottom: "2px solid #333", marginBottom: "5px", backgroundColor: "#282828"}}>
+      <div className="course inline new" key={index} style={{ marginBottom: "5px", backgroundColor: "#282828"}}>
         <div className="name new">{course.name}</div>
         <div className="newIcon">novo</div>
       </div>

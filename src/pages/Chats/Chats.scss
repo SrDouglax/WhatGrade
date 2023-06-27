@@ -1,0 +1,100 @@
+.Calculators {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &>.content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 550px;
+    height: 100%;
+    padding: 1rem;
+
+    &>.about {
+      box-sizing: border-box;
+      padding: 0.3rem 1rem 1.5rem;
+
+      &>.title {
+        color: white;
+      }
+
+      &>.text {
+        margin-top: 0.4rem;
+        color: grey;
+      }
+    }
+
+    &>.items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      &>.chat {
+        display: flex;
+        position: relative;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 1rem;
+        background-color: #1A1A1A;
+        border-radius: 10px;
+        text-decoration: none;
+
+        &>.content {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+          color: white;
+          width: 100%;
+
+          &>.name {
+            font-size: 1.15rem;
+          }
+
+          &>.tags {
+            display: flex;
+            gap: 0.3rem;
+          
+            &>.tag {
+              background-color: #686868;
+              font-size: 0.95rem;
+              border-radius: 10px;
+              padding: 0.1rem 0.8rem;
+              color: #000000;
+            }
+          }
+        }
+
+        &>.openlink {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.2rem;
+          color: grey;
+        }
+      }
+
+      &>.calculator.ENEM {
+        opacity: 0.5;
+        &::before {
+          content: 'Em breve...';
+          position: absolute;
+          top: 0.5rem;
+          right: 0.5rem;
+          padding: 0.3rem 0.8rem;
+          background-color: grey;
+          border-radius: 10px;
+          font-size: 0.7rem;
+          color: #1A1A1A;
+          text-align: center;
+
+        }
+      }
+    }
+  }
+}
