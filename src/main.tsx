@@ -3,6 +3,7 @@ import "./index.scss";
 import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ExeptionSSA from "./pages/ExeptionSSA/ExeptionSSA";
 
 // import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
 // import GenData from "./pages/CourseInfo/scripts/dataGenerator";
@@ -82,6 +83,15 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<></>}>
         <CourseInfo />
+      </Suspense>
+    ),
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/isentos2023/:stage",
+    element: (
+      <Suspense fallback={<></>}>
+        <ExeptionSSA></ExeptionSSA>
       </Suspense>
     ),
     errorElement: <ErrorPage/>

@@ -54,12 +54,28 @@ export default function Home() {
           <div className="about">
             <h2 className="title">Sobre</h2>
             <p className="content">
-              Bookshelf é um projeto individual e tem como objetivo ajudar todos os
-              vestibulandos ao redor do Brasil a ingressar no tão esperado curso.
+              Bookshelf é um projeto individual e tem como objetivo ajudar todos os que pretendem ingressar em alguma faculdade brasileira.
             </p>
           </div>
           <div className="featured">
-            <h2 className="title">Em destaque</h2>
+            <h2 className="title">Links em destaque</h2>
+            <div className="items">
+              <a href="/c/ssa" className="calcssa link">
+                <p className="text">Calcular nota SSA3</p>
+              </a>
+              <a href="/isentos2023/ssa1" className="exemption link">
+                <p className="text">Resultados Isenção SSA1</p>
+              </a>
+              <a href="/isentos2023/ssa2" className="exemption link">
+                <p className="text">Resultados Isenção SSA2</p>
+              </a>
+              <a href="/isentos2023/ssa3" className="exemption link">
+                <p className="text">Resultados Isenção SSA3</p>
+              </a>
+            </div>
+          </div>
+          <div className="pages">
+            <h2 className="title">Páginas</h2>
             <div className="items">
               <a href="/calculadoras" className="calculators">
                 <MdCalculate />

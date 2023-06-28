@@ -22,13 +22,13 @@ export default function findGrade({ period }: { period: string }) {
   }, []);
 
   const handleInputChange = useDebounce((e: any) => {
+    const iText = inputText.current
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
     let possibleName = Object.keys(data.current)
       .sort()
-      .filter((chave) =>
-        chave.indexOf(inputText.current.toUpperCase()) === 0
-          ? chave.includes(inputText.current.toUpperCase())
-          : false
-      );
+      .filter((chave) => (chave.indexOf(iText) === 0 ? chave.includes(iText) : false));
     if (possibleName.length < 1) {
       return;
     }
