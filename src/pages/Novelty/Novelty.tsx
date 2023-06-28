@@ -11,7 +11,7 @@ export default function Novelty() {
       (document.querySelector(".suggestion") as HTMLTextAreaElement).value.length > 1
     ) {
       setSendingState("sending");
-      const sender = (document.querySelector(".name") as HTMLInputElement).value;
+      const sender = (document.getElementById('name') as HTMLInputElement).value;
       const suggestion = (document.querySelector(".suggestion") as HTMLTextAreaElement)
         .value;
       const date = new Date();
@@ -32,6 +32,7 @@ export default function Novelty() {
             type="text"
             className={`name ${sendingState == "sent" ? "low" : ""}`}
             placeholder="Seu nome"
+            id="name"
             maxLength={32}
             disabled={sendingState == "sent"}
           />

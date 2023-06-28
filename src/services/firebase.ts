@@ -135,6 +135,8 @@ export const firebaseAuth = {
 export const firestore = {
   // >-- Sugestions Functions --<
   addSuggestion: async (suggestion: suggestionType) => {
+    console.log(suggestion);
+    
     return await addDoc(collection(fdb, "suggestions"), {
       sender: suggestion.sender,
       suggestion: suggestion.suggestion,
