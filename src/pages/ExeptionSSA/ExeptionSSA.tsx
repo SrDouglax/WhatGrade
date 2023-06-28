@@ -65,7 +65,10 @@ export default function ExeptionSSA() {
     <div className="ExeptionSSA">
       <Header hasLink={true} />
       <div className="content">
-        <h1 className="title">{`Isentos ${stage?.toUpperCase()} 2023`}</h1>
+        <h1 className="title">
+          {`Isentos ${stage?.toUpperCase()} 2023`}
+          <a href="https://processodeingresso.upe.pe.gov.br/">Ver no site oficial</a>
+        </h1>
         <div className="searchField">
           <input
             type="text"

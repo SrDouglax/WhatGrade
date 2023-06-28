@@ -18,6 +18,12 @@
 
     &>.title {
       color: white;
+      &>a{
+        font-size: 1rem;
+        margin-left: 1rem;
+        text-decoration: none;
+        color: #4885ff;
+      }
     }
 
     &>.searchField {
