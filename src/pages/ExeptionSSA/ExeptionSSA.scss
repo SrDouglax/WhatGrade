@@ -18,9 +18,10 @@
 
     &>.title {
       color: white;
+      display: flex;
+      flex-direction: column;
       &>a{
         font-size: 1rem;
-        margin-left: 1rem;
         text-decoration: none;
         color: #4885ff;
       }
