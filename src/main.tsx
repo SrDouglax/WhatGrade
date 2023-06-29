@@ -1,17 +1,10 @@
-import "./index.scss";
-
-import { lazy, Suspense } from "react";
+import { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ExeptionSSA from "./pages/ExeptionSSA/ExeptionSSA";
-
-// import GetCampusFromText from "./data/courses/scripts/getCampusFromText";
-// import GenData from "./pages/CourseInfo/scripts/dataGenerator";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./index.scss";
 
 const CalcSSA = lazy(() => import("./pages/CalcSSA/CalcSSA"));
 const Help = lazy(() => import("./pages/Help/Help"));
-// const HowUse = lazy(() => import("./pages/HowUse/HowUse"));
-// const About = lazy(() => import("./pages/About/About"));
 const Novelty = lazy(() => import("./pages/Novelty/Novelty"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 const CourseInfo = lazy(() => import("./pages/CourseInfo/CourseInfo"));
@@ -21,138 +14,30 @@ const Chats = lazy(() => import("./pages/Chats/Chats"));
 const Chat = lazy(() => import("./pages/Chats/Chat/Chat"));
 const Calculators = lazy(() => import("./pages/Calculators/Calculators"));
 const Politics = lazy(() => import("./pages/Politics/Politics"));
-const ErrorPage = lazy(() => import("./pages/ErrorPage/ErrorPage"));
+const ExeptionSSA = lazy(() => import("./pages/ExeptionSSA/ExeptionSSA"));
+// const ErrorPage = lazy(() => import("./pages/ErrorPage/ErrorPage"));
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
+const App = () => {
+  return (
+    <Router>
       <Suspense fallback={<></>}>
-        <Welcome></Welcome>
+        <Routes>
+          <Route path="/" Component={Welcome} />
+          <Route path="/home" Component={Home} />
+          <Route path="/calculadoras" Component={Calculators} />
+          <Route path="/c/ssa" Component={CalcSSA} />
+          <Route path="/chats" Component={Chats} />
+          <Route path="/chat/:channelID" Component={Chat} />
+          <Route path="/c/ssa/:campus/:course" Component={CourseInfo} />
+          <Route path="/isentos2023/:stage" Component={ExeptionSSA} />
+          <Route path="/ajuda" Component={Help} />
+          <Route path="/politicas" Component={Politics} />
+          <Route path="/feedback" Component={Novelty} />
+          <Route Component={NotFound} />
+        </Routes>
       </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/home",
-    element: (
-      <Suspense fallback={<></>}>
-        <Home />
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/calculadoras",
-    element: (
-      <Suspense fallback={<></>}>
-        <Calculators />
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/c/ssa",
-    element: (
-      <Suspense fallback={<></>}>
-        <CalcSSA></CalcSSA>
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/chats",
-    element: (
-      <Suspense fallback={<></>}>
-        <Chats />
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/chat/:channelID",
-    element: (
-      <Suspense fallback={<></>}>
-        <Chat />
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "c/ssa/:campus/:course",
-    element: (
-      <Suspense fallback={<></>}>
-        <CourseInfo />
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/isentos2023/:stage",
-    element: (
-      <Suspense fallback={<></>}>
-        <ExeptionSSA></ExeptionSSA>
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/ajuda",
-    element: (
-      <Suspense fallback={<></>}>
-        <Help></Help>
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/politicas",
-    element: (
-      <Suspense fallback={<></>}>
-        <Politics></Politics>
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  // {
-  //   path: "/about",
-  //   element: (
-  //     <Suspense fallback={<></>}>
-  //       <About></About>
-  //     </Suspense>
-  //   ),
-  // },
-  // {
-  //   path: "/como-usar",
-  //   element: (
-    //     <Suspense fallback={<></>}>
-  //       <HowUse></HowUse>
-  //     </Suspense>
-  //   ),
-  // },
-  {
-    path: "/feedback",
-    element: (
-      <Suspense fallback={<></>}>
-        <Novelty />
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "*",
-    element: (
-      <Suspense fallback={<></>}>
-        <NotFound />
-      </Suspense>
-    ),
-    errorElement: <ErrorPage/>
-  },
-]);
+    </Router>
+  );
+};
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <>
-    <RouterProvider router={router} />
-    {/* <GenData /> */}
-  </>
-);
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(<App />);
