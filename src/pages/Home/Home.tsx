@@ -19,7 +19,6 @@ export default function Home() {
       if (!user.hasUser) {
         navigate("/login");
       }
-      console.log(user);
     });
   }, []);
   const carouselImages = [
