@@ -6,7 +6,7 @@ export default function NotFound() {
     <div className="NotFound">
       <MdReportGmailerrorred className="Icon" />
       <p className="Text">Página não encontrada...</p>
-      <a href="/home" className="mainPage">
+      <a href="/" className="mainPage">
         Voltar para a página principal
       </a>
     </div>

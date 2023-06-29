@@ -56,7 +56,7 @@ export default function Header({ hasLink }: props) {
           </div>
         </>
       ) : (
-        <a href="/home" className="Title">
+        <a href="/" className="Title">
           <img src={IconWithName} alt="bookshelf icon" />
         </a>
       )}
@@ -92,7 +92,7 @@ export default function Header({ hasLink }: props) {
         </div>
         <div className="content">
           <div className="pages">
-            <a href="/home" className="home">
+            <a href="/" className="home">
               <div className="dotColor"></div>
               <p className="name">Início</p>
             </a>

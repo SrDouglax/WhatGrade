@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     firebaseAuth.getUser().then((user) => {
       if (!user.hasUser) {
-        navigate("/");
+        navigate("/login");
       }
       console.log(user);
     });

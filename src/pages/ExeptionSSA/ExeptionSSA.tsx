@@ -41,7 +41,7 @@ export default function ExeptionSSA() {
         setDataLoading(false);
       });
     } else {
-      navigate("/home");
+      navigate("/");
     }
   }, []);
 

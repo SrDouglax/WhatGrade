@@ -14,7 +14,7 @@ export default function Welcome() {
   useEffect(() => {
     firebaseAuth.getUser().then((user) => {
       if (user.hasUser) {
-        navigate("/home")
+        navigate("/")
       }
     })
   }, [])
@@ -23,7 +23,7 @@ export default function Welcome() {
     firebaseAuth
       .signInWithGoogle()
       .then((u) => {
-        navigate("/home");
+        navigate("/");
         console.log(u);
       })
       .catch((u) => {
@@ -34,7 +34,7 @@ export default function Welcome() {
     firebaseAuth
       .signInWithFacebook()
       .then((u) => {
-        navigate("/home");
+        navigate("/");
         console.log(u);
       })
       .catch((u) => {
@@ -45,7 +45,7 @@ export default function Welcome() {
     firebaseAuth
       .signInAnonymously()
       .then((u) => {
-        navigate('/home')
+        navigate('/')
         console.log(u);
       })
       .catch((u) => {
