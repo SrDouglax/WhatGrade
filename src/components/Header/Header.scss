@@ -44,12 +44,12 @@
   &>.openDrawer {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.36rem;
     cursor: pointer;
 
     &>.line {
-      width: 2rem;
-      height: 0.24rem;
+      width: 1.6rem;
+      height: 0.12rem;
       transition: 200ms ease;
       background-color: #5C5C5C;
       border-radius: .1rem;
