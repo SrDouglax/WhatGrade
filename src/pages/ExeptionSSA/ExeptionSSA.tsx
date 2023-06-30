@@ -49,9 +49,9 @@ export default function ExeptionSSA() {
     const startedWith = data.sort().filter((d) =>
       d.name.startsWith(
         search
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toUpperCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toUpperCase()
       )
     );
     const matches = data.filter(
