@@ -148,7 +148,7 @@ export const chats: chatType[] = [
     name: "Filosofia",
     tags: ["Filosofia", "Ética", "Lógica", "Política", "Filósofos", "Pensamento Crítico"],
     link: "/chat/Flsf",
-  },
+  }
 ];
 
 export default function Chats() {
