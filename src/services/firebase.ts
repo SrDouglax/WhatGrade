@@ -7,7 +7,6 @@ import {
   User as FiUser,
 } from "firebase/auth";
 import {
-  DocumentReference,
   QueryDocumentSnapshot,
   Timestamp,
   addDoc,
@@ -28,7 +27,7 @@ import {
 import { initializeApp } from "firebase/app";
 import { FormattedUserMessage, UserMessage, UserMessageObject, UserSendMessageObject, UserPermissionObject } from "./firebase-interfaces";
 
-import { GlobalUser, DbUser } from "./firebase-interfaces";
+import { GlobalUser } from "./firebase-interfaces";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
