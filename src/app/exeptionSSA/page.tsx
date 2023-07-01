@@ -17,8 +17,6 @@ export default function ExeptionSSA({stage}:{stage:string}) {
   const [filteredData, setFilteredData] = useState<exemptedType[]>([]);
   const [dataLoading, setDataLoading] = useState(true);
 
-  const inputData = useRef();
-
   const navigate = useRouter();
 
   useEffect(() => {
