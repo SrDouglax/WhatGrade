@@ -1,0 +1,133 @@
+.CouseInfo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  &>.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 7px;
+      background-color: #202020;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #2d2d2d;
+      border-radius: 5px;
+    }
+
+    &>.nameAndPicture {
+      margin-bottom: 1rem;
+      position: relative;
+      height: 25vw;
+      width: 100%;
+      min-height: 9rem;
+      max-height: 16%;
+      display: flex;
+      align-items: center;
+      flex-direction: column-reverse;
+
+      &>.courseName {
+        position: relative;
+        z-index: 2;
+        padding: 2px 10px;
+        color: #dadada;
+        bottom: 18%;
+        text-align: center;
+        font-size: clamp(1.1rem, 4.5vw, 2rem);
+        max-width: 700px;
+      }
+
+      &>.campus {
+        position: relative;
+        color: #5f5f5f;
+        bottom: 10%;
+        text-align: center;
+        z-index: 2;
+      }
+
+      &>.desc {
+        padding: 0 10px;
+        color: #a5a5a5;
+        z-index: 2;
+        position: relative;
+        font-size: clamp(0.9rem, 3vw, 1.05rem);
+        max-width: 85%;
+        bottom: 15%;
+        text-align: center;
+      }
+
+      &>.courseImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+      }
+
+      &>.fade {
+        width: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        background: linear-gradient(180deg, #12121290 -100%, #121212 95%);
+      }
+    }
+
+    &>.cutGrade,
+    .vacancies,
+    .comments {
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box;
+
+      &>.title {
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      & rect {
+        fill: #121212
+      }
+    }
+
+    & .captions {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+      &>* {
+        display: flex;
+        gap: 5px;
+        flex-direction: row;
+        align-items: center;
+        &>.text {
+          color: #757575;
+        }
+      }
+
+      & .color {
+        height: 10px;
+        width: 10px;
+        border-radius: 3px;
+      }
+
+      display: flex;
+      flex-direction: row;
+      font-size: 0.9rem;
+    }
+  }
+}

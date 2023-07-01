@@ -1,0 +1,269 @@
+.Header {
+  box-shadow: 0 2px 15px #0000004d;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 3;
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  padding: 0 1.2rem;
+  background-color: #1a1a1a;
+
+  .Title {
+    display: flex;
+    justify-content: center;
+    height: 50%;
+
+    &>img {
+      height: 100%;
+    }
+  }
+
+  &>.BackLink {
+    display: flex;
+    align-items: center;
+    margin-left: -10px;
+    cursor: pointer;
+    text-decoration: none;
+
+    &>.Icon {
+      font-size: 2.3rem;
+      color: rgb(162, 162, 162);
+    }
+
+    &>.Text {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: rgb(162, 162, 162);
+    }
+  }
+
+  &>.openDrawer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.36rem;
+    cursor: pointer;
+
+    &>.line {
+      width: 1.6rem;
+      height: 0.12rem;
+      transition: 200ms ease;
+      background-color: #5C5C5C;
+      border-radius: .1rem;
+    }
+
+    &:hover {
+      &>.line {
+        background-color: #c6c6c6;
+      }
+    }
+  }
+
+  &>.drawer {
+    box-shadow: -2px 0px 30px #000000A0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 280px;
+    height: 100%;
+    transition: 200ms ease;
+    background-color: #111111;
+
+    &.close {
+      box-shadow: -2px 0px 30px #00000000;
+      transform: translateX(110%);
+    }
+
+    &>.header {
+      // background-color: #101010;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      height: 56px;
+      padding: 0 1rem;
+
+      &>h2 {
+        font-family: 'Bebas Neue', Verdana;
+        color: white;
+        letter-spacing: 0.1rem;
+      }
+
+      &>.closeDrawer {
+        rotate: 45deg;
+        aspect-ratio: 1;
+        position: relative;
+        height: 50%;
+        cursor: pointer;
+
+        &:hover {
+          &>.line {
+            width: 2.4rem;
+          }
+        }
+
+        &>.line {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 2rem;
+          height: 0.24rem;
+          transition: 200ms ease;
+          background-color: #5C5C5C;
+          border-radius: 10px;
+
+          &:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(90deg);
+          }
+        }
+      }
+    }
+
+    &>.content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 0 1rem;
+
+      &>.pages {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        height: 100%;
+
+        &>* {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          font-size: 1.1rem;
+          text-decoration: none;
+
+          &>.name {
+            color: #5090ff;
+          }
+
+          &:hover>.dotColor {
+            transform: translateX(-50%);
+          }
+
+          &>.dotColor {
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-right: 0.5rem;
+            transition: transform 200ms ease;
+            border-radius: 50%;
+          }
+        }
+
+        &>.home {
+          &>.dotColor {
+            background-color: #ff6625;
+          }
+
+          color: white;
+        }
+
+        &>.calc {
+          &>.dotColor {
+            background-color: #1d3cfd;
+          }
+
+          color: white;
+        }
+
+        &>.uni {
+        opacity: 0.5;
+        &>.dotColor {
+          background-color: #c1a507;
+          }
+          
+          color: white;
+        }
+
+        &>.chats {
+          &>.dotColor {
+            background-color: #5218af;
+          }
+
+          color: white;
+        }
+
+        &>.cale {
+          opacity: 0.5;
+          &>.dotColor {
+            background-color: #ff251d;
+          }
+
+          color: white;
+        }
+
+        &>.feed {
+          &>.dotColor {
+            background-color: #a8a8a8;
+          }
+
+          color: white;
+        }
+      }
+    }
+
+    &>.buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+
+      &>* {
+        outline: 0px solid white;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.6rem;
+        transition: outline 100ms ease;
+        background-color: #1A1A1A;
+        cursor: pointer;
+        border-radius: 10px;
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          outline: 2px solid white;
+        }
+
+        &>img {
+          object-fit: cover;
+          flex-shrink: 0;
+          height: 1.8rem;
+          margin-right: 0.7rem;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+@keyframes boing {
+  0% {
+    gap: 0.25rem;
+    rotate: 0deg;
+  }
+
+  50% {
+    rotate: 90deg;
+    gap: 0.4rem;
+  }
+
+  100% {
+    rotate: 180deg;
+    gap: 0.25rem;
+  }
+}

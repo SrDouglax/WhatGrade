@@ -1,0 +1,125 @@
+.Novelty {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  &>.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 550px;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 20px 18px 18px 18px;
+
+    &>.survey {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: hidden;
+      box-sizing: border-box;
+
+      &>.title {
+        color: white;
+      }
+
+      & .low {
+        opacity: 0.5;
+      }
+      &>.name {
+        background-color: #212121;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 1.2rem;
+        border-radius: 6px;
+        outline: none;
+        border: none;
+        color: white;
+
+      }
+
+      &>.suggestion {
+        height: 100%;
+        width: 100%;
+        resize: vertical;
+        background-color: #212121;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 1.2rem;
+        border-radius: 6px;
+        outline: none;
+        border: none;
+        color: white;
+
+        &::-webkit-scrollbar {
+          width: 7px;
+          background-color: #202020;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: #2d2d2d;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    &>.buttons {
+      padding-top: 18px;
+
+      &>.send {
+        height: 24px;
+        padding: 10px 20px;
+        background-color: #FF3D00;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: ease 200ms;
+        cursor: pointer;
+        font-weight: 700;
+        
+        &.sending {
+          opacity: 0.5;
+          background-color: #212121;
+          cursor: default;
+        }
+        &.sent {
+          font-weight: 500;
+          background-color: #b9b9b9;
+          &>.text{
+            color: black;
+          }
+        }
+
+        &>.loading {
+          border-radius: 50%;
+          height: 18px;
+          margin-right: 10px;
+          aspect-ratio: 1;
+          animation: spin 1s infinite linear;
+          border-bottom: 2px solid white;
+          border-left: 2px solid white;
+        }
+
+        &>.text {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}

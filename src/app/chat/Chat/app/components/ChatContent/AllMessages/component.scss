@@ -1,0 +1,22 @@
+.boxAllMessages {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.boxAllMessages::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(12, 12, 12);
+}
+
+.boxAllMessages::-webkit-scrollbar-thumb {
+    background-color: rgb(41, 41, 41);
+    border-radius: 5px;
+}
+
+.allMessages {
+    height: 100%;
+    width: 100%;
+}

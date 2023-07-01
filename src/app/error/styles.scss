@@ -1,0 +1,26 @@
+.NotFound {
+width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &>.Icon {
+    color: white;
+    font-size: 5rem;
+    margin-bottom: 20px;
+  }
+
+  &>.Text {
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: #202020;
+  }
+  &>.mainPage {
+    color: white;
+    margin-top: 20px;
+  }
+}
