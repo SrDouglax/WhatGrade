@@ -25,7 +25,7 @@ export default function Novelty() {
   }
   return (
     <div className="Novelty">
-      <Header hasLink={true} backLink="/" showHelp={true} />
+      <Header hasLink={true} />
       <div className="content">
         <div className="survey">
           <h2 className="title">O que deseja sugerir?</h2>

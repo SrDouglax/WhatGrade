@@ -226,7 +226,7 @@ export default function CourseInfo({ params }: { params: CourseInfoProps }) {
 
   return (
     <div className="CouseInfo">
-      <Header hasLink={true} backLink={`/p/${period ?? "21-23"}`} showHelp={true} />
+      <Header hasLink={true} />
       <div className="content">
         <div className="nameAndPicture">
           <p className="campus">({params.campus?.replaceAll("-", " ")})</p>

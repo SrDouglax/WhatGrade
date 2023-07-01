@@ -3,7 +3,6 @@
 // Codes
 import { useEffect, useState } from "react";
 import { MdNavigateBefore } from "react-icons/md";
-import { User } from "firebase/auth";
 import { firebaseAuth } from "../../services/firebase";
 import { GlobalUser } from "../../services/firebase-interfaces";
 import { useRouter } from "next/navigation";
@@ -11,8 +10,6 @@ import "./Header.scss";
 
 interface props {
   hasLink: boolean;
-  backLink?: string;
-  showHelp?: boolean;
 }
 
 function runAnimation(element: HTMLElement, name: string, duration: number) {

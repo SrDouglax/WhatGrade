@@ -27,7 +27,7 @@ const calculators: calculatorType[] = [
 export default function Calculators() {
   return (
     <div className="Calculators">
-      <Header hasLink={true} backLink="/" showHelp={true} />
+      <Header hasLink={true}/>
       <div className="content">
         <div className="about">
           <h2 className="title">Calculadoras</h2>

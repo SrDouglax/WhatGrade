@@ -6,7 +6,7 @@ import "./Chat.scss";
 export default function Chat() {
   return (
     <div className="Chat">
-      <Header hasLink={true} backLink="/" showHelp={true} />
+      <Header hasLink={true} />
       <div className="content">
         <App />
       </div>

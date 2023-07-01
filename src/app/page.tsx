@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <div className="Home">
-      <Header hasLink={false} showHelp={true} />
+      <Header hasLink={false} />
       <div className="scroll">
         <div className="carousel">
           <Carousel

@@ -154,7 +154,7 @@ export const chats: chatType[] = [
 export default function Chats() {
   return (
     <div className="Chats">
-      <Header hasLink={true} backLink="/" showHelp={true} />
+      <Header hasLink={true} />
       <div className="content">
         <div className="about">
           <h2 className="title">Bate-papos</h2>

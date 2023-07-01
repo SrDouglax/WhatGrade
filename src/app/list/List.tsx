@@ -15,7 +15,7 @@ export default function List() {
 
   return (
     <div className="App">
-      <Header hasLink={false} showHelp={true} />
+      <Header hasLink={false} />
       <div className="ContentList">
         {periods.map((period, index) => {
           return (

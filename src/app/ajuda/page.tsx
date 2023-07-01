@@ -5,7 +5,7 @@ import "./styles.scss";
 export default function Help() {
   return (
     <div className="Help">
-      <Header hasLink={true} backLink="/" />
+      <Header hasLink={true} />
       <div className="helpContent">
         <h1 className="title">Páginas de ajuda</h1>
         <div className="pages">
