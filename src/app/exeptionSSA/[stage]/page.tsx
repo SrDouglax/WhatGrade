@@ -1,5 +1,5 @@
-'use client'
-import Header from "../../components/Header/Header";
+"use client";
+import Header from "../../../components/Header/Header";
 import { MdOutlineVerified, MdSearch } from "react-icons/md";
 import { BsFillEmojiDizzyFill } from "react-icons/bs";
 import { useEffect, useRef, useState } from "react";
@@ -12,7 +12,7 @@ interface exemptedType {
   exempted: string;
 }
 
-export default function ExeptionSSA({stage}:{stage:string}) {
+export default function ExeptionSSA({ params }: { params: { stage: string } }) {
   const [data, setData] = useState<exemptedType[]>([]);
   const [filteredData, setFilteredData] = useState<exemptedType[]>([]);
   const [dataLoading, setDataLoading] = useState(true);
@@ -20,17 +20,17 @@ export default function ExeptionSSA({stage}:{stage:string}) {
   const navigate = useRouter();
 
   useEffect(() => {
-    if (stage === "ssa1") {
+    if (params.stage === "ssa1") {
       import("./data/exemptedSSA1").then(({ exempteds }) => {
         setData(exempteds);
         setDataLoading(false);
       });
-    } else if (stage === "ssa2") {
+    } else if (params.stage === "ssa2") {
       import("./data/exemptedSSA2").then(({ exempteds }) => {
         setData(exempteds);
         setDataLoading(false);
       });
-    } else if (stage === "ssa3") {
+    } else if (params.stage === "ssa3") {
       import("./data/exemptedSSA3").then(({ exempteds }) => {
         setData(exempteds);
         setDataLoading(false);
@@ -38,7 +38,7 @@ export default function ExeptionSSA({stage}:{stage:string}) {
     } else {
       navigate.push("/");
     }
-  }, []);
+  }, [params.stage, navigate]);
 
   const handleSearch = (search: string) => {
     const startedWith = data.sort().filter((d) =>
@@ -61,7 +61,7 @@ export default function ExeptionSSA({stage}:{stage:string}) {
       <Header hasLink={true} />
       <div className="content">
         <h1 className="title">
-          {`Isentos ${stage?.toUpperCase()} 2023`}
+          {`Isentos ${params.stage?.toUpperCase()} 2023`}
           <a href="https://processodeingresso.upe.pe.gov.br/">Ver no site oficial</a>
         </h1>
         <div className="searchField">

@@ -1,4 +1,4 @@
-export default `SISTEMA SERIADO DE AVALIAÇÃO 3 - SSA3
+const data = `SISTEMA SERIADO DE AVALIAÇÃO 3 - SSA3
 CLASSIFICADOS
 Campus: Arcoverde
 Curso: Direito - Bacharelado
@@ -2394,3 +2394,5 @@ INSC. NOME ESCORE ORDEM COTISTA
 3011563 TOMAS SOARES SANTANA 75.2 7 NÃO
 Total: 10
 Data da publicação: 15/01/2020 Matrícula: 30/01/2020 a 31/01/2020 Página 88 de 88`;
+
+export default data;

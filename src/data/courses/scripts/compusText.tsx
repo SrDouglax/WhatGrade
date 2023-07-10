@@ -1,4 +1,4 @@
-export default `SISTEMA SERIADO DE AVALIAÇÃO 3 - SSA3
+const data = `SISTEMA SERIADO DE AVALIAÇÃO 3 - SSA3
 CLASSIFICADOS
 Campus: Arcoverde
 Curso: Direito - Bacharelado
@@ -2478,3 +2478,5 @@ INSC. NOME ESCORE ORDEM COTISTA
 Total: 10
 Data da publicação: 02/03/2022 Página 88 de 88
 Matrícula: 08/03/2022 a 11/03/2022`;
+
+export default data;

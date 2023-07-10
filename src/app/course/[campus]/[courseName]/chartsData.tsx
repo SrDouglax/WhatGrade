@@ -1,4 +1,4 @@
-export default {
+const chartsData = {
   Arcoverde: {
     Direito: {
       cutGrades: [
@@ -900,3 +900,5 @@ export default {
     },
   },
 };
+
+export default chartsData;

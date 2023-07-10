@@ -1,4 +1,4 @@
-export default `SISTEMA SERIADO DE AVALIAÇÃO 3 - SSA3
+const data = `SISTEMA SERIADO DE AVALIAÇÃO 3 - SSA3
 CLASSIFICADOS
 Campus: Arcoverde
 Curso: Direito - Bacharelado
@@ -2348,3 +2348,5 @@ INSC. NOME ESCORE ORDEM COTISTA
 3007242 PEDRO LUCAS SANTOS DE MENEZES TELES 74.47 5 NÃO
 Total: 10
 Data da publicação: 15/01/2019 Página 88 de 88`;
+
+export default data;

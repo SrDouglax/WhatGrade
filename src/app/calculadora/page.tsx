@@ -37,9 +37,9 @@ export default function Calculators() {
           </p>
         </div>
         <div className="items">
-          {calculators.map((calculator) => {
+          {calculators.map((calculator, i) => {
             return (
-              <a className={`calculator ${calculator.name}`} href={calculator.link}>
+              <a className={`calculator ${calculator.name}`} href={calculator.link} key={i} >
                 <div className="content">
                   <h2 className="name">{calculator.name}</h2>
                   <p className="description">{calculator.description}</p>

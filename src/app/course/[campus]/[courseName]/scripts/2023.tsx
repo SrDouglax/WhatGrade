@@ -1,4 +1,4 @@
-export default `SISTEMA SERIADO DE AVALIAÇÃO 3 - SSA3
+const data = `SISTEMA SERIADO DE AVALIAÇÃO 3 - SSA3
 CLASSIFICADOS
 Campus: Arcoverde
 Curso: Direito - Bacharelado
@@ -2498,3 +2498,5 @@ INSC. NOME ESCORE ORDEM COTISTA
 3007546 VICTOR RAPHAEL LEITE MACIEL 40.44 8 NÃO
 Data da publicação: 16/02/2023 Data da atualização: 28/02/2023 Página 92 de 92
 Matrícula: 08/03/2023 a 10/03/2023`;
+
+export default data;

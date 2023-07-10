@@ -1,20 +1,20 @@
 import { lazy, useCallback, useRef, useState } from "react";
-import { useDebounce } from "../../../../hooks/useDebounce";
+import { useDebounce } from "../../../../../hooks/useDebounce";
 
 const PossibleCourses = lazy(
-  () => import("../../../../components/PossibleCouses/PossibleCourses")
+  () => import("../../../../../components/PossibleCouses/PossibleCourses")
 );
 import { MdGpsFixed } from "react-icons/md";
 
-import students23 from "../../../../data/years/21-23";
-import students22 from "../../../../data/years/20-22";
-import students21 from "../../../../data/years/19-21";
+import students23 from "../../../../../data/years/21-23";
+import students22 from "../../../../../data/years/20-22";
+import students21 from "../../../../../data/years/19-21";
 
 type Data = {
   [key: string]: { grade_1?: string; grade_2?: string };
 };
 
-export default function findGrade({ period }: { period: string }) {
+export default function FindGrade({ period }: { period: string }) {
   // Nome possivel, nota 1, nota 2, nota 3, meta
   const [userData, setUserData] = useState<any>(["", "", "", "", ""]);
   const inputText = useRef<string>("");
