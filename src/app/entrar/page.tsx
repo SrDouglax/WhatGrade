@@ -8,7 +8,7 @@ import Icon from '../../assets/login/Icon.png'
 import Google from "../../assets/login/google.png";
 import Facebook from "../../assets/login/facebook.png";
 import Anonymous from "../../assets/login/anonymous.png";
-// import "./Welcome.scss";
+import "./styles.css";
 
 export default function Welcome() {
   const router = useRouter();

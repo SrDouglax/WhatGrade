@@ -1,8 +1,7 @@
 "use client";
-import Header from "../../../components/Header/Header";
 import { MdOutlineVerified, MdSearch } from "react-icons/md";
 import { BsFillEmojiDizzyFill } from "react-icons/bs";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./styles.scss";
 
@@ -12,7 +11,11 @@ interface exemptedType {
   exempted: string;
 }
 
-export default function ExeptionSSA({ params }: { params: { stage: string } }) {
+export default function ExeptionsList({
+  params,
+}: {
+  params: { stage: string; year: string };
+}) {
   const [data, setData] = useState<exemptedType[]>([]);
   const [filteredData, setFilteredData] = useState<exemptedType[]>([]);
   const [dataLoading, setDataLoading] = useState(true);
@@ -20,21 +23,15 @@ export default function ExeptionSSA({ params }: { params: { stage: string } }) {
   const navigate = useRouter();
 
   useEffect(() => {
-    if (params.stage === "ssa1") {
-      import("./data/exemptedSSA1").then(({ exempteds }) => {
-        setData(exempteds);
-        setDataLoading(false);
-      });
-    } else if (params.stage === "ssa2") {
-      import("./data/exemptedSSA2").then(({ exempteds }) => {
-        setData(exempteds);
-        setDataLoading(false);
-      });
-    } else if (params.stage === "ssa3") {
-      import("./data/exemptedSSA3").then(({ exempteds }) => {
-        setData(exempteds);
-        setDataLoading(false);
-      });
+    const validYear = ["ssa1", "ssa2", "ssa3"].includes(params.stage);
+    const validStage = ["2023"].includes(params.year);
+    if (validYear && validStage) {
+      import(`./data/${params.year}/${params.stage.toUpperCase()}`).then(
+        ({ exempteds }) => {
+          setData(exempteds);
+          setDataLoading(false);
+        }
+      );
     } else {
       navigate.push("/");
     }
@@ -58,11 +55,10 @@ export default function ExeptionSSA({ params }: { params: { stage: string } }) {
 
   return (
     <div className="ExeptionSSA">
-      <Header hasLink={true} />
       <div className="content">
-        <h1 className="title">
-          {`Isentos ${params.stage?.toUpperCase()} 2023`}
-          <a href="https://processodeingresso.upe.pe.gov.br/">Ver no site oficial</a>
+        <h1 className="title text-2xl font-bold">
+          {`Isentos ${params.stage?.toUpperCase()} ${params.year}`}
+          <a className="font-normal text-base" href="https://processodeingresso.upe.pe.gov.br/">Ver no site oficial</a>
         </h1>
         <div className="searchField">
           <input

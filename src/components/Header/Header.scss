@@ -22,42 +22,27 @@
     }
   }
 
-  &>.BackLink {
-    display: flex;
-    align-items: center;
-    margin-left: -10px;
-    cursor: pointer;
-    text-decoration: none;
+  &>.right {
+    &>.chats {}
 
-    &>.Icon {
-      font-size: 2.3rem;
-      color: rgb(162, 162, 162);
-    }
+    &>.openDrawer {
+      display: flex;
+      flex-direction: column;
+      gap: 0.36rem;
+      cursor: pointer;
 
-    &>.Text {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: rgb(162, 162, 162);
-    }
-  }
-
-  &>.openDrawer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.36rem;
-    cursor: pointer;
-
-    &>.line {
-      width: 1.6rem;
-      height: 0.12rem;
-      transition: 200ms ease;
-      background-color: #5C5C5C;
-      border-radius: .1rem;
-    }
-
-    &:hover {
       &>.line {
-        background-color: #c6c6c6;
+        width: 1.6rem;
+        height: 0.12rem;
+        transition: 200ms ease;
+        background-color: #5C5C5C;
+        border-radius: .1rem;
+      }
+
+      &:hover {
+        &>.line {
+          background-color: #c6c6c6;
+        }
       }
     }
   }
@@ -180,11 +165,12 @@
         }
 
         &>.uni {
-        opacity: 0.5;
-        &>.dotColor {
-          background-color: #c1a507;
+          opacity: 0.5;
+
+          &>.dotColor {
+            background-color: #c1a507;
           }
-          
+
           color: white;
         }
 
@@ -198,6 +184,7 @@
 
         &>.cale {
           opacity: 0.5;
+
           &>.dotColor {
             background-color: #ff251d;
           }

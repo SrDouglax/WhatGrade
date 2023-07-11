@@ -1,5 +1,4 @@
 "use client";
-import Header from "../../components/Header/Header";
 import { useState } from "react";
 import { firestore } from "../../services/firebase";
 import "./styles.scss";
@@ -24,8 +23,7 @@ export default function Novelty() {
     }
   }
   return (
-    <div className="Novelty">
-      <Header hasLink={true} />
+    <div className="Novelty overflow-hidden">
       <div className="content">
         <div className="survey">
           <h2 className="title">O que deseja sugerir?</h2>
@@ -41,16 +39,14 @@ export default function Novelty() {
             className={`suggestion ${sendingState == "sent" ? "low" : ""}`}
             placeholder="Algo que gostaria de ver no site"
             maxLength={7500}
-            disabled={sendingState == "sent"}
-          ></textarea>
+            disabled={sendingState == "sent"}></textarea>
         </div>
         <div className="buttons">
           <div
             className={`send ${
               sendingState == "sending" ? "sending" : sendingState == "sent" ? "sent" : ""
             }`}
-            onClick={sendSuggestion}
-          >
+            onClick={sendSuggestion}>
             {sendingState == "sending" ? <div className="loading"> </div> : ""}
             <p className="text">
               {sendingState == "sending"

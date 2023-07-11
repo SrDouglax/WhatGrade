@@ -1,16 +1,12 @@
-'use client'
+"use client";
 
 // Codes
 import { useEffect, useState } from "react";
-import { MdNavigateBefore } from "react-icons/md";
+import { MdChat, MdNavigateBefore } from "react-icons/md";
 import { firebaseAuth } from "../../services/firebase";
 import { GlobalUser } from "../../services/firebase-interfaces";
 import { useRouter } from "next/navigation";
 import "./Header.scss";
-
-interface props {
-  hasLink: boolean;
-}
 
 function runAnimation(element: HTMLElement, name: string, duration: number) {
   element.style.animation = ``;
@@ -22,7 +18,7 @@ function runAnimation(element: HTMLElement, name: string, duration: number) {
   }, 1);
 }
 
-export default function Header({ hasLink }: props) {
+export default function Header() {
   const [drawerClosed, setDrawerClosed] = useState(true);
   const [user, setUser] = useState<GlobalUser | undefined>();
 
@@ -36,44 +32,34 @@ export default function Header({ hasLink }: props) {
   const navigate = useRouter();
   return (
     <div className="Header">
-      {hasLink ? (
-        <>
-          <div
-            className="BackLink"
-            onClick={() => {
-              navigate.back();
-            }}
-          >
-            <MdNavigateBefore className="Icon" />
-            <p className="Text">voltar</p>
-          </div>
-        </>
-      ) : (
-        <a href="/" className="Title">
-          <img src={"/images/components/header/IconWithName.png"} alt="bookshelf icon" />
+      <a href="/" className="Title">
+        <img src={"/images/components/header/IconWithName.png"} alt="bookshelf icon" />
+      </a>
+      <div className="right flex gap-4 text-2xl items-center">
+        <a href="/chat">
+          <MdChat className="chats text-gray-200" />
         </a>
-      )}
-      <div
-        className="openDrawer"
-        onClick={() => {
-          runAnimation(
-            document.querySelector(".openDrawer") as HTMLElement,
-            "boing",
-            0.5
-          );
-          runAnimation(
-            document.querySelector(".openDrawer") as HTMLElement,
-            "boing",
-            0.5
-          );
-          setTimeout(() => {
-            setDrawerClosed(false);
-          }, 150);
-        }}
-      >
-        <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div>
+        <div
+          className="openDrawer"
+          onClick={() => {
+            runAnimation(
+              document.querySelector(".openDrawer") as HTMLElement,
+              "boing",
+              0.5
+            );
+            runAnimation(
+              document.querySelector(".openDrawer") as HTMLElement,
+              "boing",
+              0.5
+            );
+            setTimeout(() => {
+              setDrawerClosed(false);
+            }, 150);
+          }}>
+          <div className="line bg-gray-200"></div>
+          <div className="line bg-gray-200"></div>
+          <div className="line bg-gray-200"></div>
+        </div>
       </div>
       <div className={`drawer ${drawerClosed ? "close" : "open"}`}>
         <div className="header">
@@ -89,25 +75,9 @@ export default function Header({ hasLink }: props) {
               <div className="dotColor"></div>
               <p className="name">Início</p>
             </a>
-            <a href="/calculadora" className="calc">
-              <div className="dotColor"></div>
-              <p className="name">Calculadoras</p>
-            </a>
-            <a href="" className="chats">
-              <div className="dotColor"></div>
-              <p className="name">Bate-Papos</p>
-            </a>
             <a href="/feedback" className="feed">
               <div className="dotColor"></div>
               <p className="name">Feedback</p>
-            </a>
-            <a href="" className="uni">
-              <div className="dotColor"></div>
-              <p className="name">Universidades</p>
-            </a>
-            <a href="" className="cale">
-              <div className="dotColor"></div>
-              <p className="name">Calendário</p>
             </a>
           </div>
         </div>

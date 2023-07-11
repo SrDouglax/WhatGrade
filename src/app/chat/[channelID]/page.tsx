@@ -1,7 +1,15 @@
-// <<---- Importações ---->> \\
-import { MdNavigateNext } from "react-icons/md";
+"use client";
+import { useState, useEffect } from "react";
 import "./styles.scss";
 
+import { firebaseAuth, firestore } from "../../../services/firebase";
+import ChatContent from "./components/ChatContent/ChatContent";
+import { QueryDocumentSnapshot } from "firebase/firestore";
+import {
+  GlobalUser,
+  UserMessageObject,
+} from "../../../services/firebase-interfaces";
+import { useRouter } from "next/navigation";
 
 interface chatType {
   name: string;
@@ -9,7 +17,7 @@ interface chatType {
   link: string;
 }
 
-export default function Chat() {
+export default ({params}:{params : {channelID: string}}) => {
   let chats: chatType[] = [
     {
       name: "Ciência da Computação",
@@ -144,43 +152,83 @@ export default function Chat() {
     },
     {
       name: "Filosofia",
-      tags: ["Filosofia", "Ética", "Lógica", "Política", "Filósofos", "Pensamento Crítico"],
+      tags: [
+        "Filosofia",
+        "Ética",
+        "Lógica",
+        "Política",
+        "Filósofos",
+        "Pensamento Crítico",
+      ],
       link: "/chat/Flsf",
-    }
+    },
   ];
+  const [user, setUser] = useState<GlobalUser>();
+  const [dbUnsubNew, setDbUnsubNew] = useState<Function>(() => {});
+  const [dbUnsubAll] = useState<Function>(() => {});
+  const [allMessages, setAllMessages] = useState<UserMessageObject[]>([]);
+  const [firstMessagesLoaded, setFirstMessagesLoaded] = useState<boolean>(false);
+  const [lastVisible, setLastVisible] = useState<QueryDocumentSnapshot>();
+
+  const navigate = useRouter();
+
+  const allowedIDs = [
+    "CncDCmptc",
+    "CmprtlhmntDMtrl",
+    "Chtdvdsdsscs",
+    "RdcLtrtr",
+    "Extstcnlg",
+    "HstrGrl",
+    "LngsEstrngrs",
+    "Ggrf",
+    "Blg",
+    "Flsf",
+  ];
+  if (!allowedIDs.includes(params.channelID || "")) {
+    navigate.push("/chat");
+  }
+
+  useEffect(() => {
+    firebaseAuth.getUser().then(({ hasUser, user }) => {
+      if (hasUser) {
+        setUser(user);
+      }
+    });
+
+    firestore.getMessagesFromChannel(params.channelID || "", setAllMessages).then((e) => {
+      setLastVisible(e.lastVisible);
+      setFirstMessagesLoaded(true);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (firstMessagesLoaded) {
+      firestore.onChangesInChannel(
+        params.channelID || "",
+        allMessages,
+        setAllMessages,
+        dbUnsubNew,
+        setDbUnsubNew,
+        dbUnsubAll
+      );
+    }
+  }, [allMessages]);
+
   return (
-    <div className="Chats overflow-hidden">
-      <div className="content">
-        <div className="about">
-          <h2 className="title text-xl font-bold">Bate-papos</h2>
-          <p className="text">
-            Compartilhe informações e converse com pessoas sobre diversos tópicos.
-          </p>
-        </div>
-        <div className="items">
-          {chats
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((chat) => {
-              return (
-                <a className={`chat ${chat.name}`} key={chat.name} href={chat.link}>
-                  <div className="content">
-                    <h2 className="name">{chat.name}</h2>
-                    <div className="tags">
-                      {chat.tags.map((tag: any) => (
-                        <p key={tag} className="tag">
-                          {tag}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="openlink">
-                    <MdNavigateNext />
-                  </div>
-                </a>
-              );
-            })}
-        </div>
-      </div>
-    </div>
+    <>
+      <h1 className="chatName text-gray-200 font-bold text-xl w-full pt-2 pb-2 text-center">{`${
+        chats.find((e) => {
+          return e.link.slice(6) === params.channelID;
+        })?.name
+      }`}</h1>
+      <ChatContent
+        user={user as GlobalUser}
+        channelID={params.channelID || ""}
+        allMessages={allMessages}
+        setAllMessages={setAllMessages}
+        lastVisible={lastVisible}
+        setLastVisible={setLastVisible}
+      />
+    </>
   );
-}
+};
