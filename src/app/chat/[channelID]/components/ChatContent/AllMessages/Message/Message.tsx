@@ -3,7 +3,7 @@ import TextTypeMessage from "./MessageTypes/textTypeMessage";
 import StyleTypeMessage from "./MessageTypes/styleTypeMessage";
 import { useRouter } from "next/navigation.js";
 
-export default ({ message, user, deleteMessage, showToast }: any) => {
+export default function Message ({ message, user, deleteMessage, showToast }: any) {
   // |> Navegação entre páginas.
   const openpage = useRouter();
 

@@ -1,6 +1,6 @@
 import "./styleTypeMessage.scss";
 
-export default ({ message }: any) => {
+export default function StyleMsg ({ message }: any) {
   switch (message.style) {
     case "line":
       return (

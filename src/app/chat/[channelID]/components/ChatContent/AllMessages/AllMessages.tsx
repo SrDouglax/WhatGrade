@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import Message from "./Message/Message";
 import Toast from "../../../../../../components/Toast/Toast";
 
-export default ({ messages, user, deleteMessage, loadMoreMessages }: any) => {
+export default function AllMessages ({ messages, user, deleteMessage, loadMoreMessages }: any) {
   const [toast, setToast] = useState({
     show: false,
     text: "",

@@ -17,14 +17,14 @@ interface CompProps {
   setLastVisible: Function;
 }
 
-export default ({
+export default function ChatContent({
   allMessages,
   setAllMessages,
   channelID,
   user,
   lastVisible,
   setLastVisible,
-}: CompProps) => {
+}: CompProps) {
   const input = useRef<HTMLInputElement>();
 
   const loadMoreMessages = async () => {
@@ -67,7 +67,7 @@ export default ({
       });
       (document.getElementById("inputTextToSend") as HTMLInputElement).value = "";
     }
-    input.current?.focus()
+    input.current?.focus();
   }
 
   return (
@@ -97,11 +97,10 @@ export default ({
           className="bottomOptions-send"
           onClick={() => {
             handleNewMessage();
-          }}
-        >
-          <MdSend/>
+          }}>
+          <MdSend />
         </div>
       </div>
     </div>
   );
-};
+}

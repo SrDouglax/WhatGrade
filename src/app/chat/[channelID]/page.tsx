@@ -17,7 +17,7 @@ interface chatType {
   link: string;
 }
 
-export default ({params}:{params : {channelID: string}}) => {
+export default function ChatChannel ({params}:{params : {channelID: string}}) {
   let chats: chatType[] = [
     {
       name: "Ciência da Computação",

@@ -2,13 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import moment from "moment";
 import "moment/dist/locale/pt-br";
 import "./textTypeMessage.scss";
-import { FaCopy, FaReply, FaTrashAlt } from "react-icons/fa";
+import { FaCopy, FaTrashAlt } from "react-icons/fa";
 import Linkify from "linkify-react";
 import { MdCopyAll } from "react-icons/md";
 
 moment.locale("pt-br");
 
-export default ({ message, user, openProfile, deleteMessage, showToast }: any) => {
+export default function TextMsg({
+  message,
+  user,
+  openProfile,
+  deleteMessage,
+  showToast,
+}: any) {
   const [showContext, setShowContext] = useState(false);
   const [contextPos, setContextPos] = useState([0, 0]);
 
@@ -133,8 +139,7 @@ export default ({ message, user, openProfile, deleteMessage, showToast }: any) =
         data-senderid={message.sender.uid}
         data-readerid={user?.id}
         ref={boxRef as any}
-        onContextMenu={handleMessageContextMenu as any}
-      >
+        onContextMenu={handleMessageContextMenu as any}>
         <div className="senderPicture">
           <img
             src={
@@ -152,8 +157,7 @@ export default ({ message, user, openProfile, deleteMessage, showToast }: any) =
               onClick={(e) => {
                 e.preventDefault();
                 openProfile(message.sender.id);
-              }}
-            >
+              }}>
               {message.sender.name}
             </p>
             <p className="message sendDate">
@@ -172,8 +176,7 @@ export default ({ message, user, openProfile, deleteMessage, showToast }: any) =
             left: `${contextPos[0]}px`,
             // right: contextPos[0] < 0 ? `${-contextPos[0]}px` : "",
             top: `${contextPos[1]}px`,
-          }}
-        >
+          }}>
           <ul>
             {options.map((option) => (
               <li className={`${option.class}`} key={option.class}>
@@ -186,4 +189,4 @@ export default ({ message, user, openProfile, deleteMessage, showToast }: any) =
       </div>
     </>
   );
-};
+}
