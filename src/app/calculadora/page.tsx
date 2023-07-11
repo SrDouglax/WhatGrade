@@ -1,7 +1,6 @@
+import { Metadata } from "next";
 import "./styles.scss";
-import Header from "../../components/Header/Header";
 import { MdNavigateNext } from "react-icons/md";
-import { Roboto } from "@/assets/fonts/fonts";
 
 interface calculatorType {
   name: string;
@@ -9,18 +8,28 @@ interface calculatorType {
   link: string;
 }
 
+export const metadata: Metadata = {
+  description:
+    "Calcule quanto você precisa tirar no SSA3 para entrar no curso dos sonhos.",
+  keywords: [
+    "calcular nota ssa",
+    "calculadora ssa",
+    "calculadora",
+    "ssa",
+    "vestibar",
+    "pernambuco",
+    "Brasil",
+    "2023",
+    "processodeingresso",
+  ],
+};
+
 const calculators: calculatorType[] = [
   {
     name: "Sistema Seriado de Avalaliação (SSA)",
     description:
       "Calcule quanto você precisa tirar no SSA3 e veja os cursos disponíveis em 2023. - UPE",
     link: "/calculadora/ssa",
-  },
-  {
-    name: "ENEM",
-    description:
-      "Calcule sua pontuação com base nos seus acertos e nos pesos divulgados do ano passado.",
-    link: "",
   },
 ];
 

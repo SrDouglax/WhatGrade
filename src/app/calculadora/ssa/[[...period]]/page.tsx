@@ -3,27 +3,10 @@ import { useRouter } from "next/navigation";
 import FindGrade from "./components/findGrade/findGrade";
 import "./styles.scss";
 import { useEffect } from "react";
-import { Metadata } from "next";
 
 interface CalcSSAProps {
   params: { period: string[] };
 }
-
-export const metadata: Metadata = {
-  description:
-    "Calcule quanto você precisa tirar no SSA3 para entrar no curso dos sonhos.",
-  keywords: [
-    "calcular nota ssa",
-    "calculadora ssa",
-    "calculadora",
-    "ssa",
-    "vestibar",
-    "pernambuco",
-    "Brasil",
-    "2023",
-    "processodeingresso",
-  ],
-};
 
 export default function CalcSSA({ params }: CalcSSAProps) {
   const router = useRouter();
