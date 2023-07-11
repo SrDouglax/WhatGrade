@@ -1,5 +1,4 @@
 "use client";
-import Header from "../../../components/Header/Header"
 import FindGrade from "./components/findGrade/findGrade"
 import "./styles.scss";
 
@@ -7,7 +6,7 @@ export default function CalcSSA() {
   const period = '21-23'
 
   return (
-    <div className="App">
+    <div className="App overflow-hidden">
       <div className="Content">
         <FindGrade period={period as string} />
       </div>

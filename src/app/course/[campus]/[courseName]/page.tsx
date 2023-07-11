@@ -1,9 +1,9 @@
 "use client";
-import Header from "../../../../components/Header/Header";
 import Chart from "react-google-charts";
 import "./styles.scss";
 
 import chartsData from "./chartsData";
+import { Bebas_Neue } from "@/assets/fonts/fonts";
 
 interface extraDataType {
   [key: string]: {

@@ -1,6 +1,7 @@
 'use client'
 import { lazy, useCallback, useEffect, useRef, useState } from "react";
 import { useDebounce } from "../../../../../hooks/useDebounce";
+import { Bebas_Neue } from "@/assets/fonts/fonts";
 
 const PossibleCourses = lazy(
   () => import("../../../../../components/PossibleCouses/PossibleCourses")
@@ -94,8 +95,8 @@ export default function FindGrade({ period }: { period: string }) {
 
   return (
     <>
-      <h1 className="title">
-        SSA <span> GRADES</span>
+      <h1 className="title" style={{...Bebas_Neue.style, fontSize: "5rem", lineHeight: "0.8"}}>
+        NOTAS <span> SSA</span>
       </h1>
       <h2 className="subtitle">
         {`20${period.split("-")[0]} - 20${period.split("-")[1]}`}
@@ -119,8 +120,7 @@ export default function FindGrade({ period }: { period: string }) {
         </p>
         <p
           className={"grade grade3 " + (userData?.[3] === "" ? "placeholder" : "")}
-          id="grade3"
-        >
+          id="grade3">
           {userData?.[3].toString().replace(".", ",") || "SSA3"}
         </p>
 
