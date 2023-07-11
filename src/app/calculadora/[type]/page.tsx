@@ -8,7 +8,6 @@ export default function CalcSSA() {
 
   return (
     <div className="App">
-      <Header hasLink={true} />
       <div className="Content">
         <FindGrade period={period as string} />
       </div>
