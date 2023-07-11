@@ -4,6 +4,7 @@ import { BsFillEmojiDizzyFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./styles.scss";
+import GenerateExeptionData from "./data/scripts/GenerateExeptionData";
 
 interface exemptedType {
   name: string;
@@ -23,7 +24,9 @@ export default function ExeptionsList({
   const navigate = useRouter();
 
   useEffect(() => {
-    const validYear = ["ssa1", "ssa2", "ssa3"].includes(params.stage);
+    const validYear = ["ssa1", "ssa2", "ssa3", "ssa1r", "ssa2r", "ssa3r"].includes(
+      params.stage
+    );
     const validStage = ["2023"].includes(params.year);
     if (validYear && validStage) {
       import(`./data/${params.year}/${params.stage.toUpperCase()}`).then(
@@ -55,10 +58,17 @@ export default function ExeptionsList({
 
   return (
     <div className="ExeptionSSA">
+      {/* <GenerateExeptionData/> */}
       <div className="content">
         <h1 className="title text-2xl font-bold">
-          {`Isentos ${params.stage?.toUpperCase()} ${params.year}`}
-          <a className="font-normal text-base" href="https://processodeingresso.upe.pe.gov.br/">Ver no site oficial</a>
+          {`Isentos ${params.stage?.toUpperCase().replace("R", "")} ${params.year} ${
+            params.stage?.includes("r") ? "(Recurso)" : ""
+          }`}
+          <a
+            className="font-normal text-base"
+            href="https://processodeingresso.upe.pe.gov.br/">
+            Ver no site oficial
+          </a>
         </h1>
         <div className="searchField">
           <input

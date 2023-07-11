@@ -42,7 +42,7 @@ export default function Categories() {
           <div className="items flex flex-col gap-4 p-5">
             <a
               href="/calculadora/ssa"
-              className="calculators bg-gradient-to-r from-blue-500 to-blue-700 flex rounded-md p-2 gap-2 shadow-lg">
+              className="calculators bg-gradient-to-r from-blue-500 to-blue-700 flex rounded-md p-2 gap-2 shadow-lg ease-in-out duration-150 hover:scale-95">
               <MdCalculate className="text-white text-3xl" />
               <div className="content flex flex-col">
                 <h2 className="title text-white text-xl font-bold">Calculadora</h2>
@@ -53,7 +53,7 @@ export default function Categories() {
             </a>
             <a
               href="/isencoes"
-              className="calculators bg-gradient-to-r from-violet-700 to-indigo-700 flex rounded-md p-2 gap-2 shadow-lg">
+              className="calculators bg-gradient-to-r from-violet-700 to-indigo-700 flex rounded-md p-2 gap-2 shadow-lg ease-in-out duration-150 hover:scale-95">
               <MdMonetizationOn className="text-white text-3xl" />
               <div className="content flex flex-col">
                 <h2 className="title text-white text-xl font-bold">Isenções </h2>

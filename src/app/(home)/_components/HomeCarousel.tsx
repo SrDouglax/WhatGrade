@@ -3,9 +3,9 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import i01 from "./../../assets/home/carousel/Carousel01.png";
-import i02 from "./../../assets/home/carousel/Carousel02.png";
-import i03 from "./../../assets/home/carousel/Carousel03.png";
+import i01 from "./../../../assets/home/carousel/Carousel01.png";
+import i02 from "./../../../assets/home/carousel/Carousel02.png";
+import i03 from "./../../../assets/home/carousel/Carousel03.png";
 import Image from "next/image";
 
 export default function HomeCarousel() {

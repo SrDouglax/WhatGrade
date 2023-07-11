@@ -1,6 +1,13 @@
+import { Metadata } from "next";
+
 interface exemptedListType {
   [key: string]: { title: string; url: string }[];
 }
+
+export const metadata: Metadata = {
+  description: "Lista dos  resultados de isenção do SSA em 2023",
+  keywords: ["isenção", "resuultado", "deferida", "não foi", '2022', '2023'],
+};
 
 export default function Exeptions() {
   const years: exemptedListType = {
@@ -17,6 +24,18 @@ export default function Exeptions() {
         title: "Isentos SSA3",
         url: "/isencoes/2023/ssa3",
       },
+      {
+        title: "Isentos SSA1 (Recurso)",
+        url: "/isencoes/2023/ssa1r",
+      },
+      {
+        title: "Isentos SSA2 (Recurso)",
+        url: "/isencoes/2023/ssa2r",
+      },
+      {
+        title: "Isentos SSA3 (Recurso)",
+        url: "/isencoes/2023/ssa3r",
+      },
     ],
   };
   
@@ -26,17 +45,17 @@ export default function Exeptions() {
         <h2 className="title text-white text-xl font-bold mb-4">
           Resultados de Isenções
         </h2>
-        <div className="years">
+        <div className="years bg-gray-900 pb-4 rounded-md">
           {Object.keys(years).map((year, i) => {
             return (
               <div className="year" key={i}>
                 <h2 className="yearTitle text-white font-md px-4 py-2 mb-2 rounded-md bg-gray-300">
                   Ano de {year}
                 </h2>
-                <div className="links flex flex-col">
+                <div className="links flex flex-col gap-1">
                   {Object.values(years)[i].map((yearData, i) => (
                     <a
-                      className={`calculator text-sky-400 ml-2 underline ${yearData.title}`}
+                      className={`calculator text-sky-400 ml-5 underline ${yearData.title}`}
                       href={yearData.url}
                       key={i}>
                       {yearData.title}

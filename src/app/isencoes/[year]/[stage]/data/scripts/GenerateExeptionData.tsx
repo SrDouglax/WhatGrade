@@ -1,8 +1,8 @@
 import pdfData from "./pdfData";
 
-const divider = `Data de publicação: 27/06/2023.
+const divider = `Data da publicação: 10/07/2023.
 Processo de Ingresso 2024 - SSA 3
-Processamento Solicitações Isenção por NIS (Prazo para recurso: 28 a 30/6/2023)`;
+Resultado dos Recursos das Solicitações de Isenção por NIS`;
 
 const data = pdfData
   .replaceAll(divider, "")

@@ -1,6 +1,6 @@
-import HomeCarousel from "./components/HomeCarousel";
-import Categories from "./components/Categories";
-import LoggedVerify from "./components/LoggedVerify";
+import HomeCarousel from "./_components/HomeCarousel";
+import Categories from "./_components/Categories";
+import LoggedVerify from "./_components/LoggedVerify";
 
 export default function Home() {
   return (

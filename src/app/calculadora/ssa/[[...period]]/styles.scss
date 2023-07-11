@@ -101,6 +101,14 @@
     color: #606060;
     font-size: 2rem;
     font-family: Helvetica, sans-serif;
+    text-align: center;
+    animation: in 900ms ease forwards;
+  }
+
+  &>.changePeriod {
+    color: #3680ff;
+    font-size: 1rem;
+    font-family: Helvetica, sans-serif;
     margin-bottom: 50px;
     text-align: center;
     animation: in 900ms ease forwards;

@@ -1,11 +1,8 @@
 'use client'
-import { lazy, useCallback, useEffect, useRef, useState } from "react";
-import { useDebounce } from "../../../../../hooks/useDebounce";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useDebounce } from "../../../../../../hooks/useDebounce";
 import { Bebas_Neue } from "@/assets/fonts/fonts";
-
-const PossibleCourses = lazy(
-  () => import("../../../../../components/PossibleCouses/PossibleCourses")
-);
+import PossibleCourses from "../../../../../../components/PossibleCouses/PossibleCourses";
 
 type Data = {
   [key: string]: { grade_1?: string; grade_2?: string };
@@ -51,7 +48,7 @@ export default function FindGrade({ period }: { period: string }) {
   async function loadCode() {
     let studentsData: Data = {};
     if (period === "21-23") {
-      studentsData = (await import("../../../../../data/years/21-23")) as Data;
+      studentsData = (await import("../../../../../../data/years/21-23")) as Data;
     }
 
     return studentsData.default;
@@ -95,12 +92,17 @@ export default function FindGrade({ period }: { period: string }) {
 
   return (
     <>
-      <h1 className="title" style={{...Bebas_Neue.style, fontSize: "5rem", lineHeight: "0.8"}}>
+      <h1
+        className="title"
+        style={{ ...Bebas_Neue.style, fontSize: "5rem", lineHeight: "0.8" }}>
         NOTAS <span> SSA</span>
       </h1>
       <h2 className="subtitle">
         {`20${period.split("-")[0]} - 20${period.split("-")[1]}`}
       </h2>
+      <a href="/calculadora/list-ssa" className="changePeriod">
+        Ver anos anteriores
+      </a>
       <p className="name">{userData?.[0]}</p>
       <input
         type="text"
@@ -137,8 +139,8 @@ export default function FindGrade({ period }: { period: string }) {
         />
         <div className="inline">
           <p>Nota Final</p>
-          <a href="/pdfs/Listao_SSA3_2023.pdf" target="_blank">
-            Dados (SSA 2023)
+          <a href="https://processodeingresso.upe.pe.gov.br" target="_blank">
+            Processo de Ingresso
           </a>
         </div>
       </div>

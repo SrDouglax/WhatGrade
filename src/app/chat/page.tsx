@@ -1,13 +1,18 @@
 // <<---- Importações ---->> \\
 import { MdNavigateNext } from "react-icons/md";
 import "./styles.scss";
-
+import { Metadata } from "next";
 
 interface chatType {
   name: string;
   tags: string[];
   link: string;
 }
+
+export const metadata: Metadata = {
+  description: "Bate-papos sobre diversos temas e meteriais para vestibular.",
+  keywords: ["chat", "bate-papo", "material", "vestibular"],
+};
 
 export default function Chat() {
   let chats: chatType[] = [
