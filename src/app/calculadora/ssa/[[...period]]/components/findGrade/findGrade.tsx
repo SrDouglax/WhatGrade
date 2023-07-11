@@ -46,12 +46,8 @@ export default function FindGrade({ period }: { period: string }) {
   }, 500);
 
   async function loadCode() {
-    let studentsData: Data = {};
-    if (period === "21-23") {
-      studentsData = (await import("../../../../../../data/years/21-23")) as Data;
-    }
-
-    return studentsData.default;
+    let studentsData = await import(`../../../../../../data/years/${period}`);
+    return studentsData.default as Data;
   }
 
   function calculateGrade(grade1: number, grade2: number, expectedGrade: number) {

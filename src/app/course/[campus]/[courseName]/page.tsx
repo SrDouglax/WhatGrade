@@ -4,6 +4,7 @@ import "./styles.scss";
 
 import chartsData from "./chartsData";
 import { Bebas_Neue } from "@/assets/fonts/fonts";
+import Header from "@/components/Header/Header";
 
 interface extraDataType {
   [key: string]: {
@@ -188,11 +189,16 @@ interface CourseInfoProps {
 export default function CourseInfo({ params }: { params: CourseInfoProps }) {
   const period = "21-23";
 
+  console.log(params);
+  const _params = { campus: decodeURIComponent(params.campus), courseName: decodeURIComponent(params.courseName)}
+  console.log(_params);
+  
+
   const cutsExtra = (
-    (chartsData as any)[(params.campus as string)?.replaceAll("-", " ")][
-      params.courseName?.replaceAll("-", " ") as string
-    ].cutGrades as Array<string>
-  ).reverse();
+    (chartsData as any)[(_params.campus as string)?.replaceAll("-", " ")][
+      _params.courseName?.replaceAll("-", " ") as string
+    ]?.cutGrades as Array<string>
+  )?.reverse();
   const cuts = [
     ["", "Ampla", "Cotista"],
     ...cutsExtra,
@@ -200,8 +206,8 @@ export default function CourseInfo({ params }: { params: CourseInfoProps }) {
   ];
 
   const vacanciesExtra = (
-    (chartsData as any)[(params.campus as string)?.replaceAll("-", " ")][
-      (params.courseName as string)?.replaceAll("-", " ") as string
+    (chartsData as any)[(_params.campus as string)?.replaceAll("-", " ")][
+      (_params.courseName as string)?.replaceAll("-", " ") as string
     ].vacancies as Array<string>
   ).reverse();
   const vacancies = [
@@ -226,17 +232,18 @@ export default function CourseInfo({ params }: { params: CourseInfoProps }) {
 
   return (
     <div className="CouseInfo">
+      <Header />
       <div className="content">
         <div className="nameAndPicture">
-          <p className="campus">({params.campus?.replaceAll("-", " ")})</p>
+          <p className="campus">({_params.campus?.replaceAll("-", " ")})</p>
           <p className="desc">
-            {extraData[params.courseName?.replaceAll("-", " ") as string]?.description}
+            {extraData[_params.courseName?.replaceAll("-", " ") as string]?.description}
           </p>
-          <h1 className="courseName">{params.courseName?.replaceAll("-", " ")}</h1>
+          <h1 className="courseName">{_params.courseName?.replaceAll("-", " ")}</h1>
           <div className="fade"></div>
           <img
             src={
-              extraData[params.courseName?.replaceAll("-", " ") as string]?.img ||
+              extraData[_params.courseName?.replaceAll("-", " ") as string]?.img ||
               "https://png.pngtree.com/background/20210712/original/pngtree-gradient-gray-background-with-modern-firm-shape-picture-image_1183862.jpg"
             }
             alt="course image"

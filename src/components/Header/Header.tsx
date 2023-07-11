@@ -2,7 +2,7 @@
 
 // Codes
 import { useEffect, useState } from "react";
-import { MdChat, MdNavigateBefore } from "react-icons/md";
+import { MdChat } from "react-icons/md";
 import { firebaseAuth } from "../../services/firebase";
 import { GlobalUser } from "../../services/firebase-interfaces";
 import { useRouter } from "next/navigation";

@@ -1,3 +1,4 @@
+import Header from "@/components/Header/Header";
 import { Metadata } from "next";
 
 interface exemptedListType {
@@ -41,6 +42,7 @@ export default function Exeptions() {
   
   return (
     <div className="Exeptions">
+      <Header />
       <div className="content p-4">
         <h2 className="title text-white text-xl font-bold mb-4">
           Resultados de Isenções

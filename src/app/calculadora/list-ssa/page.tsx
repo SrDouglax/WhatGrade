@@ -1,3 +1,4 @@
+import Header from "@/components/Header/Header";
 import "./styles.scss";
 
 export default function List() {
@@ -8,6 +9,7 @@ export default function List() {
   ];
   return (
     <div className="App">
+      <Header />
       <div className="ContentList">
         {periods.map((period, index) => {
           return (
@@ -15,8 +17,7 @@ export default function List() {
               href={`/calculadora/ssa/${period.period}`}
               key={index}
               className="Period"
-              style={{ animation: `in ${1000 + index * 100}ms ease forwards` }}
-            >
+              style={{ animation: `in ${1000 + index * 100}ms ease forwards` }}>
               <h2 className="font-bold">
                 SSA entre 20{period.period.split("-")[0]} e 20
                 {period.period.split("-")[1]}

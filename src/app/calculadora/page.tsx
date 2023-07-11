@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import "./styles.scss";
 import { MdNavigateNext } from "react-icons/md";
+import Header from "@/components/Header/Header";
 
 interface calculatorType {
   name: string;
@@ -36,6 +37,7 @@ const calculators: calculatorType[] = [
 export default function Calculators() {
   return (
     <div className="Calculators">
+      <Header />
       <div className="content">
         <div className="about">
           <h2 className="title">Calculadoras</h2>
@@ -47,7 +49,10 @@ export default function Calculators() {
         <div className="items">
           {calculators.map((calculator, i) => {
             return (
-              <a className={`calculator ${calculator.name}`} href={calculator.link} key={i} >
+              <a
+                className={`calculator ${calculator.name}`}
+                href={calculator.link}
+                key={i}>
                 <div className="content">
                   <h2 className="name">{calculator.name}</h2>
                   <p className="description">{calculator.description}</p>

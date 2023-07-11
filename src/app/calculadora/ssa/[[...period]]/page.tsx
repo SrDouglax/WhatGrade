@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import FindGrade from "./components/findGrade/findGrade";
 import "./styles.scss";
 import { useEffect } from "react";
+import Header from "@/components/Header/Header";
 
 interface CalcSSAProps {
   params: { period: string[] };
@@ -20,6 +21,7 @@ export default function CalcSSA({ params }: CalcSSAProps) {
 
   return (
     <div className="App overflow-hidden">
+      <Header/>
       <div className="Content">
         <FindGrade period={(params.period?.[0] || periods.reverse()[0]) as string} />
       </div>

@@ -2,6 +2,7 @@
 import { MdNavigateNext } from "react-icons/md";
 import "./styles.scss";
 import { Metadata } from "next";
+import Header from "@/components/Header/Header";
 
 interface chatType {
   name: string;
@@ -155,6 +156,7 @@ export default function Chat() {
   ];
   return (
     <div className="Chats overflow-hidden">
+      <Header />
       <div className="content">
         <div className="about">
           <h2 className="title text-xl font-bold">Bate-papos</h2>

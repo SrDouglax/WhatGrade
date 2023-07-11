@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./styles.scss";
 import GenerateExeptionData from "./data/scripts/GenerateExeptionData";
+import Header from "@/components/Header/Header";
 
 interface exemptedType {
   name: string;
@@ -58,6 +59,7 @@ export default function ExeptionsList({
 
   return (
     <div className="ExeptionSSA">
+      <Header />
       {/* <GenerateExeptionData/> */}
       <div className="content">
         <h1 className="title text-2xl font-bold">

@@ -31,7 +31,7 @@
       position: relative;
       height: 25vw;
       width: 100%;
-      min-height: 9rem;
+      min-height: 11rem;
       max-height: 16%;
       display: flex;
       align-items: center;
@@ -42,7 +42,7 @@
         z-index: 2;
         padding: 2px 10px;
         color: #dadada;
-        bottom: 18%;
+        bottom: 16%;
         text-align: center;
         font-size: clamp(1.1rem, 4.5vw, 2rem);
         max-width: 700px;

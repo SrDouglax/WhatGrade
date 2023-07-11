@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { firestore } from "../../services/firebase";
 import "./styles.scss";
+import Header from "@/components/Header/Header";
 
 export default function Novelty() {
   const [sendingState, setSendingState] = useState("default");
@@ -24,6 +25,7 @@ export default function Novelty() {
   }
   return (
     <div className="Novelty overflow-hidden">
+      <Header />
       <div className="content">
         <div className="survey">
           <h2 className="title">O que deseja sugerir?</h2>

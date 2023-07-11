@@ -10,6 +10,7 @@ import {
   UserMessageObject,
 } from "../../../services/firebase-interfaces";
 import { useRouter } from "next/navigation";
+import Header from "@/components/Header/Header";
 
 interface chatType {
   name: string;
@@ -216,6 +217,7 @@ export default function ChatChannel ({params}:{params : {channelID: string}}) {
 
   return (
     <>
+      <Header />
       <h1 className="chatName text-gray-200 font-bold text-xl w-full pt-2 pb-2 text-center">{`${
         chats.find((e) => {
           return e.link.slice(6) === params.channelID;

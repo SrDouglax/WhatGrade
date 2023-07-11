@@ -1,9 +1,11 @@
 'use client'
+import Header from "@/components/Header/Header";
 import "./styles.scss";
 
 export default function Politics() {
   return (
     <div className="Politics overflow-hidden">
+      <Header />
       <div className="content">
         <h1>Políticas de Privacidade</h1>
         <p>
